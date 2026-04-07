@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "nunito", sans-serif;
+  background-color: #f7f7f4;
+  color: #1e1e1e;
+}
+
+a {
+  color: inherit;
+}
+:root {
+  --primary-dark: #00394d;
+  --primary-light: #0085b3;
+  --green-main: #97ae19;
+}

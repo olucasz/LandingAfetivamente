@@ -1,0 +1,55 @@
+.header {
+  width: 100%;
+  padding: 24px 0 0;
+}
+
+.header__container {
+  width: min(1280px, calc(100% - 80px));
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 999px;
+  padding: 14px 18px 14px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* NOVO BLOCO */
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.header__logo img {
+  height: 35px;
+  display: block;
+}
+
+/* NAV */
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* menor que antes */
+}
+
+.header__link {
+  text-decoration: none;
+  color: #0f4f67;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.header__cta {
+  text-decoration: none;
+  background: linear-gradient(
+    to right,
+    var(--primary-dark),
+    var(--primary-light)
+  );
+  color: #ffffff;
+  padding: 16px 28px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 550;
+}
