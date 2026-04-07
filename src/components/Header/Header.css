@@ -53,3 +53,35 @@
   font-size: 0.9rem;
   font-weight: 550;
 }
+
+@media (max-width: 1199px) {
+  .header {
+    padding: 20px 0 0;
+  }
+
+  .header__container {
+    width: min(100%, calc(100% - 40px));
+    padding: 12px 14px 12px 20px;
+  }
+
+  .header__right {
+    gap: 24px;
+  }
+
+  .header__nav {
+    gap: 18px;
+  }
+
+  .header__link {
+    font-size: 0.92rem;
+  }
+
+  .header__cta {
+    padding: 14px 22px;
+    font-size: 0.82rem;
+  }
+
+  .header__logo img {
+    height: 31px;
+  }
+}
