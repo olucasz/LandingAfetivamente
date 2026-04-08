@@ -402,6 +402,7 @@
     min-height: 380px;
     width: min(100%, 340px);
     margin: 0 auto;
+    margin-top: 30px;
     display: flex;
     flex-wrap: nowrap;
     align-items: flex-end;
@@ -416,7 +417,7 @@
   }
 
   .hero__side {
-    gap: 12px;
+    gap: 14px;
     margin-left: 0;
   }
 
@@ -443,11 +444,11 @@
 
   .hero__card-icon {
     img {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
     }
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     justify-content: center;
   }
 
@@ -467,7 +468,7 @@
 
   .hero__card--right {
     top: 180px;
-    right: -60px;
+    right: -59px;
     margin-top: 0;
   }
 }
