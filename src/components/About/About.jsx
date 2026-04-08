@@ -33,8 +33,7 @@ export default function About() {
         <div className="about__container">
           <div className="about__block about__block--bottom">
             <h3 className="about__subtitle">
-              Um olhar <span>completo</span>
-              <br />
+              Um olhar <span>completo </span>
               para a sua saúde mental
             </h3>
 

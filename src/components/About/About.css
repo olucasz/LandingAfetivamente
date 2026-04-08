@@ -17,7 +17,7 @@
 .about__title {
   max-width: 620px;
   font-family: "Poppins", sans-serif;
-  font-size: 3rem;
+  font-size: 2.8rem;
   line-height: 1.08;
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -55,7 +55,7 @@
 }
 
 .about__text-box p {
-  font-size: 1.04rem;
+  font-size: 1.18rem;
   line-height: 1.82;
   font-weight: 500;
   color: #1c5b74;
@@ -75,13 +75,14 @@
 }
 
 .about__subtitle {
-  max-width: 700px;
+  max-width: 1280px;
   font-family: "Poppins", sans-serif;
-  font-size: 3.15rem;
-  line-height: 1.06;
+  font-size: 2.8rem;
+  line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.025em;
   color: var(--primary-dark);
+  text-align: center;
 }
 
 .about__subtitle span {
@@ -90,16 +91,12 @@
 
 .about__description {
   margin-top: 22px;
-  max-width: 860px;
-  font-size: 1rem;
+  max-width: 1280px;
+  font-size: 1.1rem;
   line-height: 1.8;
+  text-align: center;
   color: #1c5b74;
   font-weight: 500;
-}
-
-.about__description strong {
-  font-weight: 700;
-  color: var(--primary-dark);
 }
 
 .about__gallery {
