@@ -5,6 +5,7 @@ import Services from "../components/Services/Services";
 import Professionals from "../components/Professionals/Professionals";
 import OnlineCare from "../components/OnlineCare/OnlineCare";
 import Location from "../components/Location/Location";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Professionals />
       <OnlineCare />
       <Location />
+      <Footer />
     </>
   );
 }
