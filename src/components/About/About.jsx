@@ -1,3 +1,7 @@
+import aboutGalleryOne from "../../assets/about-jpg/sobre1.jpg";
+import aboutGalleryTwo from "../../assets/about-jpg/sobre2.jpg";
+import aboutGalleryThree from "../../assets/about-jpg/sobre3.jpg";
+import aboutTeamImage from "../../assets/about-jpg/teamSobre.jpg";
 import "./About.css";
 
 export default function About() {
@@ -12,8 +16,13 @@ export default function About() {
           <div className="about__top-grid">
             <div className="about__image-box">
               <img
-                src="src/assets/about/teamSobre.png"
+                src={aboutTeamImage}
                 alt="Equipe da clínica AfetivaMente"
+                width="545"
+                height="363"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
               />
             </div>
 
@@ -48,22 +57,37 @@ export default function About() {
             <div className="about__gallery">
               <div className="about__gallery-item">
                 <img
-                  src="src/assets/about/sobre1.png"
+                  src={aboutGalleryOne}
                   alt="Atendimento acolhedor para crianças e famílias"
+                  width="326"
+                  height="305"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                 />
               </div>
 
               <div className="about__gallery-item">
                 <img
-                  src="src/assets/about/sobre2.png"
+                  src={aboutGalleryTwo}
                   alt="Atendimento terapêutico com acompanhamento profissional"
+                  width="326"
+                  height="305"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                 />
               </div>
 
               <div className="about__gallery-item">
                 <img
-                  src="src/assets/about/sobre3.png"
+                  src={aboutGalleryThree}
                   alt="Atividades terapêuticas e desenvolvimento emocional"
+                  width="326"
+                  height="305"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                 />
               </div>
             </div>

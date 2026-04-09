@@ -1,3 +1,11 @@
+import avatar1 from "../../assets/avatar-jpg/avatar1.jpg";
+import avatar2 from "../../assets/avatar-jpg/avatar2.jpg";
+import avatar3 from "../../assets/avatar-jpg/avatar3.jpg";
+import calendarIcon from "../../assets/Calendar.png";
+import heartIcon from "../../assets/Heart.png";
+import heroMainImage from "../../assets/jpg/imagemcapa1.jpg";
+import heroTopImage from "../../assets/jpg/imagemcapa2.jpg";
+import heroBottomImage from "../../assets/jpg/imagemcapa3.jpg";
 import "./Hero.css";
 
 export default function Hero() {
@@ -26,9 +34,9 @@ export default function Hero() {
 
             <div className="hero__support">
               <div className="hero__avatars">
-                <img src="src/assets/avatar/avatar3.png" alt="" />
-                <img src="src/assets/avatar/avatar2.png" alt="" />
-                <img src="src/assets/avatar/avatar1.png" alt="" />
+                <img src={avatar3} alt="" decoding="async" />
+                <img src={avatar2} alt="" decoding="async" />
+                <img src={avatar1} alt="" decoding="async" />
               </div>
 
               <p className="hero__support-text">
@@ -44,24 +52,54 @@ export default function Hero() {
         <div className="hero__media">
           {/* OVAL PRINCIPAL */}
           <div className="hero__oval hero__oval--main">
-            <img src="src/assets/imagemcapa1.png" alt="" />
+            <img
+              src={heroMainImage}
+              alt=""
+              width="320"
+              height="631"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
           </div>
 
           {/* COLUNA DIREITA */}
           <div className="hero__side">
             <div className="hero__oval hero__oval--top">
-              <img src="src/assets/imagemcapa2.png" alt="" />
+              <img
+                src={heroTopImage}
+                alt=""
+                width="211"
+                height="480"
+                loading="eager"
+                decoding="async"
+                fetchPriority="low"
+              />
             </div>
 
             <div className="hero__oval hero__oval--bottom">
-              <img src="src/assets/imagemcapa3.png" alt="" />
+              <img
+                src={heroBottomImage}
+                alt=""
+                width="211"
+                height="300"
+                loading="eager"
+                decoding="async"
+                fetchPriority="low"
+              />
             </div>
           </div>
 
           {/* CARD ESQUERDA */}
           <div className="hero__card hero__card--left">
             <div className="hero__card-icon">
-              <img src="src/assets/Calendar.png" alt=" " />
+              <img
+                src={calendarIcon}
+                alt=" "
+                width="26"
+                height="26"
+                decoding="async"
+              />
             </div>
             <div>
               <strong>Presencial e Online</strong>
@@ -73,7 +111,13 @@ export default function Hero() {
           {/* CARD DIREITA */}
           <div className="hero__card hero__card--right">
             <div className="hero__card-icon">
-              <img src="src/assets/Heart.png" alt=" " />
+              <img
+                src={heartIcon}
+                alt=" "
+                width="31"
+                height="30"
+                decoding="async"
+              />
             </div>
             <div>
               <strong>+1200</strong>

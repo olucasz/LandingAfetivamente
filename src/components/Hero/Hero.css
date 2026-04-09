@@ -2,6 +2,8 @@
   position: relative;
   padding-top: 50px;
   overflow: hidden;
+  overflow: clip;
+  isolation: isolate;
 
   background: linear-gradient(
     350deg,
@@ -117,6 +119,7 @@
   overflow: hidden;
   border-radius: 999px;
   position: relative;
+  contain: paint;
 }
 
 .hero__oval img {
@@ -156,8 +159,9 @@
 .hero__card {
   position: absolute;
 
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(7px);
+  background: rgba(255, 255, 255, 0.82);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 
   border-radius: 20px;
   padding: 14px 18px;
@@ -166,7 +170,8 @@
   align-items: center;
   gap: 12px;
 
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  contain: paint;
 }
 
 .hero__card-icon {
@@ -285,7 +290,6 @@
     padding: 12px 14px;
     gap: 10px;
     border-radius: 18px;
-    backdrop-filter: blur(6px);
   }
 
   .hero__card-icon {

@@ -26,6 +26,8 @@
 }
 .header__logo img {
   height: 35px;
+  width: auto;
+  max-width: 100%;
   display: block;
 }
 

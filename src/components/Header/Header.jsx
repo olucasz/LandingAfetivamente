@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../../assets/jpg/logo.jpg";
 import "./Header.css";
 
 const navigationItems = [
@@ -24,7 +25,14 @@ export default function Header() {
     <header className={`header ${isMobileMenuOpen ? "header--menu-open" : ""}`}>
       <div className="header__container">
         <a href="/" className="header__logo">
-          <img src="src/assets/logo.png" alt="Afetivamente" />
+          <img
+            src={logo}
+            alt="Afetivamente"
+            width="560"
+            height="116"
+            decoding="async"
+            fetchPriority="high"
+          />
         </a>
 
         <button
