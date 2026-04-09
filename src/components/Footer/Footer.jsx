@@ -43,7 +43,9 @@ export default function Footer() {
                   alt="AfetivaMente"
                   width="100"
                   height="104"
+                  loading="lazy"
                   decoding="async"
+                  fetchPriority="low"
                 />
               </a>
 

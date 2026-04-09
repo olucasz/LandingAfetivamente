@@ -20,9 +20,7 @@
   transition:
     background-color 240ms ease,
     box-shadow 240ms ease,
-    border-color 240ms ease,
-    backdrop-filter 240ms ease,
-    -webkit-backdrop-filter 240ms ease;
+    border-color 240ms ease;
 }
 
 /* NOVO BLOCO */
@@ -78,11 +76,9 @@
 }
 
 .header--scrolled .header__container {
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.94);
   border-color: rgba(0, 57, 77, 0.08);
-  box-shadow: 0 16px 34px rgba(8, 37, 50, 0.09);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 14px 28px rgba(8, 37, 50, 0.08);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -178,11 +174,9 @@
     width: calc(100% - 32px);
     padding: 12px;
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.74);
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(0, 57, 77, 0.08);
     box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -191,7 +185,6 @@
     pointer-events: none;
     transform: translate3d(-50%, -10px, 0) scale(0.985);
     transform-origin: top center;
-    will-change: transform, opacity;
     backface-visibility: hidden;
     transition:
       opacity 0.18s ease-out,

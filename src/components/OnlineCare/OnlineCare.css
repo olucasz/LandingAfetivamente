@@ -234,10 +234,10 @@
   border-radius: 999px;
   background: linear-gradient(
     to right,
-    rgba(18, 30, 42, 0.62),
-    rgba(18, 30, 42, 0.2)
+    rgba(18, 30, 42, 0.72),
+    rgba(18, 30, 42, 0.32)
   );
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #ffffff;
   display: inline-flex;
   align-items: center;

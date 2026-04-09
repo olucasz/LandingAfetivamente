@@ -76,10 +76,6 @@
   --gradient-green: linear-gradient(135deg, #9bb218 0%, #b5cc2c 100%);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: var(--font-body);
   background-color: var(--surface-page);
@@ -92,6 +88,7 @@ a {
 }
 
 img {
+  display: block;
   max-width: 100%;
 }
 
@@ -131,10 +128,6 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {

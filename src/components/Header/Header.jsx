@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { m, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
+import { useEffect, useState } from "react";
+import { m, useReducedMotion } from "motion/react";
 import logo from "../../assets/jpg/logo.jpg";
 import { motionEase } from "../Motion/motionTokens";
 import "./Header.css";
@@ -18,11 +18,22 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const shouldReduceMotion = useReducedMotion();
-  const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 18);
-  });
+  useEffect(() => {
+    function syncScrolledState() {
+      const nextScrolled = window.scrollY > 18;
+      setIsScrolled((currentScrolled) =>
+        currentScrolled === nextScrolled ? currentScrolled : nextScrolled,
+      );
+    }
+
+    syncScrolledState();
+    window.addEventListener("scroll", syncScrolledState, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", syncScrolledState);
+    };
+  }, []);
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen((isOpen) => !isOpen);
