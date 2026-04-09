@@ -4,7 +4,7 @@
 }
 
 .footer__container {
-  width: min(1280px, calc(100% - 80px));
+  width: min(var(--container-max), calc(100% - var(--container-inline)));
   margin: 0 auto;
 }
 
@@ -161,10 +161,6 @@
     padding: 54px 0 30px;
   }
 
-  .footer__container {
-    width: min(100%, calc(100% - 56px));
-  }
-
   .footer__top {
     grid-template-columns: minmax(0, 1.2fr) minmax(160px, 0.8fr) minmax(200px, 0.9fr);
     gap: 32px;
@@ -206,10 +202,6 @@
 @media (max-width: 767px) {
   .footer {
     padding: 42px 0 28px;
-  }
-
-  .footer__container {
-    width: min(100%, calc(100% - 32px));
   }
 
   .footer__top {

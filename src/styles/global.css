@@ -4,21 +4,128 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+
+  --primary-dark: #00394d;
+  --primary-light: #0085b3;
+  --green-main: #97ae19;
+
+  --surface-page: #f7f7f4;
+  --surface-muted: #f3f3f3;
+  --surface-card: #ffffff;
+  --surface-soft: #dfe5db;
+
+  --text-primary: var(--primary-dark);
+  --text-secondary: #1c5b74;
+  --text-muted: #8083a0;
+
+  --border-subtle: rgba(0, 57, 77, 0.06);
+  --border-soft: rgba(0, 57, 77, 0.08);
+
+  --shadow-card: 0 12px 26px rgba(8, 37, 50, 0.06);
+  --shadow-card-soft: 0 16px 36px rgba(8, 37, 50, 0.08);
+  --shadow-card-strong: 0 18px 42px rgba(8, 37, 50, 0.08);
+  --shadow-button-blue: 0 14px 28px rgba(0, 57, 77, 0.14);
+  --shadow-button-green: 0 12px 26px rgba(151, 174, 25, 0.18);
+
+  --radius-card-sm: 20px;
+  --radius-card: 24px;
+  --radius-card-lg: 28px;
+  --radius-pill: 999px;
+
+  --container-max: 1280px;
+  --container-inline: 80px;
+
+  --section-space: 104px;
+  --section-space-tight: 88px;
+  --section-space-mobile: 72px;
+  --section-heading-gap: 16px;
+  --section-content-gap: 40px;
+
+  --section-title-size: 2.8rem;
+  --section-title-line-height: 1.04;
+  --section-title-spacing: -0.03em;
+  --section-subtitle-size: 0.98rem;
+  --section-subtitle-line-height: 1.56;
+  --section-subtitle-weight: 600;
+
+  --card-title-size: 1rem;
+  --card-title-line-height: 1.14;
+  --card-title-weight: 700;
+  --card-copy-size: 0.88rem;
+  --card-copy-line-height: 1.44;
+  --card-copy-weight: 600;
+
+  --button-height: 48px;
+  --button-padding-x: 24px;
+  --button-font-size: 0.92rem;
+  --button-font-weight: 700;
+  --button-transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease,
+    opacity 180ms ease;
+
+  --gradient-blue: linear-gradient(
+    to right,
+    var(--primary-dark),
+    var(--primary-light)
+  );
+  --gradient-green: linear-gradient(135deg, #9bb218 0%, #b5cc2c 100%);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Nunito Sans", sans-serif;
-  background-color: #f7f7f4;
-  color: #1e1e1e;
+  font-family: var(--font-body);
+  background-color: var(--surface-page);
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
 }
 
 a {
   color: inherit;
 }
-:root {
-  --primary-dark: #00394d;
-  --primary-light: #0085b3;
-  --green-main: #97ae19;
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --container-inline: 56px;
+    --section-space: 90px;
+    --section-space-tight: 76px;
+    --section-title-size: 2.48rem;
+    --section-subtitle-size: 0.92rem;
+    --card-copy-size: 0.82rem;
+    --button-height: 44px;
+    --button-padding-x: 22px;
+    --button-font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --container-inline: 32px;
+    --section-space: 72px;
+    --section-space-tight: 60px;
+    --section-title-size: clamp(1.95rem, 7.8vw, 2.3rem);
+    --section-subtitle-size: 0.9rem;
+    --card-copy-size: 0.84rem;
+    --button-height: 42px;
+    --button-padding-x: 18px;
+    --button-font-size: 0.86rem;
+  }
 }

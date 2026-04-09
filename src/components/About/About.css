@@ -1,10 +1,10 @@
 .about {
   width: 100%;
-  padding-top: 104px;
+  padding-top: var(--section-space);
 }
 
 .about__container {
-  width: min(1280px, calc(100% - 80px));
+  width: min(var(--container-max), calc(100% - var(--container-inline)));
   margin: 0 auto;
 }
 
@@ -16,12 +16,12 @@
 
 .about__title {
   max-width: 620px;
-  font-family: "Poppins", sans-serif;
-  font-size: 2.8rem;
-  line-height: 1.08;
+  font-family: var(--font-heading);
+  font-size: var(--section-title-size);
+  line-height: var(--section-title-line-height);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--primary-dark);
+  letter-spacing: var(--section-title-spacing);
+  color: var(--text-primary);
 }
 
 .about__title span {
@@ -38,9 +38,9 @@
 
 .about__image-box {
   overflow: hidden;
-  border-radius: 32px;
-  background: #dfe5db;
-  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-card-lg);
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-card-strong);
 }
 
 .about__image-box img {
@@ -55,10 +55,11 @@
 }
 
 .about__text-box p {
-  font-size: 1.18rem;
-  line-height: 1.82;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.72;
   font-weight: 500;
-  color: #1c5b74;
+  color: var(--text-secondary);
 }
 
 .about__text-box strong {
@@ -70,18 +71,18 @@
 
 .about__highlight {
   width: 100%;
-  background-color: #f3f3f3;
-  padding: 82px 0 100px;
+  background-color: var(--surface-muted);
+  padding: 82px 0 98px;
 }
 
 .about__subtitle {
   max-width: 1280px;
-  font-family: "Poppins", sans-serif;
-  font-size: 2.8rem;
-  line-height: 1.1;
+  font-family: var(--font-heading);
+  font-size: var(--section-title-size);
+  line-height: var(--section-title-line-height);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--primary-dark);
+  letter-spacing: var(--section-title-spacing);
+  color: var(--text-primary);
   text-align: center;
 }
 
@@ -92,11 +93,12 @@
 .about__description {
   margin-top: 22px;
   max-width: 1280px;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-family: var(--font-body);
+  font-size: var(--section-subtitle-size);
+  line-height: var(--section-subtitle-line-height);
   text-align: center;
-  color: #1c5b74;
-  font-weight: 500;
+  color: var(--text-secondary);
+  font-weight: var(--section-subtitle-weight);
 }
 
 .about__gallery {
@@ -108,9 +110,9 @@
 
 .about__gallery-item {
   overflow: hidden;
-  border-radius: 24px;
-  background: #dfe5db;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-card);
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-card-soft);
 }
 
 .about__gallery-item img {
@@ -122,11 +124,7 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .about {
-    padding-top: 84px;
-  }
-
-  .about__container {
-    width: min(100%, calc(100% - 56px));
+    padding-top: var(--section-space);
   }
 
   .about__block--top {
@@ -135,7 +133,7 @@
 
   .about__title {
     max-width: 520px;
-    font-size: 2.5rem;
+    font-size: var(--section-title-size);
     line-height: 1.08;
   }
 
@@ -158,8 +156,8 @@
   }
 
   .about__text-box p {
-    font-size: 0.96rem;
-    line-height: 1.74;
+    font-size: var(--section-subtitle-size);
+    line-height: 1.7;
   }
 
   .about__highlight {
@@ -168,15 +166,15 @@
 
   .about__subtitle {
     max-width: 580px;
-    font-size: 2.45rem;
+    font-size: var(--section-title-size);
     line-height: 1.08;
   }
 
   .about__description {
     margin-top: 18px;
     max-width: 700px;
-    font-size: 0.95rem;
-    line-height: 1.74;
+    font-size: var(--section-subtitle-size);
+    line-height: 1.68;
   }
 
   .about__gallery {
@@ -195,11 +193,7 @@
 
 @media (max-width: 767px) {
   .about {
-    padding-top: 66px;
-  }
-
-  .about__container {
-    width: min(100%, calc(100% - 32px));
+    padding-top: var(--section-space);
   }
 
   .about__block--top {
@@ -240,8 +234,8 @@
   }
 
   .about__text-box p {
-    font-size: 0.96rem;
-    line-height: 1.75;
+    font-size: var(--section-subtitle-size);
+    line-height: 1.72;
     text-align: center;
     text-wrap: pretty;
   }
@@ -270,8 +264,8 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 38ch;
-    font-size: 0.96rem;
-    line-height: 1.8;
+    font-size: var(--section-subtitle-size);
+    line-height: 1.7;
     text-align: center;
   }
 

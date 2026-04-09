@@ -7,7 +7,7 @@
 }
 
 .header__container {
-  width: min(1280px, calc(100% - 80px));
+  width: min(var(--container-max), calc(100% - var(--container-inline)));
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 999px;
@@ -47,16 +47,18 @@
 
 .header__cta {
   text-decoration: none;
-  background: linear-gradient(
-    to right,
-    var(--primary-dark),
-    var(--primary-light)
-  );
+  background: var(--gradient-blue);
   color: #ffffff;
-  padding: 16px 28px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 550;
+  min-height: var(--button-height);
+  padding: 0 calc(var(--button-padding-x) + 4px);
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  box-shadow: var(--shadow-button-blue);
 }
 
 .header__menu-button,
@@ -70,7 +72,6 @@
   }
 
   .header__container {
-    width: min(100%, calc(100% - 40px));
     padding: 12px 14px 12px 20px;
   }
 
@@ -87,8 +88,7 @@
   }
 
   .header__cta {
-    padding: 14px 22px;
-    font-size: 0.82rem;
+    padding: 0 22px;
   }
 
   .header__logo img {
@@ -102,7 +102,6 @@
   }
 
   .header__container {
-    width: min(100%, calc(100% - 32px));
     padding: 12px 14px 12px 18px;
   }
 
@@ -213,18 +212,20 @@
 
   .header__mobile-cta {
     width: 100%;
-    padding: 14px 18px;
-    border-radius: 999px;
+    min-height: var(--button-height);
+    padding: 0 var(--button-padding-x);
+    border-radius: var(--radius-pill);
     text-align: center;
     text-decoration: none;
-    background: linear-gradient(
-      to right,
-      var(--primary-dark),
-      var(--primary-light)
-    );
+    background: var(--gradient-blue);
     color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    box-shadow: var(--shadow-button-blue);
   }
 }
 
