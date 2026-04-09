@@ -4,6 +4,7 @@ import About from "../components/About/About";
 import Services from "../components/Services/Services";
 import Professionals from "../components/Professionals/Professionals";
 import OnlineCare from "../components/OnlineCare/OnlineCare";
+import Location from "../components/Location/Location";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Services />
       <Professionals />
       <OnlineCare />
+      <Location />
     </>
   );
 }
