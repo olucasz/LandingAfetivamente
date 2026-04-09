@@ -1,0 +1,602 @@
+.online-care__hero {
+  position: relative;
+  overflow: hidden;
+  overflow: clip;
+  background: linear-gradient(
+    348deg,
+    rgba(151, 174, 25, 0.24) 0%,
+    rgba(151, 174, 25, 0.14) 26%,
+    rgba(151, 174, 25, 0.06) 52%,
+    rgba(151, 174, 25, 0) 78%
+  );
+}
+
+.online-care__container {
+  width: min(1280px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.online-care__layout {
+  min-height: 636px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(460px, 1.08fr);
+  gap: 40px;
+  align-items: center;
+  padding: 102px 0 96px;
+}
+
+.online-care__content {
+  max-width: 590px;
+}
+
+.online-care__header {
+  display: grid;
+  gap: 18px;
+}
+
+.online-care__title {
+  max-width: 13.4ch;
+  font-family: "Poppins", sans-serif;
+  font-size: 3.18rem;
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.032em;
+  color: var(--primary-dark);
+  text-wrap: balance;
+}
+
+.online-care__title span {
+  color: var(--green-main);
+}
+
+.online-care__description {
+  max-width: 39ch;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.04rem;
+  line-height: 1.56;
+  font-weight: 700;
+  color: #1c5b74;
+}
+
+.online-care__benefits {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.online-care__benefit-card {
+  min-height: 126px;
+  padding: 19px 18px 18px;
+  border-radius: 22px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 57, 77, 0.06);
+  box-shadow: 0 12px 24px rgba(5, 40, 54, 0.045);
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.online-care__benefit-heading {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.online-care__benefit-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(151, 174, 25, 0.12);
+  color: var(--green-main);
+  box-shadow: inset 0 0 0 1px rgba(151, 174, 25, 0.16);
+}
+
+.online-care__benefit-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.online-care__benefit-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  line-height: 1.14;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--primary-dark);
+}
+
+.online-care__benefit-description {
+  max-width: 40ch;
+  font-size: 0.86rem;
+  line-height: 1.42;
+  font-weight: 700;
+  color: #1c5b74;
+}
+
+.online-care__mock-wrap {
+  position: relative;
+  padding-left: 22px;
+}
+
+.online-care__mock-badge {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  z-index: 2;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--primary-dark);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 14px 30px rgba(8, 37, 50, 0.1);
+}
+
+.online-care__mock-badge svg {
+  width: 34px;
+  height: 34px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.online-care__mock {
+  overflow: hidden;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(0, 57, 77, 0.06);
+  box-shadow: 0 20px 44px rgba(8, 37, 50, 0.1);
+  max-width: 600px;
+}
+
+.online-care__mock-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px 11px;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(0, 57, 77, 0.05);
+}
+
+.online-care__mock-topbar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.online-care__mock-topbar span:nth-child(1) {
+  background: #ff7b6e;
+}
+
+.online-care__mock-topbar span:nth-child(2) {
+  background: #ffc164;
+}
+
+.online-care__mock-topbar span:nth-child(3) {
+  background: #56cb79;
+}
+
+.online-care__mock-screen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 8px 16px 0;
+}
+
+.online-care__participant {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #e7e9e4;
+  aspect-ratio: 1.16;
+}
+
+.online-care__participant img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.05);
+}
+
+.online-care__participant:first-child img {
+  object-position: 18% 42%;
+}
+
+.online-care__participant:last-child img {
+  object-position: 62% 36%;
+}
+
+.online-care__participant-name {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    rgba(18, 30, 42, 0.62),
+    rgba(18, 30, 42, 0.2)
+  );
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.online-care__mock-footer {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.online-care__mock-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.online-care__mock-copy strong {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.34rem;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(79, 88, 136, 0.9);
+}
+
+.online-care__mock-copy span {
+  font-size: 0.96rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: rgba(133, 137, 170, 0.7);
+}
+
+.online-care__cta {
+  flex-shrink: 0;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #9bb218 0%, #b5cc2c 100%);
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 700;
+  box-shadow: 0 12px 26px rgba(151, 174, 25, 0.18);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.online-care__partners {
+  background: #ffffff;
+  padding: 76px 0 96px;
+}
+
+.online-care__partners-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.28rem;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-align: center;
+  color: rgba(79, 88, 136, 0.85);
+}
+
+.online-care__partners-grid {
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 28px 36px;
+}
+
+.online-care__partner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.online-care__partner img {
+  width: auto;
+  max-width: 100%;
+  height: 44px;
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .online-care__cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(151, 174, 25, 0.22);
+    filter: brightness(1.015);
+  }
+}
+
+@media (max-width: 1199px) {
+  .online-care__container {
+    width: min(100%, calc(100% - 56px));
+  }
+
+  .online-care__layout {
+    min-height: auto;
+    grid-template-columns: minmax(0, 0.94fr) minmax(360px, 1.06fr);
+    gap: 24px;
+    padding: 88px 0 88px;
+  }
+
+  .online-care__title {
+    max-width: 13.8ch;
+    font-size: 2.6rem;
+  }
+
+  .online-care__description {
+    max-width: 38ch;
+    font-size: 0.94rem;
+  }
+
+  .online-care__benefits {
+    margin-top: 24px;
+    gap: 12px;
+  }
+
+  .online-care__benefit-card {
+    min-height: 118px;
+    padding: 17px 15px 16px;
+    border-radius: 20px;
+  }
+
+  .online-care__benefit-heading {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .online-care__benefit-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+  }
+
+  .online-care__benefit-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .online-care__benefit-title {
+    font-size: 0.94rem;
+  }
+
+  .online-care__benefit-description {
+    font-size: 0.79rem;
+  }
+
+  .online-care__mock-wrap {
+    padding-left: 12px;
+  }
+
+  .online-care__mock-badge {
+    top: 24px;
+    width: 66px;
+    height: 66px;
+  }
+
+  .online-care__mock-badge svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .online-care__mock-footer {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .online-care__mock-copy strong {
+    font-size: 1.2rem;
+  }
+
+  .online-care__mock-copy span {
+    font-size: 0.88rem;
+  }
+
+  .online-care__cta {
+    min-height: 48px;
+    padding: 0 20px;
+    font-size: 0.92rem;
+  }
+
+  .online-care__partners {
+    padding: 66px 0 84px;
+  }
+
+  .online-care__partners-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 899px) {
+  .online-care__layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .online-care__content {
+    max-width: 620px;
+  }
+
+  .online-care__mock-wrap {
+    padding-left: 0;
+  }
+
+  .online-care__mock-badge {
+    left: -10px;
+  }
+
+  .online-care__partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .online-care__container {
+    width: min(100%, calc(100% - 32px));
+  }
+
+  .online-care__layout {
+    gap: 28px;
+    padding: 72px 0 72px;
+  }
+
+  .online-care__content {
+    max-width: none;
+  }
+
+  .online-care__header {
+    gap: 14px;
+  }
+
+  .online-care__title {
+    max-width: 9.5ch;
+    margin: 0 auto;
+    font-size: clamp(2.1rem, 8.8vw, 2.9rem);
+    line-height: 1.03;
+    text-align: center;
+  }
+
+  .online-care__description {
+    max-width: 32ch;
+    margin: 0 auto;
+    font-size: 0.96rem;
+    line-height: 1.56;
+    text-align: center;
+  }
+
+  .online-care__benefits {
+    grid-template-columns: 1fr;
+    margin-top: 24px;
+    gap: 12px;
+  }
+
+  .online-care__benefit-card {
+    min-height: 0;
+    padding: 18px 16px;
+    border-radius: 20px;
+    gap: 12px;
+  }
+
+  .online-care__mock-wrap {
+    padding-top: 18px;
+  }
+
+  .online-care__mock-badge {
+    top: 0;
+    left: 12px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .online-care__mock-badge svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .online-care__mock {
+    border-radius: 22px;
+  }
+
+  .online-care__mock-topbar {
+    padding: 13px 14px 11px;
+  }
+
+  .online-care__mock-screen {
+    gap: 10px;
+    padding: 8px 14px 0;
+  }
+
+  .online-care__participant {
+    border-radius: 14px;
+  }
+
+  .online-care__participant-name {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    min-height: 28px;
+    padding: 0 10px;
+    font-size: 0.72rem;
+  }
+
+  .online-care__mock-footer {
+    padding: 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .online-care__mock-copy {
+    gap: 4px;
+    text-align: center;
+  }
+
+  .online-care__mock-copy strong {
+    font-size: 1.1rem;
+  }
+
+  .online-care__mock-copy span {
+    font-size: 0.86rem;
+  }
+
+  .online-care__cta {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 18px;
+    font-size: 0.92rem;
+  }
+
+  .online-care__partners {
+    padding: 56px 0 70px;
+  }
+
+  .online-care__partners-title {
+    font-size: clamp(1.9rem, 7.6vw, 2.2rem);
+    text-align: center;
+  }
+
+  .online-care__partners-grid {
+    margin-top: 32px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .online-care__partner {
+    min-height: 56px;
+  }
+
+  .online-care__partner img {
+    height: 34px;
+  }
+}
