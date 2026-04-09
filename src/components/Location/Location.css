@@ -80,6 +80,10 @@
   background: var(--surface-card);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-card);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
 }
 
 .location__info-list {
@@ -178,6 +182,12 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .location__card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 57, 77, 0.1);
+    box-shadow: var(--shadow-card-soft);
+  }
+
   .location__cta:hover {
     transform: translateY(-1px);
     box-shadow: 0 16px 32px rgba(0, 57, 77, 0.18);

@@ -1,4 +1,5 @@
 import footerLogo from "../../assets/svg/footer-logo.svg";
+import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./Footer.css";
 
 const navigationItems = [
@@ -28,8 +29,8 @@ export default function Footer() {
   return (
     <footer className="footer" aria-labelledby="footer-brand">
       <div className="footer__container">
-        <div className="footer__top">
-          <div className="footer__brand">
+        <RevealGroup className="footer__top" stagger={0.12}>
+          <RevealItem className="footer__brand">
             <div className="footer__brand-header">
               <a
                 href="/"
@@ -71,21 +72,21 @@ export default function Footer() {
                 </div>
               ))}
             </nav>
-          </div>
+          </RevealItem>
 
-          <div className="footer__links">
+          <RevealItem className="footer__links">
             <p className="footer__heading">Links Rápidos</p>
 
             <nav className="footer__nav" aria-label="Navegação do rodapé">
               {navigationItems.map(({ href, label }) => (
                 <a key={href} href={href} className="footer__nav-link">
-                  {label}
-                </a>
-              ))}
+                {label}
+              </a>
+            ))}
             </nav>
-          </div>
+          </RevealItem>
 
-          <div className="footer__legal">
+          <RevealItem className="footer__legal">
             <p className="footer__heading">Informações Legais</p>
 
             <p className="footer__legal-copy">
@@ -93,14 +94,14 @@ export default function Footer() {
               <br />
               CRP - 08/PJ-02254
             </p>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
-        <div className="footer__bottom">
+        <Reveal className="footer__bottom" distance={18}>
           <p className="footer__copyright">
             © {currentYear} AfetivaMente Clínica. Todos os direitos reservados.
           </p>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

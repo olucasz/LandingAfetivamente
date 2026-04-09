@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { m, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import logo from "../../assets/jpg/logo.jpg";
+import { motionEase } from "../Motion/motionTokens";
 import "./Header.css";
 
 const navigationItems = [
@@ -11,7 +13,16 @@ const navigationItems = [
 ];
 
 export default function Header() {
+  const MotionHeader = m.header;
+  const MotionDiv = m.div;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 18);
+  });
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen((isOpen) => !isOpen);
@@ -22,8 +33,26 @@ export default function Header() {
   };
 
   return (
-    <header className={`header ${isMobileMenuOpen ? "header--menu-open" : ""}`}>
-      <div className="header__container">
+    <MotionHeader
+      className={`header ${isMobileMenuOpen ? "header--menu-open" : ""} ${
+        isScrolled ? "header--scrolled" : ""
+      }`}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: -20 }}
+      animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: motionEase }}
+    >
+      <MotionDiv
+        className="header__container"
+        animate={
+          shouldReduceMotion
+            ? undefined
+            : {
+                y: isScrolled ? 1 : 0,
+                scale: isScrolled ? 0.992 : 1,
+              }
+        }
+        transition={{ duration: 0.28, ease: motionEase }}
+      >
         <a href="/" className="header__logo">
           <img
             src={logo}
@@ -61,7 +90,7 @@ export default function Header() {
             Agendar Consulta
           </a>
         </div>
-      </div>
+      </MotionDiv>
 
       <div
         id="header-mobile-menu"
@@ -89,6 +118,6 @@ export default function Header() {
           Agendar Consulta
         </a>
       </div>
-    </header>
+    </MotionHeader>
   );
 }

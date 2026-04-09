@@ -101,6 +101,7 @@
 .professionals__card {
   display: grid;
   gap: 16px;
+  transition: transform 220ms ease;
 }
 
 .professionals__media {
@@ -109,6 +110,9 @@
   background: var(--surface-soft);
   box-shadow: var(--shadow-card-strong);
   aspect-ratio: 0.82;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .professionals__media img {
@@ -173,6 +177,14 @@
     border-color: rgba(0, 57, 77, 0.16);
     background: var(--primary-dark);
     color: #ffffff;
+  }
+
+  .professionals__card:hover {
+    transform: translateY(-4px);
+  }
+
+  .professionals__card:hover .professionals__media {
+    box-shadow: 0 22px 48px rgba(8, 37, 50, 0.11);
   }
 }
 

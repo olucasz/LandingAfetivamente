@@ -1,4 +1,5 @@
 import servicesFeatureImage from "../../assets/about-jpg/sobre1.jpg";
+import { RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./Services.css";
 
 const benefits = [
@@ -50,19 +51,19 @@ export default function Services() {
   return (
     <section className="services" id="servicos" aria-labelledby="services-title">
       <div className="services__container">
-        <header className="services__header">
-          <h2 className="services__title" id="services-title">
+        <RevealGroup as="header" className="services__header" stagger={0.1}>
+          <RevealItem as="h2" className="services__title" id="services-title">
             Soluções Especializadas
-          </h2>
+          </RevealItem>
 
-          <p className="services__subtitle">
+          <RevealItem as="p" className="services__subtitle">
             A AfetivaMente é humana, feita de gente, que sente, que cuida, que
             transforma, que se vincula.
-          </p>
-        </header>
+          </RevealItem>
+        </RevealGroup>
 
-        <div className="services__layout">
-          <article className="services__feature-card">
+        <RevealGroup className="services__layout" stagger={0.12} delayChildren={0.04}>
+          <RevealItem as="article" className="services__feature-card">
             <div className="services__feature-media">
               <div className="services__window-dots" aria-hidden="true">
                 <span />
@@ -109,11 +110,11 @@ export default function Services() {
                 <ArrowOutIcon />
               </a>
             </div>
-          </article>
+          </RevealItem>
 
-          <div className="services__grid">
+          <RevealGroup className="services__grid" stagger={0.08} delayChildren={0.06}>
             {serviceCards.map(({ title, description, icon }) => (
-              <article key={title} className="services__card">
+              <RevealItem as="article" key={title} className="services__card">
                 <div className="services__card-heading">
                   <span className="services__card-icon" aria-hidden="true">
                     {icon}
@@ -123,10 +124,10 @@ export default function Services() {
                 </div>
 
                 <p className="services__card-description">{description}</p>
-              </article>
+              </RevealItem>
             ))}
-          </div>
-        </div>
+          </RevealGroup>
+        </RevealGroup>
       </div>
     </section>
   );

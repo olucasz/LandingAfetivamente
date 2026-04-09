@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { professionals } from "../../data/professionals";
+import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./Professionals.css";
 
 const professionalImagePositions = {
@@ -65,12 +66,15 @@ export default function Professionals() {
       aria-labelledby="professionals-title"
     >
       <div className="professionals__container">
-        <div className="professionals__header">
-          <h2 className="professionals__title" id="professionals-title">
+        <RevealGroup className="professionals__header" stagger={0.12}>
+          <RevealItem as="h2" className="professionals__title" id="professionals-title">
             Conheça nossos <span>Profissionais</span>
-          </h2>
+          </RevealItem>
 
-          <div className="professionals__controls" aria-label="Navegação do carrossel">
+          <RevealItem
+            className="professionals__controls"
+            aria-label="Navegação do carrossel"
+          >
             <button
               type="button"
               className="professionals__arrow"
@@ -90,14 +94,14 @@ export default function Professionals() {
             >
               <ArrowRightIcon />
             </button>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
-        <div className="professionals__carousel">
+        <Reveal className="professionals__carousel" distance={28}>
           <div className="professionals__viewport" ref={emblaRef}>
-            <div className="professionals__track">
+            <RevealGroup className="professionals__track" stagger={0.08}>
               {activeProfessionals.map(({ id, name, role, image }) => (
-                <div className="professionals__slide" key={id}>
+                <RevealItem className="professionals__slide" key={id} distance={22}>
                   <article className="professionals__card">
                     <div className="professionals__media">
                       <img
@@ -120,9 +124,9 @@ export default function Professionals() {
                       <p className="professionals__role">{role}</p>
                     </div>
                   </article>
-                </div>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
           </div>
 
           {scrollSnaps.length > 1 ? (
@@ -143,7 +147,7 @@ export default function Professionals() {
               ))}
             </div>
           ) : null}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

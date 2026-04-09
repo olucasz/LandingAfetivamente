@@ -170,6 +170,7 @@
 
   box-shadow: var(--shadow-card);
   contain: paint;
+  will-change: transform;
 }
 
 .hero__card-icon {
@@ -206,6 +207,18 @@
 .hero__card span {
   font-size: 0.875rem;
   color: #3b6a7e;
+}
+
+.hero__oval {
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 34px rgba(0, 57, 77, 0.18);
+    filter: brightness(1.02);
+  }
 }
 
 @media (max-width: 1199px) {

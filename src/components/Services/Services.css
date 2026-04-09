@@ -49,6 +49,10 @@
   background: var(--surface-card);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-card);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
 }
 
 .services__feature-card {
@@ -176,6 +180,7 @@
   font-size: var(--button-font-size);
   font-weight: var(--button-font-weight);
   box-shadow: none;
+  transition: var(--button-transition);
 }
 
 .services__feature-cta svg {
@@ -254,6 +259,21 @@
   font-weight: var(--card-copy-weight);
   color: var(--text-secondary);
   text-wrap: pretty;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .services__feature-card:hover,
+  .services__card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 57, 77, 0.1);
+    box-shadow: var(--shadow-card-soft);
+  }
+
+  .services__feature-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 30px rgba(0, 57, 77, 0.16);
+    filter: brightness(1.02);
+  }
 }
 
 @media (max-width: 1199px) {

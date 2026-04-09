@@ -1,3 +1,4 @@
+import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./Location.css";
 
 const contactItems = [
@@ -25,25 +26,25 @@ export default function Location() {
   return (
     <section className="location" id="contato" aria-labelledby="location-title">
       <div className="location__container">
-        <div className="location__layout">
-          <div className="location__content">
-            <header className="location__header">
-              <h2 className="location__title" id="location-title">
+        <RevealGroup className="location__layout" stagger={0.14}>
+          <RevealGroup className="location__content" stagger={0.1}>
+            <RevealGroup as="header" className="location__header" stagger={0.1}>
+              <RevealItem as="h2" className="location__title" id="location-title">
                 Dê o primeiro passo
                 <br />
                 para o seu <span>bem-estar</span>
-              </h2>
+              </RevealItem>
 
-              <p className="location__subtitle">
+              <RevealItem as="p" className="location__subtitle">
                 Nossa equipe está pronta para tirar suas dúvidas e ajudar você a
                 encontrar o melhor caminho.
-              </p>
-            </header>
+              </RevealItem>
+            </RevealGroup>
 
-            <article className="location__card">
-              <div className="location__info-list">
+            <RevealItem as="article" className="location__card">
+              <RevealGroup className="location__info-list" stagger={0.08}>
                 {contactItems.map(({ title, lines, icon }) => (
-                  <div className="location__info-item" key={title}>
+                  <RevealItem className="location__info-item" key={title} distance={18}>
                     <span className="location__info-icon" aria-hidden="true">
                       {icon}
                     </span>
@@ -57,9 +58,9 @@ export default function Location() {
                         </p>
                       ))}
                     </div>
-                  </div>
+                  </RevealItem>
                 ))}
-              </div>
+              </RevealGroup>
 
               <a
                 href="https://wa.me/5543998693537"
@@ -69,10 +70,10 @@ export default function Location() {
               >
                 Agendar consulta via WhatsApp
               </a>
-            </article>
-          </div>
+            </RevealItem>
+          </RevealGroup>
 
-          <div className="location__map-wrap">
+          <Reveal className="location__map-wrap" distance={30}>
             <div className="location__map">
               <iframe
                 title="Mapa da clínica AfetivaMente"
@@ -82,8 +83,8 @@ export default function Location() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-          </div>
-        </div>
+          </Reveal>
+        </RevealGroup>
       </div>
     </section>
   );

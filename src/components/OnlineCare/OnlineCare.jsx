@@ -4,6 +4,7 @@ import partnerCassi from "../../assets/partners/cassi.svg";
 import partnerCisnop from "../../assets/partners/cisnop.svg";
 import partnerSaneSaude from "../../assets/partners/sane-saude.svg";
 import partnerUnimed from "../../assets/partners/unimed.svg";
+import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./OnlineCare.css";
 
 const onlineBenefits = [
@@ -32,24 +33,28 @@ export default function OnlineCare() {
     <section className="online-care" id="atendimento-online">
       <div className="online-care__hero">
         <div className="online-care__container">
-          <div className="online-care__layout">
-            <div className="online-care__content">
-              <header className="online-care__header">
-                <h2 className="online-care__title">
+          <RevealGroup className="online-care__layout" stagger={0.14}>
+            <RevealGroup className="online-care__content" stagger={0.1}>
+              <RevealGroup as="header" className="online-care__header" stagger={0.1}>
+                <RevealItem as="h2" className="online-care__title">
                   Atendimento <span>Online</span>
                   <br />
                   com a mesma excelência
-                </h2>
+                </RevealItem>
 
-                <p className="online-care__description">
+                <RevealItem as="p" className="online-care__description">
                   Oferecemos atendimentos online com a mesma qualidade, ética e
                   cuidado do nosso espaço físico.
-                </p>
-              </header>
+                </RevealItem>
+              </RevealGroup>
 
-              <div className="online-care__benefits">
+              <RevealGroup className="online-care__benefits" stagger={0.08}>
                 {onlineBenefits.map(({ title, description, icon }) => (
-                  <article key={title} className="online-care__benefit-card">
+                  <RevealItem
+                    as="article"
+                    key={title}
+                    className="online-care__benefit-card"
+                  >
                     <div className="online-care__benefit-heading">
                       <span className="online-care__benefit-icon" aria-hidden="true">
                         {icon}
@@ -60,12 +65,12 @@ export default function OnlineCare() {
                     <p className="online-care__benefit-description">
                       {description}
                     </p>
-                  </article>
+                  </RevealItem>
                 ))}
-              </div>
-            </div>
+              </RevealGroup>
+            </RevealGroup>
 
-            <div className="online-care__mock-wrap">
+            <Reveal className="online-care__mock-wrap" distance={30}>
               <div className="online-care__mock-badge" aria-hidden="true">
                 <VideoChatIcon />
               </div>
@@ -120,18 +125,20 @@ export default function OnlineCare() {
                   </a>
                 </div>
               </article>
-            </div>
-          </div>
+            </Reveal>
+          </RevealGroup>
         </div>
       </div>
 
       <div className="online-care__partners">
         <div className="online-care__container">
-          <h3 className="online-care__partners-title">Convênios atendidos</h3>
+          <Reveal as="h3" className="online-care__partners-title">
+            Convênios atendidos
+          </Reveal>
 
-          <div className="online-care__partners-grid">
+          <RevealGroup className="online-care__partners-grid" stagger={0.08}>
             {partners.map(({ name, logo }) => (
-              <div className="online-care__partner" key={name}>
+              <RevealItem className="online-care__partner" key={name} distance={18}>
                 <img
                   src={logo}
                   alt={`Logo do convênio ${name}`}
@@ -141,9 +148,9 @@ export default function OnlineCare() {
                   decoding="async"
                   fetchPriority="low"
                 />
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </div>
     </section>
