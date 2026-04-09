@@ -1,46 +1,16 @@
 import { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import teamPhoto from "../../assets/about-jpg/teamSobre.jpg";
+import { professionals } from "../../data/professionals";
 import "./Professionals.css";
 
-const professionals = [
-  {
-    name: "Gabriela Cuani",
-    role: "Psicóloga",
-    image: teamPhoto,
-    imagePosition: "4% 38%",
-  },
-  {
-    name: "Rodrigo Colleti",
-    role: "Médico",
-    image: teamPhoto,
-    imagePosition: "22% 36%",
-  },
-  {
-    name: "Natalia Terra",
-    role: "Psicóloga",
-    image: teamPhoto,
-    imagePosition: "41% 35%",
-  },
-  {
-    name: "Cassiana Corinth",
-    role: "Psicopedagoga",
-    image: teamPhoto,
-    imagePosition: "61% 34%",
-  },
-  {
-    name: "Amanda Ribeiro",
-    role: "Neuropsicóloga",
-    image: teamPhoto,
-    imagePosition: "79% 35%",
-  },
-  {
-    name: "Felipe Azevedo",
-    role: "Psiquiatra",
-    image: teamPhoto,
-    imagePosition: "96% 35%",
-  },
-];
+const professionalImagePositions = {
+  1: "4% 38%",
+  2: "22% 36%",
+  3: "41% 35%",
+  4: "61% 34%",
+  5: "79% 35%",
+  6: "96% 35%",
+};
 
 export default function Professionals() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -48,6 +18,9 @@ export default function Professionals() {
     containScroll: "trimSnaps",
     loop: false,
   });
+  const activeProfessionals = professionals.filter(
+    (professional) => professional.active,
+  );
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -123,8 +96,8 @@ export default function Professionals() {
         <div className="professionals__carousel">
           <div className="professionals__viewport" ref={emblaRef}>
             <div className="professionals__track">
-              {professionals.map(({ name, role, image, imagePosition }) => (
-                <div className="professionals__slide" key={name}>
+              {activeProfessionals.map(({ id, name, role, image }) => (
+                <div className="professionals__slide" key={id}>
                   <article className="professionals__card">
                     <div className="professionals__media">
                       <img
@@ -135,7 +108,10 @@ export default function Professionals() {
                         loading="lazy"
                         decoding="async"
                         fetchPriority="low"
-                        style={{ objectPosition: imagePosition }}
+                        style={{
+                          objectPosition:
+                            professionalImagePositions[id] ?? "center center",
+                        }}
                       />
                     </div>
 
