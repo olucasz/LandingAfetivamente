@@ -1,0 +1,6 @@
+<svg width="320" height="88" viewBox="0 0 320 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="88" rx="20" fill="white" fill-opacity="0"/>
+  <circle cx="164" cy="22" r="10" fill="#8A8FBC" fill-opacity="0.35"/>
+  <path d="M157 22c0-3.9 3.1-7 7-7h7v14h-7c-3.9 0-7-3.1-7-7Z" fill="#8A8FBC"/>
+  <text x="48" y="58" fill="#8A8FBC" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="500">CASSI</text>
+</svg>
