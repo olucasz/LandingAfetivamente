@@ -4,12 +4,12 @@ import "./Footer.css";
 
 const socialLinks = [
   {
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/afetivamenteclinica/",
     label: "Instagram",
     icon: <InstagramIcon />,
   },
   {
-    href: "https://www.facebook.com/",
+    href: "https://www.facebook.com/afetivamenteclinica/?locale=pt_BR",
     label: "Facebook",
     icon: <FacebookIcon />,
   },
@@ -46,7 +46,9 @@ export default function Footer() {
               {socialLinks.map(({ href, label, icon }) => (
                 <a
                   href={href}
-                  className="footer__social-link"
+                  className={`footer__social-link${
+                    label === "Facebook" ? " footer__social-link--facebook" : ""
+                  }`}
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"

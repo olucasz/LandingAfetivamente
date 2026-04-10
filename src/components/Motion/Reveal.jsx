@@ -9,15 +9,15 @@ import { useMotionBudget } from "./useMotionBudget";
 
 const mobileViewport = {
   once: true,
-  amount: 0.14,
-  margin: "0px 0px -6% 0px",
+  amount: 0.22,
+  margin: "0px 0px -12% 0px",
 };
 
 const MOBILE_REVEAL_MAX_DISTANCE = 16;
-const MOBILE_REVEAL_MAX_DURATION = 0.45;
-const MOBILE_REVEAL_MAX_DELAY = 0.08;
-const MOBILE_REVEAL_MAX_STAGGER = 0.08;
-const MOBILE_REVEAL_MAX_DELAY_CHILDREN = 0.04;
+const MOBILE_REVEAL_MAX_DURATION = 0.52;
+const MOBILE_REVEAL_MAX_DELAY = 0.1;
+const MOBILE_REVEAL_MAX_STAGGER = 0.1;
+const MOBILE_REVEAL_MAX_DELAY_CHILDREN = 0.06;
 
 function hasCompactViewport() {
   return typeof window !== "undefined" && window.innerWidth <= 767;
