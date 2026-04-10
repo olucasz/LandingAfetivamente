@@ -476,6 +476,7 @@
     line-height: 1.1;
     white-space: normal;
     text-wrap: balance;
+    min-width: 40ch;
   }
 
   .hero__title span {
