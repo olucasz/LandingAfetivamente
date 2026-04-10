@@ -7,6 +7,22 @@ import {
 } from "./motionTokens";
 import { useMotionBudget } from "./useMotionBudget";
 
+const mobileViewport = {
+  once: true,
+  amount: 0.14,
+  margin: "0px 0px -6% 0px",
+};
+
+const MOBILE_REVEAL_MAX_DISTANCE = 16;
+const MOBILE_REVEAL_MAX_DURATION = 0.45;
+const MOBILE_REVEAL_MAX_DELAY = 0.08;
+const MOBILE_REVEAL_MAX_STAGGER = 0.08;
+const MOBILE_REVEAL_MAX_DELAY_CHILDREN = 0.04;
+
+function hasCompactViewport() {
+  return typeof window !== "undefined" && window.innerWidth <= 767;
+}
+
 export function Reveal({
   as = "div",
   className,
@@ -17,10 +33,24 @@ export function Reveal({
   viewport = defaultViewport,
   ...props
 }) {
-  const shouldReduceMotion = useMotionBudget();
+  const shouldReduceMotion = useMotionBudget({
+    includeViewport: false,
+    includePointer: false,
+  });
+  const isCompactReveal = hasCompactViewport();
   const canUseInViewObserver =
     typeof window === "undefined" || "IntersectionObserver" in window;
   const MotionTag = m[as] || m.div;
+  const revealDistance = isCompactReveal
+    ? Math.min(distance, MOBILE_REVEAL_MAX_DISTANCE)
+    : distance;
+  const revealDuration = isCompactReveal
+    ? Math.min(duration, MOBILE_REVEAL_MAX_DURATION)
+    : duration;
+  const revealDelay = isCompactReveal
+    ? Math.min(delay, MOBILE_REVEAL_MAX_DELAY)
+    : delay;
+  const revealViewport = isCompactReveal ? mobileViewport : viewport;
 
   if (shouldReduceMotion || !canUseInViewObserver) {
     return (
@@ -35,11 +65,11 @@ export function Reveal({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={viewport}
-      variants={fadeUp(distance)}
+      viewport={revealViewport}
+      variants={fadeUp(revealDistance)}
       transition={{
-        duration,
-        delay,
+        duration: revealDuration,
+        delay: revealDelay,
         ease: motionEase,
       }}
       {...props}
@@ -58,10 +88,21 @@ export function RevealGroup({
   viewport = defaultViewport,
   ...props
 }) {
-  const shouldReduceMotion = useMotionBudget();
+  const shouldReduceMotion = useMotionBudget({
+    includeViewport: false,
+    includePointer: false,
+  });
+  const isCompactReveal = hasCompactViewport();
   const canUseInViewObserver =
     typeof window === "undefined" || "IntersectionObserver" in window;
   const MotionTag = m[as] || m.div;
+  const revealViewport = isCompactReveal ? mobileViewport : viewport;
+  const revealStagger = isCompactReveal
+    ? Math.min(stagger, MOBILE_REVEAL_MAX_STAGGER)
+    : stagger;
+  const revealDelayChildren = isCompactReveal
+    ? Math.min(delayChildren, MOBILE_REVEAL_MAX_DELAY_CHILDREN)
+    : delayChildren;
 
   if (shouldReduceMotion || !canUseInViewObserver) {
     return (
@@ -76,8 +117,8 @@ export function RevealGroup({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={viewport}
-      variants={staggerContainer(stagger, delayChildren)}
+      viewport={revealViewport}
+      variants={staggerContainer(revealStagger, revealDelayChildren)}
       {...props}
     >
       {children}
@@ -93,10 +134,20 @@ export function RevealItem({
   duration = 0.55,
   ...props
 }) {
-  const shouldReduceMotion = useMotionBudget();
+  const shouldReduceMotion = useMotionBudget({
+    includeViewport: false,
+    includePointer: false,
+  });
+  const isCompactReveal = hasCompactViewport();
   const canUseInViewObserver =
     typeof window === "undefined" || "IntersectionObserver" in window;
   const MotionTag = m[as] || m.div;
+  const revealDistance = isCompactReveal
+    ? Math.min(distance, MOBILE_REVEAL_MAX_DISTANCE)
+    : distance;
+  const revealDuration = isCompactReveal
+    ? Math.min(duration, MOBILE_REVEAL_MAX_DURATION)
+    : duration;
 
   if (shouldReduceMotion || !canUseInViewObserver) {
     return (
@@ -109,9 +160,9 @@ export function RevealItem({
   return (
     <MotionTag
       className={className}
-      variants={fadeUp(distance)}
+      variants={fadeUp(revealDistance)}
       transition={{
-        duration,
+        duration: revealDuration,
         ease: motionEase,
       }}
       {...props}
