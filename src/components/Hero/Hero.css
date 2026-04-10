@@ -567,6 +567,10 @@
     justify-content: flex-start;
   }
 
+  .hero__card-copy {
+    text-align: left;
+  }
+
   .hero__card-inner {
     min-height: 50px;
     padding: 8px 11px;
