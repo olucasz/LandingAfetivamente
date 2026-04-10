@@ -441,6 +441,7 @@
     width: 100%;
     font-size: clamp(1.85rem, 8.3vw, 2.15rem);
     line-height: 1.1;
+    min-width: 30ch;
     white-space: normal;
     text-wrap: balance;
   }
@@ -459,11 +460,9 @@
 
   .hero__actions {
     width: 100%;
-    max-width: 376px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    max-width: 350px;
     align-items: center;
-    gap: 16px;
+    /* gap: 16px; */
   }
 
   .hero__cta {
@@ -471,7 +470,7 @@
     min-height: 50px;
     padding: 0 22px;
     justify-content: center;
-    font-size: 1.125rem;
+    font-size: 0.985rem;
   }
   .hero__cta-icon {
     display: none;
@@ -517,7 +516,7 @@
     --hero-main-width: clamp(170px, 53vw, 204px);
     --hero-side-width: clamp(78px, 25vw, 104px);
     --hero-media-gap: 15px;
-    --hero-stage-pad-top: 12px;
+    --hero-stage-pad-top: 0px;
     --hero-stage-pad-right: 26px;
     --hero-stage-pad-bottom: 20px;
     --hero-stage-pad-left: 24px;
