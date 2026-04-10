@@ -1,4 +1,17 @@
-import servicesFeatureImage from "../../assets/about-jpg/sobre1.jpg";
+import { useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import servicesSlideOneAvif420 from "../../assets/optimized/services/services-slide-1-420.avif";
+import servicesSlideOneAvif840 from "../../assets/optimized/services/services-slide-1-840.avif";
+import servicesSlideOneWebp420 from "../../assets/optimized/services/services-slide-1-420.webp";
+import servicesSlideOneWebp840 from "../../assets/optimized/services/services-slide-1-840.webp";
+import servicesSlideTwoAvif420 from "../../assets/optimized/services/services-slide-2-420.avif";
+import servicesSlideTwoAvif840 from "../../assets/optimized/services/services-slide-2-840.avif";
+import servicesSlideTwoWebp420 from "../../assets/optimized/services/services-slide-2-420.webp";
+import servicesSlideTwoWebp840 from "../../assets/optimized/services/services-slide-2-840.webp";
+import servicesSlideThreeAvif420 from "../../assets/optimized/services/services-slide-3-420.avif";
+import servicesSlideThreeAvif840 from "../../assets/optimized/services/services-slide-3-840.avif";
+import servicesSlideThreeWebp420 from "../../assets/optimized/services/services-slide-3-420.webp";
+import servicesSlideThreeWebp840 from "../../assets/optimized/services/services-slide-3-840.webp";
 import { RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./Services.css";
 
@@ -47,7 +60,69 @@ const serviceCards = [
   },
 ];
 
+const serviceSlides = [
+  {
+    id: "services-slide-3",
+    alt: "Profissional da clínica em atividade de avaliação nutricional",
+    avif420: servicesSlideThreeAvif420,
+    avif840: servicesSlideThreeAvif840,
+    webp420: servicesSlideThreeWebp420,
+    webp840: servicesSlideThreeWebp840,
+  },
+  {
+    id: "services-slide-1",
+    alt: "Profissionais da AfetivaMente em alinhamento de atendimento",
+    avif420: servicesSlideOneAvif420,
+    avif840: servicesSlideOneAvif840,
+    webp420: servicesSlideOneWebp420,
+    webp840: servicesSlideOneWebp840,
+  },
+  {
+    id: "services-slide-2",
+    alt: "Atendimento infantil com atividades de desenho",
+    avif420: servicesSlideTwoAvif420,
+    avif840: servicesSlideTwoAvif840,
+    webp420: servicesSlideTwoWebp420,
+    webp840: servicesSlideTwoWebp840,
+  },
+];
+
 export default function Services() {
+  const [featureEmblaRef, featureEmblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+  });
+  const [selectedSlideIndex, setSelectedSlideIndex] = useState(0);
+
+  useEffect(() => {
+    if (!featureEmblaApi) return;
+
+    function syncSelectedSlide() {
+      setSelectedSlideIndex(featureEmblaApi.selectedScrollSnap());
+    }
+
+    syncSelectedSlide();
+    featureEmblaApi.on("select", syncSelectedSlide);
+    featureEmblaApi.on("reInit", syncSelectedSlide);
+
+    return () => {
+      featureEmblaApi.off("select", syncSelectedSlide);
+      featureEmblaApi.off("reInit", syncSelectedSlide);
+    };
+  }, [featureEmblaApi]);
+
+  function scrollFeaturePrev() {
+    featureEmblaApi?.scrollPrev();
+  }
+
+  function scrollFeatureNext() {
+    featureEmblaApi?.scrollNext();
+  }
+
+  function scrollFeatureTo(index) {
+    featureEmblaApi?.scrollTo(index);
+  }
+
   return (
     <section className="services" id="servicos" aria-labelledby="services-title">
       <div className="services__container">
@@ -65,36 +140,70 @@ export default function Services() {
         <RevealGroup className="services__layout" stagger={0.12} delayChildren={0.04}>
           <RevealItem as="article" className="services__feature-card">
             <div className="services__feature-media">
-              <div className="services__window-dots" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-                <span />
+              <div className="services__window-dots" aria-label="Fotos de serviços">
+                {serviceSlides.map((slide, index) => (
+                  <button
+                    type="button"
+                    key={`dot-${slide.id}`}
+                    className={`services__window-dot${
+                      index === selectedSlideIndex ? " is-active" : ""
+                    }`}
+                    onClick={() => scrollFeatureTo(index)}
+                    aria-label={`Ir para foto ${index + 1}`}
+                    aria-pressed={index === selectedSlideIndex}
+                  />
+                ))}
               </div>
 
-              <span
+              <button
+                type="button"
                 className="services__feature-arrow services__feature-arrow--left"
-                aria-hidden="true"
+                onClick={scrollFeaturePrev}
+                aria-label="Ver foto anterior"
+                disabled={!featureEmblaApi}
               >
                 &#8249;
-              </span>
+              </button>
 
-              <span
+              <button
+                type="button"
                 className="services__feature-arrow services__feature-arrow--right"
-                aria-hidden="true"
+                onClick={scrollFeatureNext}
+                aria-label="Ver próxima foto"
+                disabled={!featureEmblaApi}
               >
                 &#8250;
-              </span>
+              </button>
 
-              <img
-                src={servicesFeatureImage}
-                alt="Profissional da AfetivaMente em atendimento acolhedor com criança"
-                width="326"
-                height="305"
-                loading="lazy"
-                decoding="async"
-                fetchPriority="low"
-              />
+              <div className="services__feature-viewport" ref={featureEmblaRef}>
+                <div className="services__feature-track">
+                  {serviceSlides.map((slide, index) => (
+                    <div className="services__feature-slide" key={slide.id}>
+                      <picture className="services__feature-picture">
+                        <source
+                          type="image/avif"
+                          srcSet={`${slide.avif420} 420w, ${slide.avif840} 840w`}
+                          sizes="(max-width: 767px) calc(100vw - 64px), 380px"
+                        />
+                        <source
+                          type="image/webp"
+                          srcSet={`${slide.webp420} 420w, ${slide.webp840} 840w`}
+                          sizes="(max-width: 767px) calc(100vw - 64px), 380px"
+                        />
+                        <img
+                          src={slide.webp840}
+                          alt={slide.alt}
+                          width="840"
+                          height="560"
+                          loading={index === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                          fetchPriority={index === 0 ? "high" : "low"}
+                        />
+                      </picture>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="services__feature-body">

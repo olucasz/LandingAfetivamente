@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import { m, useReducedMotion } from "motion/react";
-import logo from "../../assets/jpg/logo.jpg";
-import { motionEase } from "../Motion/motionTokens";
+import { useEffect, useRef, useState } from "react";
+import logo from "../../assets/header-logo.png";
 import "./Header.css";
 
 const navigationItems = [
@@ -13,25 +11,40 @@ const navigationItems = [
 ];
 
 export default function Header() {
-  const MotionHeader = m.header;
-  const MotionDiv = m.div;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
+  const isScrolledRef = useRef(false);
 
   useEffect(() => {
+    let frameId = null;
+
     function syncScrolledState() {
       const nextScrolled = window.scrollY > 18;
-      setIsScrolled((currentScrolled) =>
-        currentScrolled === nextScrolled ? currentScrolled : nextScrolled,
-      );
+
+      if (isScrolledRef.current === nextScrolled) return;
+
+      isScrolledRef.current = nextScrolled;
+      setIsScrolled(nextScrolled);
+    }
+
+    function onScroll() {
+      if (frameId !== null) return;
+
+      frameId = window.requestAnimationFrame(() => {
+        frameId = null;
+        syncScrolledState();
+      });
     }
 
     syncScrolledState();
-    window.addEventListener("scroll", syncScrolledState, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", syncScrolledState);
+      window.removeEventListener("scroll", onScroll);
+
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
     };
   }, []);
 
@@ -39,37 +52,42 @@ export default function Header() {
     setIsMobileMenuOpen((isOpen) => !isOpen);
   };
 
-  const handleMobileMenuClose = () => {
+  const handleNavigationClick = (event, href) => {
+    if (!href.startsWith("#")) return;
+
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+
+    event.preventDefault();
     setIsMobileMenuOpen(false);
+
+    const header = document.querySelector(".header");
+    const headerHeight = header?.getBoundingClientRect().height ?? 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: Math.max(targetTop - headerHeight - 16, 0),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+
+    window.history.pushState(null, "", href);
   };
 
   return (
-    <MotionHeader
+    <header
       className={`header ${isMobileMenuOpen ? "header--menu-open" : ""} ${
         isScrolled ? "header--scrolled" : ""
       }`}
-      initial={shouldReduceMotion ? false : { opacity: 0, y: -20 }}
-      animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: motionEase }}
     >
-      <MotionDiv
-        className="header__container"
-        animate={
-          shouldReduceMotion
-            ? undefined
-            : {
-                y: isScrolled ? 1 : 0,
-                scale: isScrolled ? 0.992 : 1,
-              }
-        }
-        transition={{ duration: 0.28, ease: motionEase }}
-      >
+      <div className="header__container">
         <a href="/" className="header__logo">
           <img
             src={logo}
             alt="Afetivamente"
-            width="560"
-            height="116"
+            width="580"
+            height="120"
             decoding="async"
             fetchPriority="high"
           />
@@ -91,17 +109,26 @@ export default function Header() {
         <div className="header__right">
           <nav className="header__nav">
             {navigationItems.map(({ href, label }) => (
-              <a key={href} href={href} className="header__link">
+              <a
+                key={href}
+                href={href}
+                className="header__link"
+                onClick={(event) => handleNavigationClick(event, href)}
+              >
                 {label}
               </a>
             ))}
           </nav>
 
-          <a href="#contato" className="header__cta">
+          <a
+            href="#contato"
+            className="header__cta"
+            onClick={(event) => handleNavigationClick(event, "#contato")}
+          >
             Agendar Consulta
           </a>
         </div>
-      </MotionDiv>
+      </div>
 
       <div
         id="header-mobile-menu"
@@ -114,7 +141,7 @@ export default function Header() {
               key={`mobile-${href}`}
               href={href}
               className="header__mobile-link"
-              onClick={handleMobileMenuClose}
+              onClick={(event) => handleNavigationClick(event, href)}
             >
               {label}
             </a>
@@ -124,11 +151,11 @@ export default function Header() {
         <a
           href="#contato"
           className="header__mobile-cta"
-          onClick={handleMobileMenuClose}
+          onClick={(event) => handleNavigationClick(event, "#contato")}
         >
           Agendar Consulta
         </a>
       </div>
-    </MotionHeader>
+    </header>
   );
 }

@@ -115,12 +115,19 @@
     box-shadow 220ms ease;
 }
 
+.professionals__media picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .professionals__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   display: block;
-  transform: scale(1.34);
+  transform: scale(var(--professional-image-zoom, 1.06));
 }
 
 .professionals__content {
@@ -247,7 +254,7 @@
   }
 
   .professionals__media img {
-    transform: scale(1.28);
+    transform: scale(var(--professional-image-zoom, 1.05));
   }
 }
 
@@ -296,7 +303,7 @@
   }
 
   .professionals__media img {
-    transform: scale(1.24);
+    transform: scale(var(--professional-image-zoom, 1.04));
   }
 
   .professionals__content {

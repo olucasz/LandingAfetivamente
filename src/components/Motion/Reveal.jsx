@@ -1,10 +1,11 @@
-import { m, useReducedMotion } from "motion/react";
+import { m } from "motion/react";
 import {
   defaultViewport,
   fadeUp,
   motionEase,
   staggerContainer,
 } from "./motionTokens";
+import { useMotionBudget } from "./useMotionBudget";
 
 export function Reveal({
   as = "div",
@@ -16,7 +17,7 @@ export function Reveal({
   viewport = defaultViewport,
   ...props
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useMotionBudget();
   const MotionTag = m[as] || m.div;
 
   if (shouldReduceMotion) {
@@ -55,7 +56,7 @@ export function RevealGroup({
   viewport = defaultViewport,
   ...props
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useMotionBudget();
   const MotionTag = m[as] || m.div;
 
   if (shouldReduceMotion) {
@@ -88,7 +89,7 @@ export function RevealItem({
   duration = 0.55,
   ...props
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useMotionBudget();
   const MotionTag = m[as] || m.div;
 
   if (shouldReduceMotion) {

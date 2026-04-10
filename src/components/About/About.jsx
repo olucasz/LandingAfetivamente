@@ -1,7 +1,23 @@
-import aboutGalleryOne from "../../assets/about-jpg/sobre1.jpg";
-import aboutGalleryTwo from "../../assets/about-jpg/sobre2.jpg";
-import aboutGalleryThree from "../../assets/about-jpg/sobre3.jpg";
-import aboutTeamImage from "../../assets/about-jpg/teamSobre.jpg";
+import aboutGalleryOneAvif326 from "../../assets/optimized/about/sobre1-326.avif";
+import aboutGalleryOneAvif652 from "../../assets/optimized/about/sobre1-652.avif";
+import aboutGalleryOneWebp326 from "../../assets/optimized/about/sobre1-326.webp";
+import aboutGalleryOneWebp652 from "../../assets/optimized/about/sobre1-652.webp";
+import aboutGalleryTwoAvif326 from "../../assets/optimized/about/sobre2-326.avif";
+import aboutGalleryTwoAvif652 from "../../assets/optimized/about/sobre2-652.avif";
+import aboutGalleryTwoWebp326 from "../../assets/optimized/about/sobre2-326.webp";
+import aboutGalleryTwoWebp652 from "../../assets/optimized/about/sobre2-652.webp";
+import aboutGalleryThreeAvif326 from "../../assets/optimized/about/sobre3-326.avif";
+import aboutGalleryThreeAvif652 from "../../assets/optimized/about/sobre3-652.avif";
+import aboutGalleryThreeWebp326 from "../../assets/optimized/about/sobre3-326.webp";
+import aboutGalleryThreeWebp652 from "../../assets/optimized/about/sobre3-652.webp";
+import aboutTeamImageAvif420 from "../../assets/optimized/about/teamSobre-420.avif";
+import aboutTeamImageAvif545 from "../../assets/optimized/about/teamSobre-545.avif";
+import aboutTeamImageAvif840 from "../../assets/optimized/about/teamSobre-840.avif";
+import aboutTeamImageAvif1200 from "../../assets/optimized/about/teamSobre-1200.avif";
+import aboutTeamImageWebp420 from "../../assets/optimized/about/teamSobre-420.webp";
+import aboutTeamImageWebp545 from "../../assets/optimized/about/teamSobre-545.webp";
+import aboutTeamImageWebp840 from "../../assets/optimized/about/teamSobre-840.webp";
+import aboutTeamImageWebp1200 from "../../assets/optimized/about/teamSobre-1200.webp";
 import { RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./About.css";
 
@@ -23,15 +39,27 @@ export default function About() {
               className="about__image-box"
               whileHover={{ y: -4 }}
             >
-              <img
-                src={aboutTeamImage}
-                alt="Equipe da clínica AfetivaMente"
-                width="545"
-                height="363"
-                loading="lazy"
-                decoding="async"
-                fetchPriority="low"
-              />
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet={`${aboutTeamImageAvif420} 420w, ${aboutTeamImageAvif545} 545w, ${aboutTeamImageAvif840} 840w, ${aboutTeamImageAvif1200} 1200w`}
+                  sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1199px) 46vw, 600px"
+                />
+                <source
+                  type="image/webp"
+                  srcSet={`${aboutTeamImageWebp420} 420w, ${aboutTeamImageWebp545} 545w, ${aboutTeamImageWebp840} 840w, ${aboutTeamImageWebp1200} 1200w`}
+                  sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1199px) 46vw, 600px"
+                />
+                <img
+                  src={aboutTeamImageWebp1200}
+                  alt="Equipe da clínica AfetivaMente"
+                  width="545"
+                  height="363"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
+                />
+              </picture>
             </RevealItem>
 
             <RevealItem className="about__text-box">
@@ -71,45 +99,81 @@ export default function About() {
                 className="about__gallery-item"
                 whileHover={{ y: -4 }}
               >
-                <img
-                  src={aboutGalleryOne}
-                  alt="Atendimento acolhedor para crianças e famílias"
-                  width="326"
-                  height="305"
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet={`${aboutGalleryOneAvif326} 326w, ${aboutGalleryOneAvif652} 652w`}
+                    sizes="(max-width: 767px) 90vw, (max-width: 1199px) 33vw, 360px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`${aboutGalleryOneWebp326} 326w, ${aboutGalleryOneWebp652} 652w`}
+                    sizes="(max-width: 767px) 90vw, (max-width: 1199px) 33vw, 360px"
+                  />
+                  <img
+                    src={aboutGalleryOneWebp652}
+                    alt="Atendimento acolhedor para crianças e famílias"
+                    width="326"
+                    height="305"
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                  />
+                </picture>
               </RevealItem>
 
               <RevealItem
                 className="about__gallery-item"
                 whileHover={{ y: -4 }}
               >
-                <img
-                  src={aboutGalleryTwo}
-                  alt="Atendimento terapêutico com acompanhamento profissional"
-                  width="326"
-                  height="305"
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet={`${aboutGalleryTwoAvif326} 326w, ${aboutGalleryTwoAvif652} 652w`}
+                    sizes="(max-width: 767px) 90vw, (max-width: 1199px) 33vw, 360px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`${aboutGalleryTwoWebp326} 326w, ${aboutGalleryTwoWebp652} 652w`}
+                    sizes="(max-width: 767px) 90vw, (max-width: 1199px) 33vw, 360px"
+                  />
+                  <img
+                    src={aboutGalleryTwoWebp652}
+                    alt="Atendimento terapêutico com acompanhamento profissional"
+                    width="326"
+                    height="305"
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                  />
+                </picture>
               </RevealItem>
 
               <RevealItem
                 className="about__gallery-item"
                 whileHover={{ y: -4 }}
               >
-                <img
-                  src={aboutGalleryThree}
-                  alt="Atividades terapêuticas e desenvolvimento emocional"
-                  width="326"
-                  height="305"
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet={`${aboutGalleryThreeAvif326} 326w, ${aboutGalleryThreeAvif652} 652w`}
+                    sizes="(max-width: 767px) 90vw, (max-width: 1199px) 33vw, 360px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`${aboutGalleryThreeWebp326} 326w, ${aboutGalleryThreeWebp652} 652w`}
+                    sizes="(max-width: 767px) 90vw, (max-width: 1199px) 33vw, 360px"
+                  />
+                  <img
+                    src={aboutGalleryThreeWebp652}
+                    alt="Atividades terapêuticas e desenvolvimento emocional"
+                    width="326"
+                    height="305"
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                  />
+                </picture>
               </RevealItem>
             </RevealGroup>
           </RevealGroup>

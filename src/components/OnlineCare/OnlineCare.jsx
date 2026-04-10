@@ -1,8 +1,14 @@
-import onlineProfessionalOne from "../../assets/online/online-professional-1.jpg";
-import onlineProfessionalTwo from "../../assets/online/online-professional-2.jpg";
-import partnerCassi from "../../assets/partners/cassi.svg";
-import partnerCisnop from "../../assets/partners/cisnop.svg";
-import partnerSaneSaude from "../../assets/partners/sane-saude.svg";
+import onlineProfessionalOneAvif420 from "../../assets/optimized/online/online-professional-1-420.avif";
+import onlineProfessionalOneAvif840 from "../../assets/optimized/online/online-professional-1-840.avif";
+import onlineProfessionalOneWebp420 from "../../assets/optimized/online/online-professional-1-420.webp";
+import onlineProfessionalOneWebp840 from "../../assets/optimized/online/online-professional-1-840.webp";
+import onlineProfessionalTwoAvif420 from "../../assets/optimized/online/online-professional-2-420.avif";
+import onlineProfessionalTwoAvif840 from "../../assets/optimized/online/online-professional-2-840.avif";
+import onlineProfessionalTwoWebp420 from "../../assets/optimized/online/online-professional-2-420.webp";
+import onlineProfessionalTwoWebp840 from "../../assets/optimized/online/online-professional-2-840.webp";
+import partnerCassi from "../../assets/optimized/partners/partner-cassi.webp";
+import partnerCisnop from "../../assets/optimized/partners/partner-cisnop.webp";
+import partnerSaneSaude from "../../assets/optimized/partners/partner-sane-saude.webp";
 import partnerUnimed from "../../assets/partners/unimed.svg";
 import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./OnlineCare.css";
@@ -21,21 +27,50 @@ const onlineBenefits = [
   },
 ];
 
+const onlineParticipants = [
+  {
+    name: "Natália Terra",
+    alt: "Natália Terra em atendimento online da AfetivaMente",
+    imagePosition: "center 20%",
+    image: {
+      avif420: onlineProfessionalTwoAvif420,
+      avif840: onlineProfessionalTwoAvif840,
+      webp420: onlineProfessionalTwoWebp420,
+      webp840: onlineProfessionalTwoWebp840,
+    },
+  },
+  {
+    name: "Gabi Cuani",
+    alt: "Gabi Cuani em atendimento online da AfetivaMente",
+    imagePosition: "center 34%",
+    image: {
+      avif420: onlineProfessionalOneAvif420,
+      avif840: onlineProfessionalOneAvif840,
+      webp420: onlineProfessionalOneWebp420,
+      webp840: onlineProfessionalOneWebp840,
+    },
+  },
+];
+
 const partners = [
-  { name: "Unimed", logo: partnerUnimed },
-  { name: "Cassi", logo: partnerCassi },
-  { name: "Sane Saúde", logo: partnerSaneSaude },
-  { name: "Cisnop", logo: partnerCisnop },
+  { name: "Unimed", logo: partnerUnimed, width: 307, height: 58 },
+  { name: "Cassi", logo: partnerCassi, width: 165, height: 81 },
+  { name: "Sane Saúde", logo: partnerSaneSaude, width: 394, height: 77 },
+  { name: "Cisnop", logo: partnerCisnop, width: 223, height: 72 },
 ];
 
 export default function OnlineCare() {
   return (
-    <section className="online-care" id="atendimento-online">
+    <section className="online-care" id="online">
       <div className="online-care__hero">
         <div className="online-care__container">
           <RevealGroup className="online-care__layout" stagger={0.14}>
             <RevealGroup className="online-care__content" stagger={0.1}>
-              <RevealGroup as="header" className="online-care__header" stagger={0.1}>
+              <RevealGroup
+                as="header"
+                className="online-care__header"
+                stagger={0.1}
+              >
                 <RevealItem as="h2" className="online-care__title">
                   Atendimento <span>Online</span>
                   <br />
@@ -56,7 +91,10 @@ export default function OnlineCare() {
                     className="online-care__benefit-card"
                   >
                     <div className="online-care__benefit-heading">
-                      <span className="online-care__benefit-icon" aria-hidden="true">
+                      <span
+                        className="online-care__benefit-icon"
+                        aria-hidden="true"
+                      >
                         {icon}
                       </span>
                       <h3 className="online-care__benefit-title">{title}</h3>
@@ -83,35 +121,37 @@ export default function OnlineCare() {
                 </div>
 
                 <div className="online-care__mock-screen">
-                  <div className="online-care__participant">
-                    <img
-                      src={onlineProfessionalOne}
-                      alt="Profissional da AfetivaMente em atendimento online"
-                      width="545"
-                      height="363"
-                      loading="lazy"
-                      decoding="async"
-                      fetchPriority="low"
-                    />
-                    <span className="online-care__participant-name">
-                      Natalia Terra
-                    </span>
-                  </div>
-
-                  <div className="online-care__participant">
-                    <img
-                      src={onlineProfessionalTwo}
-                      alt="Profissional da AfetivaMente em chamada online"
-                      width="545"
-                      height="363"
-                      loading="lazy"
-                      decoding="async"
-                      fetchPriority="low"
-                    />
-                    <span className="online-care__participant-name">
-                      Gabi Cuani
-                    </span>
-                  </div>
+                  {onlineParticipants.map(
+                    ({ name, alt, imagePosition, image }) => (
+                      <div className="online-care__participant" key={name}>
+                        <picture>
+                          <source
+                            type="image/avif"
+                            srcSet={`${image.avif420} 420w, ${image.avif840} 840w`}
+                            sizes="(max-width: 767px) 40vw, 280px"
+                          />
+                          <source
+                            type="image/webp"
+                            srcSet={`${image.webp420} 420w, ${image.webp840} 840w`}
+                            sizes="(max-width: 767px) 40vw, 280px"
+                          />
+                          <img
+                            src={image.webp420}
+                            alt={alt}
+                            width="840"
+                            height="1260"
+                            loading="lazy"
+                            decoding="async"
+                            fetchPriority="low"
+                            style={{ objectPosition: imagePosition }}
+                          />
+                        </picture>
+                        <span className="online-care__participant-name">
+                          {name}
+                        </span>
+                      </div>
+                    ),
+                  )}
                 </div>
 
                 <div className="online-care__mock-footer">
@@ -137,13 +177,17 @@ export default function OnlineCare() {
           </Reveal>
 
           <RevealGroup className="online-care__partners-grid" stagger={0.08}>
-            {partners.map(({ name, logo }) => (
-              <RevealItem className="online-care__partner" key={name} distance={18}>
+            {partners.map(({ name, logo, width, height }) => (
+              <RevealItem
+                className="online-care__partner"
+                key={name}
+                distance={18}
+              >
                 <img
                   src={logo}
                   alt={`Logo do convênio ${name}`}
-                  width="240"
-                  height="72"
+                  width={width}
+                  height={height}
                   loading="lazy"
                   decoding="async"
                   fetchPriority="low"

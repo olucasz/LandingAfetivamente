@@ -43,6 +43,11 @@
   box-shadow: var(--shadow-card-strong);
 }
 
+.about__image-box picture {
+  display: block;
+  width: 100%;
+}
+
 .about__image-box img {
   width: 100%;
   height: 430px;
@@ -113,6 +118,12 @@
   border-radius: var(--radius-card);
   background: var(--surface-soft);
   box-shadow: var(--shadow-card-soft);
+}
+
+.about__gallery-item picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .about__gallery-item img {

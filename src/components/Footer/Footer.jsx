@@ -1,5 +1,4 @@
-import footerLogo from "../../assets/svg/footer-logo.svg";
-import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
+import footerLogo from "../../assets/optimized/footer/footer-logo-180.webp";
 import "./Footer.css";
 
 const navigationItems = [
@@ -29,8 +28,8 @@ export default function Footer() {
   return (
     <footer className="footer" aria-labelledby="footer-brand">
       <div className="footer__container">
-        <RevealGroup className="footer__top" stagger={0.12}>
-          <RevealItem className="footer__brand">
+        <div className="footer__top">
+          <div className="footer__brand">
             <div className="footer__brand-header">
               <a
                 href="/"
@@ -48,47 +47,37 @@ export default function Footer() {
                   fetchPriority="low"
                 />
               </a>
-
-              <p className="footer__brand-text">
-                Clínica multidisciplinar unindo ciência e acolhimento para
-                oferecer cuidado completo em saúde mental e física.
-              </p>
             </div>
 
             <nav className="footer__socials" aria-label="Redes sociais">
-              {socialLinks.map(({ href, label, icon }, index) => (
-                <div className="footer__social-item" key={label}>
-                  {index > 0 ? (
-                    <span className="footer__social-divider" aria-hidden="true" />
-                  ) : null}
-
-                  <a
-                    href={href}
-                    className="footer__social-link"
-                    aria-label={label}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {icon}
-                  </a>
-                </div>
+              {socialLinks.map(({ href, label, icon }) => (
+                <a
+                  href={href}
+                  className="footer__social-link"
+                  aria-label={label}
+                  target="_blank"
+                  rel="noreferrer"
+                  key={label}
+                >
+                  {icon}
+                </a>
               ))}
             </nav>
-          </RevealItem>
+          </div>
 
-          <RevealItem className="footer__links">
+          <div className="footer__links">
             <p className="footer__heading">Links Rápidos</p>
 
             <nav className="footer__nav" aria-label="Navegação do rodapé">
               {navigationItems.map(({ href, label }) => (
                 <a key={href} href={href} className="footer__nav-link">
-                {label}
-              </a>
-            ))}
+                  {label}
+                </a>
+              ))}
             </nav>
-          </RevealItem>
+          </div>
 
-          <RevealItem className="footer__legal">
+          <div className="footer__legal">
             <p className="footer__heading">Informações Legais</p>
 
             <p className="footer__legal-copy">
@@ -96,14 +85,14 @@ export default function Footer() {
               <br />
               CRP - 08/PJ-02254
             </p>
-          </RevealItem>
-        </RevealGroup>
+          </div>
+        </div>
 
-        <Reveal className="footer__bottom" distance={18}>
+        <div className="footer__bottom">
           <p className="footer__copyright">
             © {currentYear} AfetivaMente Clínica. Todos os direitos reservados.
           </p>
-        </Reveal>
+        </div>
       </div>
     </footer>
   );
