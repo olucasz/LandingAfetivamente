@@ -30,7 +30,7 @@ const onlineBenefits = [
 
 const onlineParticipants = [
   {
-    name: "Natália Terra",
+    id: "natalia-terra",
     alt: "Natália Terra em atendimento online da AfetivaMente",
     imagePosition: "center 20%",
     image: {
@@ -41,7 +41,7 @@ const onlineParticipants = [
     },
   },
   {
-    name: "Gabi Cuani",
+    id: "gabi-cuani",
     alt: "Gabi Cuani em atendimento online da AfetivaMente",
     imagePosition: "center 34%",
     image: {
@@ -123,8 +123,8 @@ export default function OnlineCare() {
 
                 <div className="online-care__mock-screen">
                   {onlineParticipants.map(
-                    ({ name, alt, imagePosition, image }) => (
-                      <div className="online-care__participant" key={name}>
+                    ({ id, alt, imagePosition, image }) => (
+                      <div className="online-care__participant" key={id}>
                         <picture>
                           <source
                             type="image/avif"
@@ -147,8 +147,11 @@ export default function OnlineCare() {
                             style={{ objectPosition: imagePosition }}
                           />
                         </picture>
-                        <span className="online-care__participant-name">
-                          {name}
+                        <span
+                          className="online-care__participant-icon"
+                          aria-hidden="true"
+                        >
+                          <ConnectionIcon />
                         </span>
                       </div>
                     ),
@@ -176,7 +179,7 @@ export default function OnlineCare() {
         </div>
       </div>
 
-      <div className="online-care__partners">
+      <div className="online-care__partners" id="convenios">
         <div className="online-care__container">
           <Reveal as="h3" className="online-care__partners-title">
             Convênios atendidos
@@ -247,6 +250,22 @@ function VideoChatIcon() {
       <path d="M4.8 16.6c.8-2 2.4-3.1 4.2-3.1 1.9 0 3.4 1.1 4.2 3.1" />
       <circle cx="16.6" cy="8.3" r="2.1" />
       <path d="M13.9 15.1c.6-1.4 1.7-2.2 3.1-2.2 1.4 0 2.5.8 3.1 2.2" />
+    </svg>
+  );
+}
+
+function ConnectionIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M2.8 9.8a13.5 13.5 0 0 1 18.4 0" />
+      <path d="M5.9 13.2a8.9 8.9 0 0 1 12.2 0" />
+      <path d="M9.1 16.6a4.3 4.3 0 0 1 5.8 0" />
+      <circle cx="12" cy="19.5" r="1.2" fill="currentColor" stroke="none" />
     </svg>
   );
 }

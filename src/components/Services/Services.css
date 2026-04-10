@@ -31,7 +31,7 @@
   font-size: var(--section-subtitle-size);
   line-height: var(--section-subtitle-line-height);
   font-weight: var(--section-subtitle-weight);
-  color: var(--green-main);
+  color: var(--green-text);
   text-wrap: balance;
 }
 

@@ -25,7 +25,7 @@
 }
 
 .about__title span {
-  color: var(--green-main);
+  color: var(--green-text);
 }
 
 .about__top-grid {
@@ -92,7 +92,7 @@
 }
 
 .about__subtitle span {
-  color: var(--green-main);
+  color: var(--green-text);
 }
 
 .about__description {

@@ -46,7 +46,7 @@
 }
 
 .online-care__title span {
-  color: var(--green-main);
+  color: var(--green-text);
 }
 
 .online-care__description {
@@ -218,26 +218,27 @@
   transform: scale(1.05);
 }
 
-.online-care__participant-name {
+.online-care__participant-icon {
   position: absolute;
   left: 12px;
-  right: 12px;
   bottom: 12px;
-  min-height: 30px;
-  padding: 0 12px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
-  background: linear-gradient(
-    to right,
-    rgba(18, 30, 42, 0.72),
-    rgba(18, 30, 42, 0.32)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 30, 42, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.78rem;
-  line-height: 1;
-  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.online-care__participant-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .online-care__mock-footer {
@@ -291,6 +292,7 @@
 .online-care__partners {
   background: var(--surface-card);
   padding: var(--section-space-tight) 0 calc(var(--section-space) - 8px);
+  scroll-margin-top: 126px;
 }
 
 .online-care__partners-title {
@@ -538,13 +540,16 @@
     border-radius: 14px;
   }
 
-  .online-care__participant-name {
+  .online-care__participant-icon {
     left: 8px;
-    right: 8px;
     bottom: 8px;
-    min-height: 28px;
-    padding: 0 10px;
-    font-size: 0.72rem;
+    width: 30px;
+    height: 30px;
+  }
+
+  .online-care__participant-icon svg {
+    width: 14px;
+    height: 14px;
   }
 
   .online-care__mock-footer {

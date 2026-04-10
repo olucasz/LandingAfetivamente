@@ -42,7 +42,7 @@
 
 .hero__title span {
   font-size: 4rem;
-  color: var(--green-main);
+  color: var(--green-text);
 }
 
 .hero__description {
