@@ -128,14 +128,16 @@ select {
 }
 
 @supports (content-visibility: auto) {
-  .about,
-  .services,
-  .professionals,
-  .online-care,
-  .location,
-  .footer {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 920px;
+  @media (min-width: 900px) {
+    .about,
+    .services,
+    .professionals,
+    .online-care,
+    .location,
+    .footer {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 920px;
+    }
   }
 }
 

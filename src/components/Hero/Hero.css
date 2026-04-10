@@ -423,7 +423,8 @@
     width: 100%;
     font-size: clamp(1.85rem, 8.3vw, 2.15rem);
     line-height: 1.1;
-    white-space: nowrap;
+    white-space: normal;
+    text-wrap: balance;
   }
 
   .hero__title span {

@@ -7,9 +7,30 @@ function supportsConnectionApi() {
   return typeof navigator !== "undefined" && "connection" in navigator;
 }
 
+function detectInitialConstraints() {
+  if (typeof window === "undefined") return false;
+
+  const isSmallViewport = window.matchMedia("(max-width: 899px)").matches;
+  const isTouchFirst = window.matchMedia("(pointer: coarse)").matches;
+  const connection = supportsConnectionApi() ? navigator.connection : null;
+  const savesData = Boolean(connection?.saveData);
+  const isSlowNetwork =
+    typeof connection?.effectiveType === "string" &&
+    /(^2g$|^slow-2g$)/.test(connection.effectiveType);
+  const isLowCpu =
+    typeof navigator.hardwareConcurrency === "number" &&
+    navigator.hardwareConcurrency <= LOW_END_CORE_COUNT;
+
+  return (
+    isSmallViewport || isTouchFirst || savesData || isSlowNetwork || isLowCpu
+  );
+}
+
 export function useMotionBudget() {
   const prefersReducedMotion = useReducedMotion();
-  const [isConstrainedDevice, setIsConstrainedDevice] = useState(false);
+  const [isConstrainedDevice, setIsConstrainedDevice] = useState(
+    detectInitialConstraints,
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;

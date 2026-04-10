@@ -18,9 +18,11 @@ export function Reveal({
   ...props
 }) {
   const shouldReduceMotion = useMotionBudget();
+  const canUseInViewObserver =
+    typeof window === "undefined" || "IntersectionObserver" in window;
   const MotionTag = m[as] || m.div;
 
-  if (shouldReduceMotion) {
+  if (shouldReduceMotion || !canUseInViewObserver) {
     return (
       <MotionTag className={className} {...props}>
         {children}
@@ -57,9 +59,11 @@ export function RevealGroup({
   ...props
 }) {
   const shouldReduceMotion = useMotionBudget();
+  const canUseInViewObserver =
+    typeof window === "undefined" || "IntersectionObserver" in window;
   const MotionTag = m[as] || m.div;
 
-  if (shouldReduceMotion) {
+  if (shouldReduceMotion || !canUseInViewObserver) {
     return (
       <MotionTag className={className} {...props}>
         {children}
@@ -90,9 +94,11 @@ export function RevealItem({
   ...props
 }) {
   const shouldReduceMotion = useMotionBudget();
+  const canUseInViewObserver =
+    typeof window === "undefined" || "IntersectionObserver" in window;
   const MotionTag = m[as] || m.div;
 
-  if (shouldReduceMotion) {
+  if (shouldReduceMotion || !canUseInViewObserver) {
     return (
       <MotionTag className={className} {...props}>
         {children}
