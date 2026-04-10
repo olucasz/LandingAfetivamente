@@ -4,10 +4,10 @@
   overflow: clip;
   background: linear-gradient(
     348deg,
-    rgba(151, 174, 25, 0.24) 0%,
-    rgba(151, 174, 25, 0.14) 26%,
-    rgba(151, 174, 25, 0.06) 52%,
-    rgba(151, 174, 25, 0) 78%
+    rgba(var(--green-rgb), 0.24) 0%,
+    rgba(var(--green-rgb), 0.14) 26%,
+    rgba(var(--green-rgb), 0.06) 52%,
+    rgba(var(--green-rgb), 0) 78%
   );
 }
 
@@ -46,7 +46,7 @@
 }
 
 .online-care__title span {
-  color: var(--green-text);
+  color: var(--green-primary);
 }
 
 .online-care__description {
@@ -98,9 +98,9 @@
   border-radius: 12px;
   display: grid;
   place-items: center;
-  background: rgba(151, 174, 25, 0.12);
-  color: var(--green-main);
-  box-shadow: inset 0 0 0 1px rgba(151, 174, 25, 0.16);
+  background: var(--green-tint-12);
+  color: var(--green-primary);
+  box-shadow: inset 0 0 0 1px var(--green-tint-16);
 }
 
 .online-care__benefit-icon svg {
@@ -331,15 +331,16 @@
 @media (hover: hover) and (pointer: fine) {
   .online-care__benefit-card:hover {
     transform: translateY(-2px) scale(1.012);
-    border-color: rgba(151, 174, 25, 0.18);
-    background-color: #fbfdf8;
+    border-color: var(--green-tint-18);
+    background-color: rgba(var(--green-rgb), 0.05);
     box-shadow: var(--shadow-card-soft);
   }
 
   .online-care__cta:hover {
+    background: var(--gradient-green-hover);
     transform: translateY(-1px);
-    box-shadow: 0 14px 30px rgba(151, 174, 25, 0.22);
-    filter: brightness(1.015);
+    box-shadow: 0 14px 30px var(--green-tint-22);
+    filter: none;
   }
 }
 

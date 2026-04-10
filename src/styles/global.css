@@ -10,8 +10,15 @@
 
   --primary-dark: #00394d;
   --primary-light: #0085b3;
-  --green-main: #97ae19;
-  --green-text: #808655;
+  --green-primary: #808655;
+  --green-dark: #6f7549;
+  --green-light: #9ca378;
+  --green-rgb: 128, 134, 85;
+  --green-tint-06: rgba(var(--green-rgb), 0.06);
+  --green-tint-12: rgba(var(--green-rgb), 0.12);
+  --green-tint-16: rgba(var(--green-rgb), 0.16);
+  --green-tint-18: rgba(var(--green-rgb), 0.18);
+  --green-tint-22: rgba(var(--green-rgb), 0.22);
 
   --surface-page: #f7f7f4;
   --surface-muted: #f3f3f3;
@@ -29,7 +36,7 @@
   --shadow-card-soft: 0 16px 36px rgba(8, 37, 50, 0.08);
   --shadow-card-strong: 0 18px 42px rgba(8, 37, 50, 0.08);
   --shadow-button-blue: 0 14px 28px rgba(0, 57, 77, 0.14);
-  --shadow-button-green: 0 12px 26px rgba(151, 174, 25, 0.18);
+  --shadow-button-green: 0 12px 26px rgba(var(--green-rgb), 0.24);
 
   --radius-card-sm: 20px;
   --radius-card: 24px;
@@ -74,7 +81,16 @@
     var(--primary-dark),
     var(--primary-light)
   );
-  --gradient-green: linear-gradient(135deg, #9bb218 0%, #b5cc2c 100%);
+  --gradient-green: linear-gradient(
+    135deg,
+    var(--green-primary) 0%,
+    var(--green-light) 100%
+  );
+  --gradient-green-hover: linear-gradient(
+    135deg,
+    var(--green-dark) 0%,
+    var(--green-primary) 100%
+  );
 }
 
 body {

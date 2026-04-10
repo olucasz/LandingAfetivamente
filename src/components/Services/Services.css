@@ -31,7 +31,7 @@
   font-size: var(--section-subtitle-size);
   line-height: var(--section-subtitle-line-height);
   font-weight: var(--section-subtitle-weight);
-  color: var(--green-text);
+  color: var(--green-primary);
   text-wrap: balance;
 }
 
@@ -198,7 +198,7 @@
   width: 17px;
   height: 17px;
   flex-shrink: 0;
-  color: var(--green-main);
+  color: var(--green-primary);
   stroke: currentColor;
   stroke-width: 1.85;
   stroke-linecap: round;
@@ -270,9 +270,9 @@
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  background: rgba(151, 174, 25, 0.12);
-  color: var(--green-main);
-  box-shadow: inset 0 0 0 1px rgba(151, 174, 25, 0.16);
+  background: var(--green-tint-12);
+  color: var(--green-primary);
+  box-shadow: inset 0 0 0 1px var(--green-tint-16);
 }
 
 .services__card-icon svg {
@@ -321,8 +321,8 @@
 
   .services__card:hover {
     transform: translateY(-2px) scale(1.012);
-    border-color: rgba(151, 174, 25, 0.18);
-    background-color: #fbfdf8;
+    border-color: var(--green-tint-18);
+    background-color: rgba(var(--green-rgb), 0.05);
     box-shadow: var(--shadow-card-soft);
   }
 

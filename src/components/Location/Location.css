@@ -60,7 +60,7 @@
 }
 
 .location__title span {
-  color: var(--green-text);
+  color: var(--green-primary);
 }
 
 .location__subtitle {

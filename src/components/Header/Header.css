@@ -88,7 +88,9 @@
 
   .header__cta:hover,
   .header__mobile-cta:hover {
+    transform: translateY(-1px);
     box-shadow: 0 12px 24px rgba(0, 57, 77, 0.14);
+    filter: brightness(1.02);
   }
 }
 

@@ -65,7 +65,7 @@ export const professionals = [
   {
     id: 2,
     name: "Rodrigo da Silva Colleti",
-    role: "Médico psiquiatra",
+    role: "Médico",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional2Avif420,
@@ -169,7 +169,7 @@ export const professionals = [
   {
     id: 10,
     name: "Thabata Dias",
-    role: "Psicopedagoga",
+    role: "Psicóloga",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional10Avif420,

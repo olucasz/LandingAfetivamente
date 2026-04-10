@@ -7,8 +7,8 @@
 
   background: linear-gradient(
     350deg,
-    rgba(151, 174, 25, 0.37) 0%,
-    rgba(151, 174, 25, 0) 60%
+    rgba(var(--green-rgb), 0.37) 0%,
+    rgba(var(--green-rgb), 0) 60%
   );
   border-bottom-left-radius: 48% 9%;
   border-bottom-right-radius: 48% 9%;
@@ -42,7 +42,7 @@
 
 .hero__title span {
   font-size: 4rem;
-  color: var(--green-text);
+  color: var(--green-primary);
 }
 
 .hero__description {
@@ -204,7 +204,7 @@
   width: 34px;
   height: 34px;
   border-radius: 10px;
-  background: #9aad18;
+  background: var(--green-primary);
   display: flex;
   align-items: center;
   justify-content: center;
