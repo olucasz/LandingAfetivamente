@@ -2,16 +2,39 @@ import { useEffect, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
 const LOW_END_CORE_COUNT = 4;
+const SMALL_VIEWPORT_QUERY = "(max-width: 899px)";
+const TOUCH_POINTER_QUERY = "(pointer: coarse)";
 
 function supportsConnectionApi() {
   return typeof navigator !== "undefined" && "connection" in navigator;
 }
 
-function detectInitialConstraints() {
+function addMediaQueryListener(query, listener) {
+  if (typeof query.addEventListener === "function") {
+    query.addEventListener("change", listener);
+    return;
+  }
+
+  query.addListener?.(listener);
+}
+
+function removeMediaQueryListener(query, listener) {
+  if (typeof query.removeEventListener === "function") {
+    query.removeEventListener("change", listener);
+    return;
+  }
+
+  query.removeListener?.(listener);
+}
+
+function detectInitialConstraints({
+  includeViewport = true,
+  includePointer = true,
+} = {}) {
   if (typeof window === "undefined") return false;
 
-  const isSmallViewport = window.matchMedia("(max-width: 899px)").matches;
-  const isTouchFirst = window.matchMedia("(pointer: coarse)").matches;
+  const isSmallViewport = window.matchMedia(SMALL_VIEWPORT_QUERY).matches;
+  const isTouchFirst = window.matchMedia(TOUCH_POINTER_QUERY).matches;
   const connection = supportsConnectionApi() ? navigator.connection : null;
   const savesData = Boolean(connection?.saveData);
   const isSlowNetwork =
@@ -22,22 +45,27 @@ function detectInitialConstraints() {
     navigator.hardwareConcurrency <= LOW_END_CORE_COUNT;
 
   return (
-    isSmallViewport || isTouchFirst || savesData || isSlowNetwork || isLowCpu
+    (includeViewport && isSmallViewport) ||
+    (includePointer && isTouchFirst) ||
+    savesData ||
+    isSlowNetwork ||
+    isLowCpu
   );
 }
 
-export function useMotionBudget() {
+export function useMotionBudget(options = {}) {
+  const { includeViewport = true, includePointer = true } = options;
   const prefersReducedMotion = useReducedMotion();
   const [isConstrainedDevice, setIsConstrainedDevice] = useState(
-    detectInitialConstraints,
+    () => detectInitialConstraints({ includeViewport, includePointer }),
   );
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
 
     const mediaQueries = [
-      window.matchMedia("(max-width: 899px)"),
-      window.matchMedia("(pointer: coarse)"),
+      window.matchMedia(SMALL_VIEWPORT_QUERY),
+      window.matchMedia(TOUCH_POINTER_QUERY),
     ];
 
     const connection = supportsConnectionApi() ? navigator.connection : null;
@@ -54,26 +82,30 @@ export function useMotionBudget() {
         navigator.hardwareConcurrency <= LOW_END_CORE_COUNT;
 
       setIsConstrainedDevice(
-        isSmallViewport || isTouchFirst || savesData || isSlowNetwork || isLowCpu,
+        (includeViewport && isSmallViewport) ||
+          (includePointer && isTouchFirst) ||
+          savesData ||
+          isSlowNetwork ||
+          isLowCpu,
       );
     };
 
     syncConstraints();
 
     mediaQueries.forEach((query) => {
-      query.addEventListener("change", syncConstraints);
+      addMediaQueryListener(query, syncConstraints);
     });
 
     connection?.addEventListener?.("change", syncConstraints);
 
     return () => {
       mediaQueries.forEach((query) => {
-        query.removeEventListener("change", syncConstraints);
+        removeMediaQueryListener(query, syncConstraints);
       });
 
       connection?.removeEventListener?.("change", syncConstraints);
     };
-  }, []);
+  }, [includePointer, includeViewport]);
 
   return prefersReducedMotion || isConstrainedDevice;
 }
