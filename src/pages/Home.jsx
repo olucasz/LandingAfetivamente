@@ -6,6 +6,7 @@ import Professionals from "../components/Professionals/Professionals";
 import OnlineCare from "../components/OnlineCare/OnlineCare";
 import Location from "../components/Location/Location";
 import Footer from "../components/Footer/Footer";
+import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <OnlineCare />
       <Location />
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 }
