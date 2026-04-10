@@ -1,13 +1,6 @@
-import footerLogo from "../../assets/svg/footer-logo.svg";
+import footerLogo from "../../assets/optimized/footer/footer-logo-180.webp";
+import { navigationItems } from "../../constants/navigation";
 import "./Footer.css";
-
-const navigationItems = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#profissionais", label: "Profissionais" },
-  { href: "#online", label: "Online" },
-  { href: "#contato", label: "Contato" },
-];
 
 const socialLinks = [
   {
@@ -42,33 +35,25 @@ export default function Footer() {
                   alt="AfetivaMente"
                   width="100"
                   height="104"
+                  loading="lazy"
                   decoding="async"
+                  fetchPriority="low"
                 />
               </a>
-
-              <p className="footer__brand-text">
-                Clínica multidisciplinar unindo ciência e acolhimento para
-                oferecer cuidado completo em saúde mental e física.
-              </p>
             </div>
 
             <nav className="footer__socials" aria-label="Redes sociais">
-              {socialLinks.map(({ href, label, icon }, index) => (
-                <div className="footer__social-item" key={label}>
-                  {index > 0 ? (
-                    <span className="footer__social-divider" aria-hidden="true" />
-                  ) : null}
-
-                  <a
-                    href={href}
-                    className="footer__social-link"
-                    aria-label={label}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {icon}
-                  </a>
-                </div>
+              {socialLinks.map(({ href, label, icon }) => (
+                <a
+                  href={href}
+                  className="footer__social-link"
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={label}
+                >
+                  {icon}
+                </a>
               ))}
             </nav>
           </div>

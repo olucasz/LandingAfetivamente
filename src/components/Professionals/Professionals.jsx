@@ -1,16 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { professionals } from "../../data/professionals";
+import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./Professionals.css";
 
-const professionalImagePositions = {
-  1: "4% 38%",
-  2: "22% 36%",
-  3: "41% 35%",
-  4: "61% 34%",
-  5: "79% 35%",
-  6: "96% 35%",
-};
+const DEFAULT_IMAGE_POSITION = "center 20%";
+const DEFAULT_IMAGE_ZOOM = 1.06;
+
+function parseImageCrop(imagePosition) {
+  if (!imagePosition || typeof imagePosition !== "string") {
+    return {
+      position: DEFAULT_IMAGE_POSITION,
+      zoom: DEFAULT_IMAGE_ZOOM,
+    };
+  }
+
+  const [positionPart, zoomPart] = imagePosition.split("/");
+  const position = positionPart?.trim() || DEFAULT_IMAGE_POSITION;
+  const parsedZoom = Number.parseFloat(zoomPart?.trim() ?? "");
+
+  return {
+    position,
+    zoom: Number.isFinite(parsedZoom) ? parsedZoom : DEFAULT_IMAGE_ZOOM,
+  };
+}
 
 export default function Professionals() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -18,8 +31,9 @@ export default function Professionals() {
     containScroll: "trimSnaps",
     loop: false,
   });
-  const activeProfessionals = professionals.filter(
-    (professional) => professional.active,
+  const activeProfessionals = useMemo(
+    () => professionals.filter((professional) => professional.active),
+    [],
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
@@ -65,12 +79,19 @@ export default function Professionals() {
       aria-labelledby="professionals-title"
     >
       <div className="professionals__container">
-        <div className="professionals__header">
-          <h2 className="professionals__title" id="professionals-title">
+        <RevealGroup className="professionals__header" stagger={0.12}>
+          <RevealItem
+            as="h2"
+            className="professionals__title"
+            id="professionals-title"
+          >
             Conheça nossos <span>Profissionais</span>
-          </h2>
+          </RevealItem>
 
-          <div className="professionals__controls" aria-label="Navegação do carrossel">
+          <RevealItem
+            className="professionals__controls"
+            aria-label="Navegação do carrossel"
+          >
             <button
               type="button"
               className="professionals__arrow"
@@ -90,43 +111,68 @@ export default function Professionals() {
             >
               <ArrowRightIcon />
             </button>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
-        <div className="professionals__carousel">
+        <Reveal className="professionals__carousel" distance={28}>
           <div className="professionals__viewport" ref={emblaRef}>
-            <div className="professionals__track">
-              {activeProfessionals.map(({ id, name, role, image }) => (
-                <div className="professionals__slide" key={id}>
-                  <article className="professionals__card">
-                    <div className="professionals__media">
-                      <img
-                        src={image}
-                        alt={`Profissional ${name}`}
-                        width="545"
-                        height="363"
-                        loading="lazy"
-                        decoding="async"
-                        fetchPriority="low"
-                        style={{
-                          objectPosition:
-                            professionalImagePositions[id] ?? "center center",
-                        }}
-                      />
-                    </div>
+            <RevealGroup className="professionals__track" stagger={0.08}>
+              {activeProfessionals.map((professional) => {
+                const { id, name, role, image, imagePosition } = professional;
+                const { position, zoom } = parseImageCrop(imagePosition);
+                const imageStyle = {
+                  objectPosition: position,
+                  "--professional-image-zoom": zoom,
+                };
 
-                    <div className="professionals__content">
-                      <h3 className="professionals__name">{name}</h3>
-                      <p className="professionals__role">{role}</p>
-                    </div>
-                  </article>
-                </div>
-              ))}
-            </div>
+                return (
+                  <RevealItem
+                    className="professionals__slide"
+                    key={id}
+                    distance={22}
+                  >
+                    <article className="professionals__card">
+                      <div className="professionals__media">
+                        <picture>
+                          <source
+                            type="image/avif"
+                            srcSet={`${image.avif420} 420w, ${image.avif840} 840w`}
+                            sizes="(max-width: 767px) 86vw, (max-width: 899px) 46vw, (max-width: 1199px) 32vw, 24vw"
+                          />
+                          <source
+                            type="image/webp"
+                            srcSet={`${image.webp420} 420w, ${image.webp840} 840w`}
+                            sizes="(max-width: 767px) 86vw, (max-width: 899px) 46vw, (max-width: 1199px) 32vw, 24vw"
+                          />
+                          <img
+                            src={image.webp420}
+                            alt={`Profissional ${name}`}
+                            width="840"
+                            height="1260"
+                            loading="lazy"
+                            decoding="async"
+                            fetchPriority="low"
+                            style={imageStyle}
+                          />
+                        </picture>
+                      </div>
+
+                      <div className="professionals__content">
+                        <h3 className="professionals__name">{name}</h3>
+                        <p className="professionals__role">{role}</p>
+                      </div>
+                    </article>
+                  </RevealItem>
+                );
+              })}
+            </RevealGroup>
           </div>
 
           {scrollSnaps.length > 1 ? (
-            <div className="professionals__dots" aria-label="Paginação do carrossel">
+            <div
+              className="professionals__dots"
+              aria-label="Paginação do carrossel"
+            >
               {scrollSnaps.map((_, index) => (
                 <button
                   type="button"
@@ -143,7 +189,7 @@ export default function Professionals() {
               ))}
             </div>
           ) : null}
-        </div>
+        </Reveal>
       </div>
     </section>
   );
