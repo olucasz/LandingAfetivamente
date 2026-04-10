@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { professionals } from "../../data/professionals";
 import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./Professionals.css";
 
-function parseImageCrop(imagePosition) {
-  const defaultPosition = "center 20%";
-  const defaultZoom = 1.06;
+const DEFAULT_IMAGE_POSITION = "center 20%";
+const DEFAULT_IMAGE_ZOOM = 1.06;
 
+function parseImageCrop(imagePosition) {
   if (!imagePosition || typeof imagePosition !== "string") {
     return {
-      position: defaultPosition,
-      zoom: defaultZoom,
+      position: DEFAULT_IMAGE_POSITION,
+      zoom: DEFAULT_IMAGE_ZOOM,
     };
   }
 
   const [positionPart, zoomPart] = imagePosition.split("/");
-  const position = positionPart?.trim() || defaultPosition;
+  const position = positionPart?.trim() || DEFAULT_IMAGE_POSITION;
   const parsedZoom = Number.parseFloat(zoomPart?.trim() ?? "");
 
   return {
     position,
-    zoom: Number.isFinite(parsedZoom) ? parsedZoom : defaultZoom,
+    zoom: Number.isFinite(parsedZoom) ? parsedZoom : DEFAULT_IMAGE_ZOOM,
   };
 }
 
@@ -31,8 +31,9 @@ export default function Professionals() {
     containScroll: "trimSnaps",
     loop: false,
   });
-  const activeProfessionals = professionals.filter(
-    (professional) => professional.active,
+  const activeProfessionals = useMemo(
+    () => professionals.filter((professional) => professional.active),
+    [],
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
@@ -119,10 +120,10 @@ export default function Professionals() {
               {activeProfessionals.map((professional) => {
                 const { id, name, role, image, imagePosition } = professional;
                 const { position, zoom } = parseImageCrop(imagePosition);
-  const imageStyle = {
-    objectPosition: position,
-    "--professional-image-zoom": zoom,
-  };
+                const imageStyle = {
+                  objectPosition: position,
+                  "--professional-image-zoom": zoom,
+                };
 
                 return (
                   <RevealItem

@@ -1,14 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import logo from "../../assets/header-logo.png";
+import { navigationItems } from "../../constants/navigation";
+import { WHATSAPP_URL } from "../../constants/whatsapp";
 import "./Header.css";
-
-const navigationItems = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#profissionais", label: "Profissionais" },
-  { href: "#online", label: "Online" },
-  { href: "#contato", label: "Contato" },
-];
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -121,9 +115,10 @@ export default function Header() {
           </nav>
 
           <a
-            href="#contato"
+            href={WHATSAPP_URL}
             className="header__cta"
-            onClick={(event) => handleNavigationClick(event, "#contato")}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Agendar Consulta
           </a>
@@ -149,9 +144,11 @@ export default function Header() {
         </nav>
 
         <a
-          href="#contato"
+          href={WHATSAPP_URL}
           className="header__mobile-cta"
-          onClick={(event) => handleNavigationClick(event, "#contato")}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setIsMobileMenuOpen(false)}
         >
           Agendar Consulta
         </a>

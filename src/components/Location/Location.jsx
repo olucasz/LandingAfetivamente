@@ -1,4 +1,5 @@
 import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
+import { WHATSAPP_URL } from "../../constants/whatsapp";
 import "./Location.css";
 
 const contactItems = [
@@ -63,9 +64,9 @@ export default function Location() {
               </RevealGroup>
 
               <a
-                href="https://wa.me/5543998693537"
+                href={WHATSAPP_URL}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="location__cta"
               >
                 Agendar consulta via WhatsApp

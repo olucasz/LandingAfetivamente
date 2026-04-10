@@ -40,15 +40,6 @@
   display: block;
 }
 
-.footer__brand-text {
-  max-width: 23ch;
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.34;
-  font-weight: 500;
-  color: #8083a0;
-}
-
 .footer__socials {
   display: flex;
   align-items: center;
@@ -191,7 +182,6 @@
     gap: 0;
   }
 
-  .footer__brand-text,
   .footer__nav-link,
   .footer__legal-copy {
     font-size: 0.82rem;
@@ -252,12 +242,6 @@
 
   .footer__logo img {
     width: 78px;
-  }
-
-  .footer__brand-text {
-    max-width: 28ch;
-    font-size: 0.82rem;
-    line-height: 1.4;
   }
 
   .footer__socials {

@@ -17,6 +17,7 @@ import heroTopOvalAvif142 from "../../assets/optimized/hero/hero-top-oval-142.av
 import heroTopOvalAvif211 from "../../assets/optimized/hero/hero-top-oval-211.avif";
 import heroTopOvalWebp142 from "../../assets/optimized/hero/hero-top-oval-142.webp";
 import heroTopOvalWebp211 from "../../assets/optimized/hero/hero-top-oval-211.webp";
+import { WHATSAPP_URL } from "../../constants/whatsapp";
 import { fadeUp, staggerContainer } from "../Motion/motionTokens";
 import { useMotionBudget } from "../Motion/useMotionBudget";
 import "./Hero.css";
@@ -116,7 +117,12 @@ export default function Hero() {
           </MotionParagraph>
 
           <MotionDiv className="hero__actions" variants={fadeUp(24)}>
-            <a href="#contato" className="hero__cta">
+            <a
+              href={WHATSAPP_URL}
+              className="hero__cta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Fale com a nossa equipe
               <span className="hero__cta-icon">↗</span>
             </a>

@@ -10,6 +10,7 @@ import partnerCassi from "../../assets/optimized/partners/partner-cassi.webp";
 import partnerCisnop from "../../assets/optimized/partners/partner-cisnop.webp";
 import partnerSaneSaude from "../../assets/optimized/partners/partner-sane-saude.webp";
 import partnerUnimed from "../../assets/partners/unimed.svg";
+import { WHATSAPP_URL } from "../../constants/whatsapp";
 import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./OnlineCare.css";
 
@@ -160,7 +161,12 @@ export default function OnlineCare() {
                     <span>Agende Agora!</span>
                   </div>
 
-                  <a href="#contato" className="online-care__cta">
+                  <a
+                    href={WHATSAPP_URL}
+                    className="online-care__cta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Agendar consulta Online
                   </a>
                 </div>

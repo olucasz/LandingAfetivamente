@@ -1,13 +1,6 @@
 import footerLogo from "../../assets/optimized/footer/footer-logo-180.webp";
+import { navigationItems } from "../../constants/navigation";
 import "./Footer.css";
-
-const navigationItems = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#profissionais", label: "Profissionais" },
-  { href: "#online", label: "Online" },
-  { href: "#contato", label: "Contato" },
-];
 
 const socialLinks = [
   {
@@ -56,7 +49,7 @@ export default function Footer() {
                   className="footer__social-link"
                   aria-label={label}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   key={label}
                 >
                   {icon}

@@ -12,6 +12,7 @@ import servicesSlideThreeAvif420 from "../../assets/optimized/services/services-
 import servicesSlideThreeAvif840 from "../../assets/optimized/services/services-slide-3-840.avif";
 import servicesSlideThreeWebp420 from "../../assets/optimized/services/services-slide-3-420.webp";
 import servicesSlideThreeWebp840 from "../../assets/optimized/services/services-slide-3-840.webp";
+import { WHATSAPP_URL } from "../../constants/whatsapp";
 import { RevealGroup, RevealItem } from "../Motion/Reveal";
 import "./Services.css";
 
@@ -214,7 +215,12 @@ export default function Services() {
                 </div>
               ))}
 
-              <a href="#contato" className="services__feature-cta">
+              <a
+                href={WHATSAPP_URL}
+                className="services__feature-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Saber Mais
                 <ArrowOutIcon />
               </a>
