@@ -111,9 +111,9 @@ export default function Hero() {
           </MotionTitle>
 
           <MotionParagraph className="hero__description" variants={fadeUp(20)}>
-            Psicoterapia baseada em evidências, com acolhimento real e cuidado
-            individualizado. Aqui, seu processo emocional ganha espaço seguro e
-            acompanhamento profissional
+            Tratamentos com acolhimento real e cuidado individualizado. Aqui,
+            seu processo emocional ganha espaço seguro e acompanhamento
+            profissional
           </MotionParagraph>
 
           <MotionDiv className="hero__actions" variants={fadeUp(24)}>
