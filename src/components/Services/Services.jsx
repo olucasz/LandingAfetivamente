@@ -28,7 +28,7 @@ const serviceCards = [
   {
     title: "Psicologia",
     description:
-      "Atendimento psicológico com abordagem cognitivo comportamental e psicanalítico para todas as idades",
+      "Atendimento psicológico, de abordagem cognitivo comportamental ou psicanalítica, para todas as idades",
     icon: <PsychologyIcon />,
   },
   {
