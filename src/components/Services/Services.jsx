@@ -28,13 +28,13 @@ const serviceCards = [
   {
     title: "Psicologia",
     description:
-      "Atendimento psicológico com abordagem cognitivo comportamental e psicanalítico para todas as idades",
+      "Atendimento psicológico, de abordagem cognitivo comportamental ou psicanalítica, para todas as idades",
     icon: <PsychologyIcon />,
   },
   {
     title: "Neuropsicologia",
     description:
-      "Avaliação neuropsicológica voltada para transtornos do neurodesenvolvimento (TEA, TDAH, transtornos específicos de aprendizagem etc.), TAG, TOD, dentre outros. Reabilitação cognitiva e comportamental.",
+      "Avaliação neuropsicológica voltada para TEA, TDAH, transtornos específicos de aprendizagem, TAG, TOD, dentre outros. Reabilitação cognitiva e comportamental",
     icon: <NeuropsychologyIcon />,
   },
   {
