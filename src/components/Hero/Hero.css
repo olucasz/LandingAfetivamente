@@ -80,6 +80,24 @@
   transition: var(--button-transition);
 }
 
+.hero__cta-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__cta-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .hero__avatars {
   display: flex;
 }
@@ -504,9 +522,6 @@
     padding: 0 22px;
     justify-content: center;
     font-size: 0.985rem;
-  }
-  .hero__cta-icon {
-    display: none;
   }
 
   .hero__support {

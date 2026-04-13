@@ -34,7 +34,7 @@ const serviceCards = [
   {
     title: "Neuropsicologia",
     description:
-      "Avaliação neuropsicológica voltada para TEA, TDAH, transtornos específicos de aprendizagem, TAG, TOD, dentre outros. Reabilitação cognitiva e comportamental",
+      "Avaliação voltada para TEA, TDAH, transtornos específicos de aprendizagem, TAG, TOD, dentre outros. Reabilitação cognitiva e comportamental",
     icon: <NeuropsychologyIcon />,
   },
   {

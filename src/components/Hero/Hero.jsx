@@ -124,7 +124,16 @@ export default function Hero() {
               rel="noopener noreferrer"
             >
               Fale com a nossa equipe
-              <span className="hero__cta-icon">↗</span>
+              <span className="hero__cta-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M8 16 16 8" />
+                  <path d="M9 8h7v7" />
+                </svg>
+              </span>
             </a>
 
             <MotionDiv className="hero__support" variants={fadeUp(20)}>
