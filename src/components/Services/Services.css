@@ -446,6 +446,7 @@
   }
 
   .services__feature-card {
+    order: 2;
     max-width: none;
     min-height: 0;
     height: auto;
@@ -501,6 +502,7 @@
   }
 
   .services__grid {
+    order: 1;
     grid-template-columns: 1fr;
     gap: 12px;
   }

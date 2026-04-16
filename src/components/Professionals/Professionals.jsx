@@ -26,6 +26,10 @@ function parseImageCrop(imagePosition) {
 }
 
 export default function Professionals() {
+  const [isMobileLayout, setIsMobileLayout] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(max-width: 767px)").matches;
+  });
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     containScroll: "trimSnaps",
@@ -39,6 +43,27 @@ export default function Professionals() {
   const [scrollSnaps, setScrollSnaps] = useState([]);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [expandedCredentialId, setExpandedCredentialId] = useState(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+    function handleMediaQueryChange(event) {
+      setIsMobileLayout(event.matches);
+
+      if (!event.matches) {
+        setExpandedCredentialId(null);
+      }
+    }
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -70,6 +95,21 @@ export default function Professionals() {
 
   function scrollTo(index) {
     emblaApi?.scrollTo(index);
+  }
+
+  function toggleCredential(id, hasCredential) {
+    if (!isMobileLayout || !hasCredential) return;
+
+    setExpandedCredentialId((currentId) => (currentId === id ? null : id));
+  }
+
+  function handleCardKeyDown(event, id, hasCredential) {
+    if (!isMobileLayout || !hasCredential) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleCredential(id, hasCredential);
+    }
   }
 
   return (
@@ -118,12 +158,25 @@ export default function Professionals() {
           <div className="professionals__viewport" ref={emblaRef}>
             <RevealGroup className="professionals__track" stagger={0.08}>
               {activeProfessionals.map((professional) => {
-                const { id, name, role, image, imagePosition } = professional;
+                const { id, name, role, credential, image, imagePosition } =
+                  professional;
+                const hasCredential = Boolean(credential);
+                const isCredentialExpanded = expandedCredentialId === id;
                 const { position, zoom } = parseImageCrop(imagePosition);
                 const imageStyle = {
                   objectPosition: position,
                   "--professional-image-zoom": zoom,
                 };
+
+                const cardClassName = [
+                  "professionals__card",
+                  hasCredential ? "professionals__card--has-credential" : "",
+                  isMobileLayout && isCredentialExpanded
+                    ? "professionals__card--credential-open"
+                    : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ");
 
                 return (
                   <RevealItem
@@ -131,7 +184,19 @@ export default function Professionals() {
                     key={id}
                     distance={22}
                   >
-                    <article className="professionals__card">
+                    <article
+                      className={cardClassName}
+                      onClick={() => toggleCredential(id, hasCredential)}
+                      onKeyDown={(event) =>
+                        handleCardKeyDown(event, id, hasCredential)
+                      }
+                      tabIndex={isMobileLayout && hasCredential ? 0 : undefined}
+                      aria-expanded={
+                        isMobileLayout && hasCredential
+                          ? isCredentialExpanded
+                          : undefined
+                      }
+                    >
                       <div className="professionals__media">
                         <picture>
                           <source
@@ -159,7 +224,19 @@ export default function Professionals() {
 
                       <div className="professionals__content">
                         <h3 className="professionals__name">{name}</h3>
-                        <p className="professionals__role">{role}</p>
+                        <div className="professionals__meta">
+                          <p className="professionals__role">{role}</p>
+                          <div
+                            className="professionals__credential-slot"
+                            aria-hidden={!credential}
+                          >
+                            {credential ? (
+                              <p className="professionals__credential">
+                                {credential}
+                              </p>
+                            ) : null}
+                          </div>
+                        </div>
                       </div>
                     </article>
                   </RevealItem>
