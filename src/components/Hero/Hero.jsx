@@ -105,7 +105,7 @@ export default function Hero() {
           variants={staggerContainer(0.14, 0.08)}
         >
           <MotionDiv className="hero__eyebrow" variants={fadeUp(16)}>
-            Clínica AfetivaMente • Psicologia baseada em evidências
+            AfetivaMente • Clínica de Psicologia e Saúde
           </MotionDiv>
 
           <MotionTitle className="hero__title" variants={fadeUp(20)}>
