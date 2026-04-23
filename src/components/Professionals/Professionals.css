@@ -253,6 +253,79 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .professionals__header {
+    align-items: center;
+  }
+
+  .professionals__carousel {
+    --slide-gap: 16px;
+    margin-top: 30px;
+  }
+
+  .professionals__slide {
+    flex-basis: calc((100% - var(--slide-gap)) / 2.3);
+  }
+
+  .professionals__card {
+    gap: 15px;
+  }
+
+  .professionals__card--has-credential {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .professionals__card--has-credential .professionals__meta {
+    position: relative;
+    padding-right: 16px;
+  }
+
+  .professionals__card--has-credential .professionals__meta::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 2px;
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid rgba(0, 57, 77, 0.42);
+    border-bottom: 1.5px solid rgba(0, 57, 77, 0.42);
+    transform: rotate(45deg);
+    transition:
+      transform 200ms ease,
+      border-color 200ms ease,
+      opacity 200ms ease;
+    opacity: 0.9;
+  }
+
+  .professionals__card--has-credential:active {
+    transform: translateY(-1px);
+  }
+
+  .professionals__card--has-credential:active .professionals__media {
+    box-shadow: 0 18px 38px rgba(8, 37, 50, 0.12);
+  }
+
+  .professionals__card--credential-open {
+    transform: translateY(-2px);
+  }
+
+  .professionals__card--credential-open .professionals__media {
+    box-shadow: 0 22px 44px rgba(8, 37, 50, 0.14);
+  }
+
+  .professionals__card--credential-open .professionals__meta::after {
+    transform: translateY(2px) rotate(-135deg);
+    border-color: rgba(13, 129, 91, 0.88);
+    opacity: 1;
+  }
+
+  .professionals__card--credential-open .professionals__credential {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 899px) {
   .professionals__header {
     align-items: center;
@@ -323,60 +396,6 @@
 
   .professionals__card {
     gap: 14px;
-  }
-
-  .professionals__card--has-credential {
-    cursor: pointer;
-    touch-action: manipulation;
-  }
-
-  .professionals__card--has-credential .professionals__meta {
-    position: relative;
-    padding-right: 16px;
-  }
-
-  .professionals__card--has-credential .professionals__meta::after {
-    content: "";
-    position: absolute;
-    top: 5px;
-    right: 2px;
-    width: 7px;
-    height: 7px;
-    border-right: 1.5px solid rgba(0, 57, 77, 0.42);
-    border-bottom: 1.5px solid rgba(0, 57, 77, 0.42);
-    transform: rotate(45deg);
-    transition:
-      transform 200ms ease,
-      border-color 200ms ease,
-      opacity 200ms ease;
-    opacity: 0.9;
-  }
-
-  .professionals__card--has-credential:active {
-    transform: translateY(-1px);
-  }
-
-  .professionals__card--has-credential:active .professionals__media {
-    box-shadow: 0 18px 38px rgba(8, 37, 50, 0.12);
-  }
-
-  .professionals__card--credential-open {
-    transform: translateY(-2px);
-  }
-
-  .professionals__card--credential-open .professionals__media {
-    box-shadow: 0 22px 44px rgba(8, 37, 50, 0.14);
-  }
-
-  .professionals__card--credential-open .professionals__meta::after {
-    transform: translateY(2px) rotate(-135deg);
-    border-color: rgba(13, 129, 91, 0.88);
-    opacity: 1;
-  }
-
-  .professionals__card--credential-open .professionals__credential {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .professionals__media {

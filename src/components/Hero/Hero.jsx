@@ -185,12 +185,12 @@ export default function Hero() {
               <source
                 type="image/avif"
                 srcSet={`${heroMainOvalAvif220} 220w, ${heroMainOvalAvif321} 321w`}
-                sizes="(max-width: 767px) 204px, (max-width: 1199px) 225px, 260px"
+                sizes="(max-width: 767px) 172px, (max-width: 1024px) 204px, (max-width: 1199px) 225px, 260px"
               />
               <source
                 type="image/webp"
                 srcSet={`${heroMainOvalWebp220} 220w, ${heroMainOvalWebp321} 321w`}
-                sizes="(max-width: 767px) 204px, (max-width: 1199px) 225px, 260px"
+                sizes="(max-width: 767px) 172px, (max-width: 1024px) 204px, (max-width: 1199px) 225px, 260px"
               />
               <img
                 className="hero__oval-image"
@@ -209,12 +209,12 @@ export default function Hero() {
                 <source
                   type="image/avif"
                   srcSet={`${heroTopOvalAvif142} 142w, ${heroTopOvalAvif211} 211w`}
-                  sizes="(max-width: 767px) 104px, (max-width: 1199px) 118px, 142px"
+                  sizes="(max-width: 767px) 84px, (max-width: 1024px) 104px, (max-width: 1199px) 118px, 142px"
                 />
                 <source
                   type="image/webp"
                   srcSet={`${heroTopOvalWebp142} 142w, ${heroTopOvalWebp211} 211w`}
-                  sizes="(max-width: 767px) 104px, (max-width: 1199px) 118px, 142px"
+                  sizes="(max-width: 767px) 84px, (max-width: 1024px) 104px, (max-width: 1199px) 118px, 142px"
                 />
                 <img
                   className="hero__oval-image"
@@ -232,12 +232,12 @@ export default function Hero() {
                 <source
                   type="image/avif"
                   srcSet={`${heroBottomOvalAvif142} 142w, ${heroBottomOvalAvif211} 211w`}
-                  sizes="(max-width: 767px) 104px, (max-width: 1199px) 118px, 142px"
+                  sizes="(max-width: 767px) 84px, (max-width: 1024px) 104px, (max-width: 1199px) 118px, 142px"
                 />
                 <source
                   type="image/webp"
                   srcSet={`${heroBottomOvalWebp142} 142w, ${heroBottomOvalWebp211} 211w`}
-                  sizes="(max-width: 767px) 104px, (max-width: 1199px) 118px, 142px"
+                  sizes="(max-width: 767px) 84px, (max-width: 1024px) 104px, (max-width: 1199px) 118px, 142px"
                 />
                 <img
                   className="hero__oval-image"

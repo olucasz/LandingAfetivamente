@@ -195,12 +195,12 @@ export default function Services() {
                         <source
                           type="image/avif"
                           srcSet={`${slide.avif420} 420w, ${slide.avif840} 840w`}
-                          sizes="(max-width: 767px) calc(100vw - 64px), 380px"
+                          sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1024px) 38vw, 380px"
                         />
                         <source
                           type="image/webp"
                           srcSet={`${slide.webp420} 420w, ${slide.webp840} 840w`}
-                          sizes="(max-width: 767px) calc(100vw - 64px), 380px"
+                          sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1024px) 38vw, 380px"
                         />
                         <img
                           src={slide.webp840}

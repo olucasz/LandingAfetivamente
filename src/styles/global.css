@@ -297,6 +297,19 @@ select {
   }
 }
 
+@media (max-width: 1024px) and (min-width: 768px) {
+  :root {
+    --container-inline: 40px;
+    --header-top-space: 16px;
+    --header-shell-height: 70px;
+    --section-space: 84px;
+    --section-space-tight: 70px;
+    --section-content-gap: 34px;
+    --section-title-size: clamp(2.28rem, 5vw, 2.58rem);
+    --section-subtitle-size: 0.94rem;
+  }
+}
+
 @media (max-width: 767px) {
   :root {
     --container-inline: 32px;

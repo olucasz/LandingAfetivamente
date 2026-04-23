@@ -400,6 +400,61 @@
   }
 }
 
+@media (max-width: 1024px) and (min-width: 768px) {
+  .services__layout {
+    margin-top: 36px;
+    grid-template-columns: minmax(272px, 0.88fr) minmax(0, 1.12fr);
+    gap: 18px;
+  }
+
+  .services__feature-picture img {
+    height: clamp(220px, 26vw, 248px);
+  }
+
+  .services__feature-body {
+    gap: 12px 14px;
+    padding: 15px 15px 17px;
+  }
+
+  .services__benefit {
+    gap: 8px;
+    font-size: 0.76rem;
+  }
+
+  .services__feature-cta {
+    padding: 0 18px;
+    font-size: 0.84rem;
+  }
+
+  .services__grid {
+    gap: 12px;
+  }
+
+  .services__card {
+    padding: 16px 14px 14px;
+    gap: 10px;
+    min-height: 0;
+  }
+
+  .services__card-heading {
+    gap: 10px;
+  }
+
+  .services__card-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .services__card-title {
+    font-size: 0.94rem;
+  }
+
+  .services__card-description {
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+}
+
 @media (max-width: 767px) {
   .services {
     padding: var(--section-space) 0 calc(var(--section-space) + 2px);

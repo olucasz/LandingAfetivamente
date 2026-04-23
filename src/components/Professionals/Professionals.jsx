@@ -6,6 +6,7 @@ import "./Professionals.css";
 
 const DEFAULT_IMAGE_POSITION = "center 20%";
 const DEFAULT_IMAGE_ZOOM = 1.06;
+const EXPANDABLE_CREDENTIAL_QUERY = "(max-width: 1024px)";
 
 function parseImageCrop(imagePosition) {
   if (!imagePosition || typeof imagePosition !== "string") {
@@ -26,9 +27,9 @@ function parseImageCrop(imagePosition) {
 }
 
 export default function Professionals() {
-  const [isMobileLayout, setIsMobileLayout] = useState(() => {
+  const [isCompactTouchLayout, setIsCompactTouchLayout] = useState(() => {
     if (typeof window === "undefined") return false;
-    return window.matchMedia("(max-width: 767px)").matches;
+    return window.matchMedia(EXPANDABLE_CREDENTIAL_QUERY).matches;
   });
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
@@ -48,10 +49,10 @@ export default function Professionals() {
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
 
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const mediaQuery = window.matchMedia(EXPANDABLE_CREDENTIAL_QUERY);
 
     function handleMediaQueryChange(event) {
-      setIsMobileLayout(event.matches);
+      setIsCompactTouchLayout(event.matches);
 
       if (!event.matches) {
         setExpandedCredentialId(null);
@@ -98,13 +99,13 @@ export default function Professionals() {
   }
 
   function toggleCredential(id, hasCredential) {
-    if (!isMobileLayout || !hasCredential) return;
+    if (!isCompactTouchLayout || !hasCredential) return;
 
     setExpandedCredentialId((currentId) => (currentId === id ? null : id));
   }
 
   function handleCardKeyDown(event, id, hasCredential) {
-    if (!isMobileLayout || !hasCredential) return;
+    if (!isCompactTouchLayout || !hasCredential) return;
 
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
@@ -171,7 +172,7 @@ export default function Professionals() {
                 const cardClassName = [
                   "professionals__card",
                   hasCredential ? "professionals__card--has-credential" : "",
-                  isMobileLayout && isCredentialExpanded
+                  isCompactTouchLayout && isCredentialExpanded
                     ? "professionals__card--credential-open"
                     : "",
                 ]
@@ -190,9 +191,11 @@ export default function Professionals() {
                       onKeyDown={(event) =>
                         handleCardKeyDown(event, id, hasCredential)
                       }
-                      tabIndex={isMobileLayout && hasCredential ? 0 : undefined}
+                      tabIndex={
+                        isCompactTouchLayout && hasCredential ? 0 : undefined
+                      }
                       aria-expanded={
-                        isMobileLayout && hasCredential
+                        isCompactTouchLayout && hasCredential
                           ? isCredentialExpanded
                           : undefined
                       }
@@ -202,12 +205,12 @@ export default function Professionals() {
                           <source
                             type="image/avif"
                             srcSet={`${image.avif420} 420w, ${image.avif840} 840w`}
-                            sizes="(max-width: 767px) 86vw, (max-width: 899px) 46vw, (max-width: 1199px) 32vw, 24vw"
+                            sizes="(max-width: 767px) 86vw, (max-width: 1024px) 43vw, (max-width: 1199px) 32vw, 24vw"
                           />
                           <source
                             type="image/webp"
                             srcSet={`${image.webp420} 420w, ${image.webp840} 840w`}
-                            sizes="(max-width: 767px) 86vw, (max-width: 899px) 46vw, (max-width: 1199px) 32vw, 24vw"
+                            sizes="(max-width: 767px) 86vw, (max-width: 1024px) 43vw, (max-width: 1199px) 32vw, 24vw"
                           />
                           <img
                             src={image.webp420}
