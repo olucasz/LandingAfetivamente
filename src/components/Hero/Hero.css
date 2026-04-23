@@ -1,33 +1,12 @@
 .hero {
   --hero-header-overlap: var(--header-total-height);
-  --hero-content-offset-y: -10px;
-  --hero-main-oval-offset-y: -10px;
-  --hero-bg-base: #f8f7ef;
-  --hero-bg-base-soft: #f2f3e8;
-  --hero-bg-layer-accent: radial-gradient(
-    100% 0% at 0% 100%,
-    rgba(var(--green-rgb), 0.36) 0%,
-    rgba(var(--green-rgb), 0.24) 30%,
-    rgba(var(--green-rgb), 0.13) 52%,
-    rgba(var(--green-rgb), 0.04) 70%,
-    rgba(var(--green-rgb), 0) 90%
-  );
-  --hero-bg-layer-glow: radial-gradient(
-    146% 88% at 62% -30%,
-    rgba(255, 255, 255, 0.96) 0%,
-    rgba(255, 255, 255, 0.73) 42%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  --hero-bg-layer-balance: radial-gradient(
-    72% 74% at 90% 84%,
-    rgba(var(--green-rgb), 0.12) 0%,
-    rgba(var(--green-rgb), 0.04) 42%,
-    rgba(var(--green-rgb), 0) 100%
-  );
-  --hero-bg-layer-surface: linear-gradient(
-    350deg,
-    var(--hero-bg-base) 0%,
-    var(--hero-bg-base-soft) 100%
+  --hero-content-offset-y: -20px;
+  --hero-main-oval-offset-y: -30px;
+  --hero-bg-base: var(--surface-page);
+  --hero-bg-wash: linear-gradient(
+    345deg,
+    var(--green-primary) -80%,
+    rgba(var(--green-rgb), 0) 50%
   );
 
   position: relative;
@@ -37,62 +16,14 @@
   overflow: clip;
   isolation: isolate;
 
-  background:
-    var(--hero-bg-layer-accent), var(--hero-bg-layer-glow),
-    var(--hero-bg-layer-balance), var(--hero-bg-layer-surface);
+  background: var(--hero-bg-wash), var(--hero-bg-base);
   border-bottom-left-radius: 48% 9%;
   border-bottom-right-radius: 48% 9%;
 }
 
 .hero::before,
 .hero::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-.hero::before {
-  inset: 18% 52% -14% -14%;
-  border-radius: 58% 42% 62% 38% / 46% 62% 38% 54%;
-  transform: rotate(-4deg);
-  background:
-    radial-gradient(
-      84% 118% at 8% 100%,
-      rgba(var(--green-rgb), 0.3) 0%,
-      rgba(var(--green-rgb), 0.18) 34%,
-      rgba(var(--green-rgb), 0.08) 58%,
-      rgba(var(--green-rgb), 0) 88%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(var(--green-rgb), 0) 0%,
-      rgba(var(--green-rgb), 0.09) 100%
-    );
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-  filter: blur(1px);
-  opacity: 0.62;
-  z-index: 0;
-}
-
-.hero::after {
-  inset: 0;
-  background:
-    radial-gradient(
-      74% 84% at 88% 86%,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(255, 255, 255, 0.12) 38%,
-      rgba(255, 255, 255, 0) 78%
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.02) 0px,
-      rgba(255, 255, 255, 0.02) 1px,
-      rgba(255, 255, 255, 0) 1px,
-      rgba(255, 255, 255, 0) 15px
-    );
-  opacity: 0.26;
-  mix-blend-mode: soft-light;
-  z-index: 1;
+  content: none;
 }
 
 .hero h1 {
@@ -345,10 +276,10 @@
   --hero-stage-pad-right: 30px;
   --hero-stage-pad-bottom: 22px;
   --hero-stage-pad-left: 18px;
-  --hero-card-left-margin-left: -12px;
-  --hero-card-left-margin-bottom: -18px;
-  --hero-card-right-margin-right: -16px;
-  --hero-card-right-margin-top: 6px;
+  --hero-card-left-margin-left: -40px;
+  --hero-card-left-margin-bottom: 50px;
+  --hero-card-right-margin-right: 15px;
+  --hero-card-right-margin-top: 10px;
 
   display: grid;
   grid-template-columns: var(--hero-main-width) var(--hero-side-width);
@@ -606,18 +537,6 @@
     border-bottom-right-radius: 46% 7%;
   }
 
-  .hero::before {
-    inset: 16% 44% -16% -12%;
-    transform: rotate(-7deg);
-    filter: blur(0.9px);
-    opacity: 0.52;
-  }
-
-  .hero::after {
-    inset: 0;
-    opacity: 0.22;
-  }
-
   .hero__container {
     min-height: 600px;
     grid-template-columns: 1.02fr 0.98fr;
@@ -746,19 +665,6 @@
     padding-top: calc(10px + var(--hero-header-overlap));
     border-bottom-left-radius: 38% 4%;
     border-bottom-right-radius: 38% 4%;
-  }
-
-  .hero::before {
-    inset: 18% 36% -20% -10%;
-    display: block;
-    transform: rotate(-6deg);
-    filter: blur(0.85px);
-    opacity: 0.5;
-  }
-
-  .hero::after {
-    inset: 0;
-    opacity: 0.2;
   }
 
   .hero__container {

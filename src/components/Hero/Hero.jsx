@@ -244,7 +244,7 @@ export default function Hero() {
                   src={heroBottomOvalWebp211}
                   alt=""
                   width="211"
-                  height="300"
+                  height="365"
                   loading="lazy"
                   decoding="async"
                   fetchPriority="low"
