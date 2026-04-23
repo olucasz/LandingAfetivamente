@@ -45,6 +45,11 @@
 
   --container-max: 1280px;
   --container-inline: 80px;
+  --header-top-space: 24px;
+  --header-shell-height: 76px;
+  --header-total-height: calc(
+    var(--header-top-space) + var(--header-shell-height)
+  );
 
   --section-space: 104px;
   --section-space-tight: 88px;
@@ -119,6 +124,8 @@ select {
 @media (max-width: 1199px) {
   :root {
     --container-inline: 56px;
+    --header-top-space: 20px;
+    --header-shell-height: 68px;
     --section-space: 90px;
     --section-space-tight: 76px;
     --section-title-size: 2.48rem;
@@ -133,6 +140,8 @@ select {
 @media (max-width: 767px) {
   :root {
     --container-inline: 32px;
+    --header-top-space: 16px;
+    --header-shell-height: 70px;
     --section-space: 72px;
     --section-space-tight: 60px;
     --section-title-size: clamp(1.95rem, 7.8vw, 2.3rem);
