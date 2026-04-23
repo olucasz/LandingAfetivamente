@@ -124,11 +124,11 @@
 
 @media (max-width: 767px) {
   .header__container {
-    padding: 12px 14px 12px 18px;
+    padding: 10px 12px 10px 16px;
   }
 
   .header__logo img {
-    height: 26px;
+    height: 24px;
   }
 
   .header__right {
@@ -136,8 +136,8 @@
   }
 
   .header__menu-button {
-    width: 46px;
-    height: 46px;
+    width: 42px;
+    height: 42px;
     border: 0;
     border-radius: 50%;
     background: rgba(15, 79, 103, 0.08);
