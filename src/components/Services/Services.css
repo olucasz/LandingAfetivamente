@@ -116,6 +116,8 @@
 }
 
 .services__window-dot {
+  --dot-focus-ring: var(--interaction-focus-ring-light);
+
   appearance: none;
   width: 8px;
   height: 8px;
@@ -125,10 +127,7 @@
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  transition:
-    transform 180ms ease,
-    background-color 180ms ease,
-    opacity 180ms ease;
+  transition: var(--control-transition);
 }
 
 .services__window-dot.is-active {
@@ -137,6 +136,10 @@
 }
 
 .services__feature-arrow {
+  --control-hover-shadow: var(--shadow-control-strong-hover);
+  --control-active-shadow: var(--shadow-control-strong-active);
+  --control-focus-ring: var(--interaction-focus-ring-light);
+
   position: absolute;
   top: 50%;
   z-index: 2;
@@ -153,10 +156,7 @@
   line-height: 1;
   cursor: pointer;
   pointer-events: auto;
-  transition:
-    transform 180ms ease,
-    background-color 180ms ease,
-    opacity 180ms ease;
+  transition: var(--control-transition);
 }
 
 .services__feature-arrow:disabled {
@@ -306,16 +306,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .services__window-dot:hover {
-    transform: scale(1.08);
-  }
-
-  .services__window-dot.is-active:hover {
-    transform: scale(1.15);
-  }
-
   .services__feature-arrow:hover:not(:disabled) {
-    transform: translateY(-1px);
     background: rgba(255, 255, 255, 0.18);
   }
 
@@ -324,12 +315,6 @@
     border-color: var(--green-tint-18);
     background-color: rgba(var(--green-rgb), 0.05);
     box-shadow: var(--shadow-card-soft);
-  }
-
-  .services__feature-cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 16px 30px rgba(0, 57, 77, 0.16);
-    filter: brightness(1.02);
   }
 }
 

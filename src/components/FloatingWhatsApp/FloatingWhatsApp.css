@@ -16,7 +16,7 @@
   z-index: 38;
   transform: translateZ(0);
   transition:
-    transform 180ms ease,
+    transform 180ms var(--interaction-ease),
     box-shadow 180ms ease,
     filter 180ms ease;
   animation: floating-whatsapp-float 3.6s ease-in-out infinite;
@@ -75,6 +75,21 @@
     filter: brightness(1.02);
     animation-play-state: paused;
   }
+}
+
+.floating-whatsapp:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgba(31, 174, 88, 0.18),
+    0 14px 26px rgba(20, 84, 48, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.24) inset;
+}
+
+.floating-whatsapp:active {
+  transform: scale(0.99);
+  box-shadow:
+    0 8px 18px rgba(20, 84, 48, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.16) inset;
 }
 
 @media (max-width: 767px) {

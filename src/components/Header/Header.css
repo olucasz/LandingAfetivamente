@@ -87,13 +87,6 @@
   .header__link:hover {
     color: var(--primary-light);
   }
-
-  .header__cta:hover,
-  .header__mobile-cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 12px 24px rgba(0, 57, 77, 0.14);
-    filter: brightness(1.02);
-  }
 }
 
 @media (max-width: 1199px) {
@@ -136,6 +129,10 @@
   }
 
   .header__menu-button {
+    --control-hover-shadow: var(--shadow-control-soft-hover);
+    --control-active-shadow: var(--shadow-control-soft-active);
+    --control-focus-ring: rgba(15, 79, 103, 0.14);
+
     width: 42px;
     height: 42px;
     border: 0;
@@ -245,5 +242,11 @@
     font-size: var(--button-font-size);
     font-weight: var(--button-font-weight);
     box-shadow: var(--shadow-button-blue);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header__menu-button:hover {
+    background: rgba(15, 79, 103, 0.12);
   }
 }

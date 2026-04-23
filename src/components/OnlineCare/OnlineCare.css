@@ -338,9 +338,6 @@
 
   .online-care__cta:hover {
     background: var(--gradient-green-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 14px 30px var(--green-tint-22);
-    filter: none;
   }
 }
 
