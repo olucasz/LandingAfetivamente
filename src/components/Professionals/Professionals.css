@@ -360,13 +360,13 @@
 
 @media (max-width: 767px) {
   .professionals {
-    padding: var(--section-space) 0 calc(var(--section-space) + 12px);
+    padding: calc(var(--section-space) - 2px) 0 calc(var(--section-space) + 4px);
   }
 
   .professionals__header {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
   }
 
   .professionals__title {
@@ -387,7 +387,7 @@
 
   .professionals__carousel {
     --slide-gap: 14px;
-    margin-top: 28px;
+    margin-top: 22px;
   }
 
   .professionals__slide {
@@ -395,7 +395,7 @@
   }
 
   .professionals__card {
-    gap: 14px;
+    gap: 12px;
   }
 
   .professionals__media {
@@ -429,6 +429,6 @@
   }
 
   .professionals__dots {
-    margin-top: 22px;
+    margin-top: 18px;
   }
 }

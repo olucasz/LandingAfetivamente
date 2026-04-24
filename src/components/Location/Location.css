@@ -294,11 +294,11 @@
 
 @media (max-width: 767px) {
   .location {
-    padding: var(--section-space) 0 calc(var(--section-space) + 6px);
+    padding: calc(var(--section-space) - 2px) 0 var(--section-space);
   }
 
   .location__layout {
-    gap: 20px;
+    gap: 18px;
   }
 
   .location__content {
@@ -306,7 +306,7 @@
   }
 
   .location__header {
-    gap: 22px;
+    gap: 18px;
   }
 
   .location__title {
@@ -325,8 +325,8 @@
   }
 
   .location__card {
-    margin-top: 22px;
-    padding: 19px 16px 18px;
+    margin-top: 18px;
+    padding: 17px 15px 16px;
     border-radius: 22px;
   }
 
@@ -360,7 +360,7 @@
   }
 
   .location__cta {
-    margin-top: 14px;
+    margin-top: 12px;
     min-height: var(--button-height);
     padding: 0 var(--button-padding-x);
     font-size: var(--button-font-size);

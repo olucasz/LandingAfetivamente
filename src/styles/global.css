@@ -315,8 +315,9 @@ select {
     --container-inline: 32px;
     --header-top-space: 12px;
     --header-shell-height: 66px;
-    --section-space: 72px;
-    --section-space-tight: 60px;
+    --section-space: 68px;
+    --section-space-tight: 56px;
+    --section-heading-gap: 14px;
     --section-title-size: clamp(1.95rem, 7.8vw, 2.3rem);
     --section-subtitle-size: 0.9rem;
     --card-copy-size: 0.84rem;
