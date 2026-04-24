@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { m } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import avatar1 from "../../assets/avatar-jpg/avatar1.jpg";
 import avatar2 from "../../assets/avatar-jpg/avatar2.jpg";
 import avatar3 from "../../assets/avatar-jpg/avatar3.jpg";
@@ -19,7 +19,6 @@ import heroTopOvalWebp142 from "../../assets/optimized/hero/hero-top-oval-142.we
 import heroTopOvalWebp211 from "../../assets/optimized/hero/hero-top-oval-211.webp";
 import { WHATSAPP_URL } from "../../constants/whatsapp";
 import { motionEase } from "../Motion/motionTokens";
-import { useMotionBudget } from "../Motion/useMotionBudget";
 import "./Hero.css";
 
 const heroContentVariants = {
@@ -76,15 +75,12 @@ export default function Hero() {
   const MotionDiv = m.div;
   const MotionTitle = m.h1;
   const MotionParagraph = m.p;
-  const shouldReduceMotion = useMotionBudget({
-    includeViewport: false,
-    includePointer: false,
-  });
-  const heroInitial = shouldReduceMotion ? false : "hidden";
-  const heroAnimate = shouldReduceMotion ? undefined : "visible";
+  const prefersReducedMotion = useReducedMotion();
+  const heroInitial = prefersReducedMotion ? false : "hidden";
+  const heroAnimate = prefersReducedMotion ? undefined : "visible";
 
   useEffect(() => {
-    if (shouldReduceMotion || typeof window === "undefined") {
+    if (prefersReducedMotion || typeof window === "undefined") {
       return undefined;
     }
 
@@ -112,10 +108,10 @@ export default function Hero() {
     return () => {
       observer.disconnect();
     };
-  }, [shouldReduceMotion]);
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (shouldReduceMotion || !isHeroInView || isVisualAnimated) {
+    if (prefersReducedMotion || !isHeroInView || isVisualAnimated) {
       return undefined;
     }
 
@@ -142,7 +138,7 @@ export default function Hero() {
         window.cancelIdleCallback(idleId);
       }
     };
-  }, [isHeroInView, isVisualAnimated, shouldReduceMotion]);
+  }, [isHeroInView, isVisualAnimated, prefersReducedMotion]);
 
   return (
     <section className="hero" ref={heroSectionRef}>
@@ -248,7 +244,7 @@ export default function Hero() {
         >
           <div
             className={`hero__media-stage${
-              isVisualAnimated && !shouldReduceMotion ? " is-animated" : ""
+              isVisualAnimated && !prefersReducedMotion ? " is-animated" : ""
             }${isHeroInView ? " is-in-view" : ""}`}
           >
             <picture className="hero__oval-picture hero__oval-picture--main">
