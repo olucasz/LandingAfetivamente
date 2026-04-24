@@ -84,26 +84,41 @@
   --button-font-size: 0.92rem;
   --button-font-weight: 700;
   --interaction-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --interaction-duration-fast: 240ms;
+  --interaction-duration-base: 320ms;
+  --interaction-duration-slow: 400ms;
   --interaction-focus-ring-blue: rgba(0, 133, 179, 0.16);
   --interaction-focus-ring-green: rgba(var(--green-rgb), 0.18);
   --interaction-focus-ring-neutral: rgba(0, 57, 77, 0.14);
   --interaction-focus-ring-light: rgba(255, 255, 255, 0.22);
   --button-transition:
-    transform 180ms var(--interaction-ease),
-    box-shadow 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease,
-    filter 180ms ease,
-    opacity 180ms ease;
+    transform var(--interaction-duration-base) var(--interaction-ease),
+    box-shadow var(--interaction-duration-base) var(--interaction-ease),
+    background-color var(--interaction-duration-base) var(--interaction-ease),
+    border-color var(--interaction-duration-base) var(--interaction-ease),
+    color var(--interaction-duration-fast) var(--interaction-ease),
+    filter var(--interaction-duration-base) var(--interaction-ease),
+    opacity var(--interaction-duration-fast) ease;
   --control-transition:
-    transform 180ms var(--interaction-ease),
-    box-shadow 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease,
-    opacity 180ms ease,
-    width 180ms ease;
+    transform var(--interaction-duration-base) var(--interaction-ease),
+    box-shadow var(--interaction-duration-base) var(--interaction-ease),
+    background-color var(--interaction-duration-base) var(--interaction-ease),
+    border-color var(--interaction-duration-base) var(--interaction-ease),
+    color var(--interaction-duration-fast) var(--interaction-ease),
+    opacity var(--interaction-duration-fast) ease,
+    width var(--interaction-duration-base) var(--interaction-ease);
+  --card-hover-transition:
+    transform var(--interaction-duration-slow) var(--interaction-ease),
+    box-shadow var(--interaction-duration-slow) var(--interaction-ease),
+    border-color var(--interaction-duration-slow) var(--interaction-ease),
+    background-color var(--interaction-duration-slow) var(--interaction-ease);
+  --card-icon-transition:
+    transform var(--interaction-duration-slow) var(--interaction-ease),
+    background var(--interaction-duration-slow) var(--interaction-ease),
+    box-shadow var(--interaction-duration-slow) var(--interaction-ease),
+    color var(--interaction-duration-base) var(--interaction-ease);
+  --card-icon-glyph-transition:
+    transform var(--interaction-duration-base) var(--interaction-ease);
 
   --gradient-blue: linear-gradient(
     to right,

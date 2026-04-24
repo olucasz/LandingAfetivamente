@@ -16,9 +16,9 @@
   z-index: 38;
   transform: translateZ(0);
   transition:
-    transform 180ms var(--interaction-ease),
-    box-shadow 180ms ease,
-    filter 180ms ease;
+    transform var(--interaction-duration-base) var(--interaction-ease),
+    box-shadow var(--interaction-duration-base) var(--interaction-ease),
+    filter var(--interaction-duration-base) var(--interaction-ease);
   animation: floating-whatsapp-float 3.6s ease-in-out infinite;
   isolation: isolate;
 }

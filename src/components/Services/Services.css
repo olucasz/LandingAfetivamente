@@ -253,6 +253,7 @@
   justify-content: flex-start;
   gap: 14px;
   height: 100%;
+  transition: var(--card-hover-transition);
 }
 
 .services__card-heading {
@@ -272,11 +273,7 @@
   background: var(--green-tint-12);
   color: var(--green-primary);
   box-shadow: inset 0 0 0 1px var(--green-tint-16);
-  transition:
-    transform 220ms var(--interaction-ease),
-    background 220ms var(--interaction-ease),
-    box-shadow 220ms var(--interaction-ease),
-    color 220ms var(--interaction-ease);
+  transition: var(--card-icon-transition);
   transform-origin: center;
 }
 
@@ -287,7 +284,7 @@
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: transform 220ms var(--interaction-ease);
+  transition: var(--card-icon-glyph-transition);
 }
 
 .services__card-title {
