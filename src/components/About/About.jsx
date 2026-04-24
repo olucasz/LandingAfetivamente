@@ -23,14 +23,14 @@ import "./About.css";
 
 export default function About() {
   return (
-    <section className="about" id="sobre">
+    <section className="about" id="sobre" aria-labelledby="about-title">
       <div className="about__container">
         <RevealGroup
           className="about__block about__block--top"
           stagger={0.14}
           delayChildren={0.04}
         >
-          <RevealItem as="h2" className="about__title">
+          <RevealItem as="h2" className="about__title" id="about-title">
             Sobre a <span>AfetivaMente</span>
           </RevealItem>
 

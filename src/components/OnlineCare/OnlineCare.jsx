@@ -99,7 +99,12 @@ export default function OnlineCare() {
   }, [shouldReduceMotion]);
 
   return (
-    <section className="online-care" id="online" ref={sectionRef}>
+    <section
+      className="online-care"
+      id="online"
+      ref={sectionRef}
+      aria-labelledby="online-care-title"
+    >
       <div className="online-care__hero">
         <div className="online-care__container">
           <RevealGroup className="online-care__layout" stagger={0.14}>
@@ -109,7 +114,11 @@ export default function OnlineCare() {
                 className="online-care__header"
                 stagger={0.1}
               >
-                <RevealItem as="h2" className="online-care__title">
+                <RevealItem
+                  as="h2"
+                  className="online-care__title"
+                  id="online-care-title"
+                >
                   Atendimento <span>Online</span>
                   <br />
                   com a mesma excelência

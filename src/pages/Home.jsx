@@ -12,12 +12,14 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Professionals />
-      <OnlineCare />
-      <Location />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Services />
+        <Professionals />
+        <OnlineCare />
+        <Location />
+      </main>
       <Footer />
       <FloatingWhatsApp />
     </>

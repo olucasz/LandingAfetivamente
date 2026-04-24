@@ -163,6 +163,9 @@ export default function Professionals() {
                   professional;
                 const hasCredential = Boolean(credential);
                 const isCredentialExpanded = expandedCredentialId === id;
+                const credentialId = hasCredential
+                  ? `professional-credential-${id}`
+                  : undefined;
                 const { position, zoom } = parseImageCrop(imagePosition);
                 const imageStyle = {
                   objectPosition: position,
@@ -194,9 +197,19 @@ export default function Professionals() {
                       tabIndex={
                         isCompactTouchLayout && hasCredential ? 0 : undefined
                       }
+                      role={
+                        isCompactTouchLayout && hasCredential
+                          ? "button"
+                          : undefined
+                      }
                       aria-expanded={
                         isCompactTouchLayout && hasCredential
                           ? isCredentialExpanded
+                          : undefined
+                      }
+                      aria-controls={
+                        isCompactTouchLayout && hasCredential
+                          ? credentialId
                           : undefined
                       }
                     >
@@ -234,7 +247,10 @@ export default function Professionals() {
                             aria-hidden={!credential}
                           >
                             {credential ? (
-                              <p className="professionals__credential">
+                              <p
+                                className="professionals__credential"
+                                id={credentialId}
+                              >
                                 {credential}
                               </p>
                             ) : null}

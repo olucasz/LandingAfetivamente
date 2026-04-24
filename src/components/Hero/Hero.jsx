@@ -141,7 +141,12 @@ export default function Hero() {
   }, [isHeroInView, isVisualAnimated, prefersReducedMotion]);
 
   return (
-    <section className="hero" ref={heroSectionRef}>
+    <section
+      className="hero"
+      id="home"
+      ref={heroSectionRef}
+      aria-labelledby="hero-title"
+    >
       <div className="hero__container">
         {/* LEFT */}
         <MotionDiv
@@ -158,6 +163,7 @@ export default function Hero() {
           </MotionDiv>
 
           <MotionTitle
+            id="hero-title"
             className="hero__title"
             variants={createHeroReveal(18, 0.54)}
           >
