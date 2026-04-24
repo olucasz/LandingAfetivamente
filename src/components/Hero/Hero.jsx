@@ -18,9 +18,56 @@ import heroTopOvalAvif211 from "../../assets/optimized/hero/hero-top-oval-211.av
 import heroTopOvalWebp142 from "../../assets/optimized/hero/hero-top-oval-142.webp";
 import heroTopOvalWebp211 from "../../assets/optimized/hero/hero-top-oval-211.webp";
 import { WHATSAPP_URL } from "../../constants/whatsapp";
-import { fadeUp, staggerContainer } from "../Motion/motionTokens";
+import { motionEase } from "../Motion/motionTokens";
 import { useMotionBudget } from "../Motion/useMotionBudget";
 import "./Hero.css";
+
+const heroContentVariants = {
+  hidden: {
+    opacity: 1,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+function createHeroReveal(distance, duration = 0.7, delay = 0) {
+  return {
+    hidden: {
+      opacity: 0,
+      y: distance,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration,
+        delay,
+        ease: motionEase,
+      },
+    },
+  };
+}
+
+const heroMediaVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.58,
+      delay: 0.08,
+      ease: motionEase,
+    },
+  },
+};
 
 export default function Hero() {
   const heroSectionRef = useRef(null);
@@ -102,25 +149,37 @@ export default function Hero() {
           className="hero__content"
           initial={heroInitial}
           animate={heroAnimate}
-          variants={staggerContainer(0.14, 0.08)}
+          variants={heroContentVariants}
         >
-          <MotionDiv className="hero__eyebrow" variants={fadeUp(16)}>
+          <MotionDiv
+            className="hero__eyebrow"
+            variants={createHeroReveal(14, 0.46)}
+          >
             AfetivaMente • Clínica de Psicologia e Saúde
           </MotionDiv>
 
-          <MotionTitle className="hero__title" variants={fadeUp(20)}>
+          <MotionTitle
+            className="hero__title"
+            variants={createHeroReveal(18, 0.54)}
+          >
             Transformando vidas
             <br />
             com <span>ciência e afeto</span>
           </MotionTitle>
 
-          <MotionParagraph className="hero__description" variants={fadeUp(20)}>
+          <MotionParagraph
+            className="hero__description"
+            variants={createHeroReveal(20, 0.56, 0.01)}
+          >
             Tratamentos com acolhimento real e cuidado individualizado. Aqui,
             seu processo emocional ganha espaço seguro e acompanhamento
             profissional
           </MotionParagraph>
 
-          <MotionDiv className="hero__actions" variants={fadeUp(24)}>
+          <MotionDiv
+            className="hero__actions"
+            variants={createHeroReveal(22, 0.58, 0.03)}
+          >
             <a
               href={WHATSAPP_URL}
               className="hero__cta"
@@ -140,7 +199,10 @@ export default function Hero() {
               </span>
             </a>
 
-            <MotionDiv className="hero__support" variants={fadeUp(20)}>
+            <MotionDiv
+              className="hero__support"
+              variants={createHeroReveal(18, 0.5, 0.05)}
+            >
               <div className="hero__avatars">
                 <img
                   src={avatar3}
@@ -175,7 +237,12 @@ export default function Hero() {
         </MotionDiv>
 
         {/* RIGHT */}
-        <div className="hero__media">
+        <MotionDiv
+          className="hero__media"
+          initial={heroInitial}
+          animate={heroAnimate}
+          variants={heroMediaVariants}
+        >
           <div
             className={`hero__media-stage${
               isVisualAnimated && !shouldReduceMotion ? " is-animated" : ""
@@ -292,7 +359,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        </div>
+        </MotionDiv>
       </div>
     </section>
   );

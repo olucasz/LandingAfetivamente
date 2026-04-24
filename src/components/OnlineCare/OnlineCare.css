@@ -135,6 +135,14 @@
   padding-left: 22px;
 }
 
+.online-care__mock-stage {
+  --online-care-float-distance: 10px;
+  --online-care-float-duration: 5.1s;
+  --online-care-float-delay: 0.22s;
+
+  position: relative;
+}
+
 .online-care__mock-badge {
   position: absolute;
   top: 28px;
@@ -166,6 +174,27 @@
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-card-strong);
   max-width: 600px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .online-care__mock-stage.is-animated.is-in-view {
+    animation: online-care-float-bob var(--online-care-float-duration)
+      ease-in-out var(--online-care-float-delay) infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-origin: center 62%;
+  }
+}
+
+@keyframes online-care-float-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, calc(var(--online-care-float-distance) * -1), 0);
+  }
 }
 
 .online-care__mock-topbar {

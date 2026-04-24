@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import onlineProfessionalOneAvif420 from "../../assets/optimized/online/online-professional-1-420.avif";
 import onlineProfessionalOneAvif840 from "../../assets/optimized/online/online-professional-1-840.avif";
 import onlineProfessionalOneWebp420 from "../../assets/optimized/online/online-professional-1-420.webp";
@@ -12,6 +13,7 @@ import partnerSaneSaude from "../../assets/optimized/partners/partner-sane-saude
 import partnerUnimed from "../../assets/partners/unimed.svg";
 import { WHATSAPP_URL } from "../../constants/whatsapp";
 import { Reveal, RevealGroup, RevealItem } from "../Motion/Reveal";
+import { useMotionBudget } from "../Motion/useMotionBudget";
 import "./OnlineCare.css";
 
 const onlineBenefits = [
@@ -61,8 +63,43 @@ const partners = [
 ];
 
 export default function OnlineCare() {
+  const sectionRef = useRef(null);
+  const [isSectionInView, setIsSectionInView] = useState(false);
+  const shouldReduceMotion = useMotionBudget();
+
+  useEffect(() => {
+    if (shouldReduceMotion || typeof window === "undefined") {
+      return undefined;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      return undefined;
+    }
+
+    const sectionNode = sectionRef.current;
+    if (!sectionNode) {
+      return undefined;
+    }
+
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        setIsSectionInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.16,
+        rootMargin: "120px 0px 120px 0px",
+      },
+    );
+
+    observer.observe(sectionNode);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [shouldReduceMotion]);
+
   return (
-    <section className="online-care" id="online">
+    <section className="online-care" id="online" ref={sectionRef}>
       <div className="online-care__hero">
         <div className="online-care__container">
           <RevealGroup className="online-care__layout" stagger={0.14}>
@@ -109,71 +146,80 @@ export default function OnlineCare() {
               </RevealGroup>
             </RevealGroup>
 
-            <Reveal className="online-care__mock-wrap" distance={30}>
-              <div className="online-care__mock-badge" aria-hidden="true">
-                <VideoChatIcon />
-              </div>
-
-              <article className="online-care__mock">
-                <div className="online-care__mock-topbar" aria-hidden="true">
-                  <span />
-                  <span />
-                  <span />
+            <Reveal
+              className="online-care__mock-wrap"
+              distance={30}
+            >
+              <div
+                className={`online-care__mock-stage${
+                  shouldReduceMotion ? "" : " is-animated"
+                }${isSectionInView ? " is-in-view" : ""}`}
+              >
+                <div className="online-care__mock-badge" aria-hidden="true">
+                  <VideoChatIcon />
                 </div>
 
-                <div className="online-care__mock-screen">
-                  {onlineParticipants.map(
-                    ({ id, alt, imagePosition, image }) => (
-                      <div className="online-care__participant" key={id}>
-                        <picture>
-                          <source
-                            type="image/avif"
-                            srcSet={`${image.avif420} 420w, ${image.avif840} 840w`}
-                            sizes="(max-width: 767px) 40vw, 280px"
-                          />
-                          <source
-                            type="image/webp"
-                            srcSet={`${image.webp420} 420w, ${image.webp840} 840w`}
-                            sizes="(max-width: 767px) 40vw, 280px"
-                          />
-                          <img
-                            src={image.webp420}
-                            alt={alt}
-                            width="840"
-                            height="1260"
-                            loading="lazy"
-                            decoding="async"
-                            fetchPriority="low"
-                            style={{ objectPosition: imagePosition }}
-                          />
-                        </picture>
-                        <span
-                          className="online-care__participant-icon"
-                          aria-hidden="true"
-                        >
-                          <ConnectionIcon />
-                        </span>
-                      </div>
-                    ),
-                  )}
-                </div>
-
-                <div className="online-care__mock-footer">
-                  <div className="online-care__mock-copy">
-                    <strong>Via Google Meet</strong>
-                    <span>Agende Agora!</span>
+                <article className="online-care__mock">
+                  <div className="online-care__mock-topbar" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
                   </div>
 
-                  <a
-                    href={WHATSAPP_URL}
-                    className="online-care__cta"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Agendar consulta Online
-                  </a>
-                </div>
-              </article>
+                  <div className="online-care__mock-screen">
+                    {onlineParticipants.map(
+                      ({ id, alt, imagePosition, image }) => (
+                        <div className="online-care__participant" key={id}>
+                          <picture>
+                            <source
+                              type="image/avif"
+                              srcSet={`${image.avif420} 420w, ${image.avif840} 840w`}
+                              sizes="(max-width: 767px) 40vw, 280px"
+                            />
+                            <source
+                              type="image/webp"
+                              srcSet={`${image.webp420} 420w, ${image.webp840} 840w`}
+                              sizes="(max-width: 767px) 40vw, 280px"
+                            />
+                            <img
+                              src={image.webp420}
+                              alt={alt}
+                              width="840"
+                              height="1260"
+                              loading="lazy"
+                              decoding="async"
+                              fetchPriority="low"
+                              style={{ objectPosition: imagePosition }}
+                            />
+                          </picture>
+                          <span
+                            className="online-care__participant-icon"
+                            aria-hidden="true"
+                          >
+                            <ConnectionIcon />
+                          </span>
+                        </div>
+                      ),
+                    )}
+                  </div>
+
+                  <div className="online-care__mock-footer">
+                    <div className="online-care__mock-copy">
+                      <strong>Via Google Meet</strong>
+                      <span>Agende Agora!</span>
+                    </div>
+
+                    <a
+                      href={WHATSAPP_URL}
+                      className="online-care__cta"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Agendar consulta Online
+                    </a>
+                  </div>
+                </article>
+              </div>
             </Reveal>
           </RevealGroup>
         </div>
