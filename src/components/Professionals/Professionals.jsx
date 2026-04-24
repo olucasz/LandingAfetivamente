@@ -6,6 +6,7 @@ import "./Professionals.css";
 
 const DEFAULT_IMAGE_POSITION = "center 20%";
 const DEFAULT_IMAGE_ZOOM = 1.06;
+const EXPANDABLE_CREDENTIAL_QUERY = "(max-width: 1024px)";
 
 function parseImageCrop(imagePosition) {
   if (!imagePosition || typeof imagePosition !== "string") {
@@ -26,6 +27,10 @@ function parseImageCrop(imagePosition) {
 }
 
 export default function Professionals() {
+  const [isCompactTouchLayout, setIsCompactTouchLayout] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia(EXPANDABLE_CREDENTIAL_QUERY).matches;
+  });
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     containScroll: "trimSnaps",
@@ -39,6 +44,27 @@ export default function Professionals() {
   const [scrollSnaps, setScrollSnaps] = useState([]);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [expandedCredentialId, setExpandedCredentialId] = useState(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const mediaQuery = window.matchMedia(EXPANDABLE_CREDENTIAL_QUERY);
+
+    function handleMediaQueryChange(event) {
+      setIsCompactTouchLayout(event.matches);
+
+      if (!event.matches) {
+        setExpandedCredentialId(null);
+      }
+    }
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -70,6 +96,21 @@ export default function Professionals() {
 
   function scrollTo(index) {
     emblaApi?.scrollTo(index);
+  }
+
+  function toggleCredential(id, hasCredential) {
+    if (!isCompactTouchLayout || !hasCredential) return;
+
+    setExpandedCredentialId((currentId) => (currentId === id ? null : id));
+  }
+
+  function handleCardKeyDown(event, id, hasCredential) {
+    if (!isCompactTouchLayout || !hasCredential) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleCredential(id, hasCredential);
+    }
   }
 
   return (
@@ -118,12 +159,28 @@ export default function Professionals() {
           <div className="professionals__viewport" ref={emblaRef}>
             <RevealGroup className="professionals__track" stagger={0.08}>
               {activeProfessionals.map((professional) => {
-                const { id, name, role, image, imagePosition } = professional;
+                const { id, name, role, credential, image, imagePosition } =
+                  professional;
+                const hasCredential = Boolean(credential);
+                const isCredentialExpanded = expandedCredentialId === id;
+                const credentialId = hasCredential
+                  ? `professional-credential-${id}`
+                  : undefined;
                 const { position, zoom } = parseImageCrop(imagePosition);
                 const imageStyle = {
                   objectPosition: position,
                   "--professional-image-zoom": zoom,
                 };
+
+                const cardClassName = [
+                  "professionals__card",
+                  hasCredential ? "professionals__card--has-credential" : "",
+                  isCompactTouchLayout && isCredentialExpanded
+                    ? "professionals__card--credential-open"
+                    : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ");
 
                 return (
                   <RevealItem
@@ -131,18 +188,42 @@ export default function Professionals() {
                     key={id}
                     distance={22}
                   >
-                    <article className="professionals__card">
+                    <article
+                      className={cardClassName}
+                      onClick={() => toggleCredential(id, hasCredential)}
+                      onKeyDown={(event) =>
+                        handleCardKeyDown(event, id, hasCredential)
+                      }
+                      tabIndex={
+                        isCompactTouchLayout && hasCredential ? 0 : undefined
+                      }
+                      role={
+                        isCompactTouchLayout && hasCredential
+                          ? "button"
+                          : undefined
+                      }
+                      aria-expanded={
+                        isCompactTouchLayout && hasCredential
+                          ? isCredentialExpanded
+                          : undefined
+                      }
+                      aria-controls={
+                        isCompactTouchLayout && hasCredential
+                          ? credentialId
+                          : undefined
+                      }
+                    >
                       <div className="professionals__media">
                         <picture>
                           <source
                             type="image/avif"
                             srcSet={`${image.avif420} 420w, ${image.avif840} 840w`}
-                            sizes="(max-width: 767px) 86vw, (max-width: 899px) 46vw, (max-width: 1199px) 32vw, 24vw"
+                            sizes="(max-width: 767px) 86vw, (max-width: 1024px) 43vw, (max-width: 1199px) 32vw, 24vw"
                           />
                           <source
                             type="image/webp"
                             srcSet={`${image.webp420} 420w, ${image.webp840} 840w`}
-                            sizes="(max-width: 767px) 86vw, (max-width: 899px) 46vw, (max-width: 1199px) 32vw, 24vw"
+                            sizes="(max-width: 767px) 86vw, (max-width: 1024px) 43vw, (max-width: 1199px) 32vw, 24vw"
                           />
                           <img
                             src={image.webp420}
@@ -159,7 +240,22 @@ export default function Professionals() {
 
                       <div className="professionals__content">
                         <h3 className="professionals__name">{name}</h3>
-                        <p className="professionals__role">{role}</p>
+                        <div className="professionals__meta">
+                          <p className="professionals__role">{role}</p>
+                          <div
+                            className="professionals__credential-slot"
+                            aria-hidden={!credential}
+                          >
+                            {credential ? (
+                              <p
+                                className="professionals__credential"
+                                id={credentialId}
+                              >
+                                {credential}
+                              </p>
+                            ) : null}
+                          </div>
+                        </div>
                       </div>
                     </article>
                   </RevealItem>

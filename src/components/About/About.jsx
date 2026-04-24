@@ -23,22 +23,19 @@ import "./About.css";
 
 export default function About() {
   return (
-    <section className="about" id="sobre">
+    <section className="about" id="sobre" aria-labelledby="about-title">
       <div className="about__container">
         <RevealGroup
           className="about__block about__block--top"
           stagger={0.14}
           delayChildren={0.04}
         >
-          <RevealItem as="h2" className="about__title">
+          <RevealItem as="h2" className="about__title" id="about-title">
             Sobre a <span>AfetivaMente</span>
           </RevealItem>
 
           <RevealGroup className="about__top-grid" stagger={0.14}>
-            <RevealItem
-              className="about__image-box"
-              whileHover={{ y: -4 }}
-            >
+            <RevealItem className="about__image-box" whileHover={{ y: -4 }}>
               <picture>
                 <source
                   type="image/avif"
@@ -64,10 +61,11 @@ export default function About() {
 
             <RevealItem className="about__text-box">
               <p>
-                A <strong>AfetivaMente</strong> é uma clínica multidisciplinar
-                que une ciência e acolhimento para oferecer um cuidado completo
-                em saúde mental. Surgimos em 2021 do desejo de criar um espaço
-                de atendimento integral.
+                A <strong>Afetivamente </strong> é uma clínica multidisciplinar,
+                nascida em 2021, com o desejo de transformar e melhorar a
+                relação das pessoas com sua saúde mental e autocuidado. Aqui,
+                unimos ciência e afetividade para oferecer aos nossos pacientes
+                um cuidado integral em saúde.
               </p>
             </RevealItem>
           </RevealGroup>

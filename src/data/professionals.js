@@ -53,6 +53,7 @@ export const professionals = [
     id: 1,
     name: "Gabriela Cuani",
     role: "Psicóloga",
+    credential: "CRP: 08/17807",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional1Avif420,
@@ -65,7 +66,8 @@ export const professionals = [
   {
     id: 2,
     name: "Rodrigo da Silva Colleti",
-    role: "Médico psiquiatra",
+    role: "Médico",
+    credential: "CRM/PR: 38928",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional2Avif420,
@@ -79,6 +81,7 @@ export const professionals = [
     id: 3,
     name: "Natália Terra",
     role: "Psicóloga",
+    credential: "CRP: 08/23945",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional3Avif420,
@@ -105,6 +108,7 @@ export const professionals = [
     id: 5,
     name: "Leonardo Pereira",
     role: "Psicólogo",
+    credential: "CRP: 08/23945",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional5Avif420,
@@ -118,6 +122,7 @@ export const professionals = [
     id: 6,
     name: "Nathiele Louzano",
     role: "Nutricionista",
+    credential: "CRN8: 14350",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional6Avif420,
@@ -131,6 +136,7 @@ export const professionals = [
     id: 7,
     name: "Jessica Generoso",
     role: "Psicóloga",
+    credential: "CRP: 08/23511",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional7Avif420,
@@ -144,6 +150,7 @@ export const professionals = [
     id: 8,
     name: "Vera Lúcia Melchiori Martins",
     role: "Fonoaudióloga",
+    credential: "CRFa 4262",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional8Avif420,
@@ -157,6 +164,7 @@ export const professionals = [
     id: 9,
     name: "Bárbara Nagano",
     role: "Psicóloga",
+    credential: "CRP: 08/28717",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional9Avif420,
@@ -169,7 +177,8 @@ export const professionals = [
   {
     id: 10,
     name: "Thabata Dias",
-    role: "Psicopedagoga",
+    role: "Psicóloga",
+    credential: "CRP: 08/26452",
     imagePosition: "50% 20% / 1.06",
     image: createImageSet(
       professional10Avif420,

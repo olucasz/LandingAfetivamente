@@ -4,10 +4,10 @@
   overflow: clip;
   background: linear-gradient(
     348deg,
-    rgba(151, 174, 25, 0.24) 0%,
-    rgba(151, 174, 25, 0.14) 26%,
-    rgba(151, 174, 25, 0.06) 52%,
-    rgba(151, 174, 25, 0) 78%
+    rgba(var(--green-rgb), 0.24) 0%,
+    rgba(var(--green-rgb), 0.14) 26%,
+    rgba(var(--green-rgb), 0.06) 52%,
+    rgba(var(--green-rgb), 0) 78%
   );
 }
 
@@ -46,7 +46,7 @@
 }
 
 .online-care__title span {
-  color: var(--green-main);
+  color: var(--green-primary);
 }
 
 .online-care__description {
@@ -78,11 +78,9 @@
   flex-direction: column;
   gap: 11px;
   transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease,
-    background-color 220ms ease;
-  transform-origin: center;
+    box-shadow 260ms var(--interaction-ease),
+    border-color 260ms var(--interaction-ease),
+    background-color 260ms var(--interaction-ease);
 }
 
 .online-care__benefit-heading {
@@ -98,9 +96,15 @@
   border-radius: 12px;
   display: grid;
   place-items: center;
-  background: rgba(151, 174, 25, 0.12);
-  color: var(--green-main);
-  box-shadow: inset 0 0 0 1px rgba(151, 174, 25, 0.16);
+  background: var(--green-tint-12);
+  color: var(--green-primary);
+  box-shadow: inset 0 0 0 1px var(--green-tint-16);
+  transition:
+    transform 220ms var(--interaction-ease),
+    background 220ms var(--interaction-ease),
+    box-shadow 220ms var(--interaction-ease),
+    color 220ms var(--interaction-ease);
+  transform-origin: center;
 }
 
 .online-care__benefit-icon svg {
@@ -110,6 +114,7 @@
   stroke-width: 1.85;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: transform 220ms var(--interaction-ease);
 }
 
 .online-care__benefit-title {
@@ -133,6 +138,14 @@
 .online-care__mock-wrap {
   position: relative;
   padding-left: 22px;
+}
+
+.online-care__mock-stage {
+  --online-care-float-distance: 10px;
+  --online-care-float-duration: 5.1s;
+  --online-care-float-delay: 0.22s;
+
+  position: relative;
 }
 
 .online-care__mock-badge {
@@ -166,6 +179,27 @@
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-card-strong);
   max-width: 600px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .online-care__mock-stage.is-animated.is-in-view {
+    animation: online-care-float-bob var(--online-care-float-duration)
+      ease-in-out var(--online-care-float-delay) infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-origin: center 62%;
+  }
+}
+
+@keyframes online-care-float-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, calc(var(--online-care-float-distance) * -1), 0);
+  }
 }
 
 .online-care__mock-topbar {
@@ -218,26 +252,27 @@
   transform: scale(1.05);
 }
 
-.online-care__participant-name {
+.online-care__participant-icon {
   position: absolute;
   left: 12px;
-  right: 12px;
   bottom: 12px;
-  min-height: 30px;
-  padding: 0 12px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
-  background: linear-gradient(
-    to right,
-    rgba(18, 30, 42, 0.72),
-    rgba(18, 30, 42, 0.32)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 30, 42, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.78rem;
-  line-height: 1;
-  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.online-care__participant-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .online-care__mock-footer {
@@ -291,6 +326,7 @@
 .online-care__partners {
   background: var(--surface-card);
   padding: var(--section-space-tight) 0 calc(var(--section-space) - 8px);
+  scroll-margin-top: 126px;
 }
 
 .online-care__partners-title {
@@ -328,16 +364,30 @@
 
 @media (hover: hover) and (pointer: fine) {
   .online-care__benefit-card:hover {
-    transform: translateY(-2px) scale(1.012);
-    border-color: rgba(151, 174, 25, 0.18);
-    background-color: #fbfdf8;
+    border-color: rgba(var(--green-rgb), 0.075);
+    background-color: rgba(var(--green-rgb), 0.009);
     box-shadow: var(--shadow-card-soft);
   }
 
+  .online-care__benefit-card:hover .online-care__benefit-icon {
+    transform: translateY(-1px) scale(1.045);
+    background: linear-gradient(
+      135deg,
+      rgba(var(--green-rgb), 0.22) 0%,
+      rgba(var(--green-rgb), 0.14) 100%
+    );
+    color: var(--green-dark);
+    box-shadow:
+      0 6px 14px rgba(var(--green-rgb), 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .online-care__benefit-card:hover .online-care__benefit-icon svg {
+    transform: scale(1.02);
+  }
+
   .online-care__cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 14px 30px rgba(151, 174, 25, 0.22);
-    filter: brightness(1.015);
+    background: var(--gradient-green-hover);
   }
 }
 
@@ -463,8 +513,8 @@
 
 @media (max-width: 767px) {
   .online-care__layout {
-    gap: 28px;
-    padding: var(--section-space) 0;
+    gap: 22px;
+    padding: calc(var(--section-space) - 4px) 0 calc(var(--section-space) - 2px);
   }
 
   .online-care__content {
@@ -493,19 +543,19 @@
 
   .online-care__benefits {
     grid-template-columns: 1fr;
-    margin-top: 24px;
-    gap: 12px;
+    margin-top: 18px;
+    gap: 10px;
   }
 
   .online-care__benefit-card {
     min-height: 0;
-    padding: 18px 16px;
+    padding: 16px 15px;
     border-radius: 20px;
-    gap: 12px;
+    gap: 10px;
   }
 
   .online-care__mock-wrap {
-    padding-top: 18px;
+    padding-top: 12px;
   }
 
   .online-care__mock-badge {
@@ -526,32 +576,35 @@
   }
 
   .online-care__mock-topbar {
-    padding: 13px 14px 11px;
+    padding: 12px 13px 10px;
   }
 
   .online-care__mock-screen {
-    gap: 10px;
-    padding: 8px 14px 0;
+    gap: 8px;
+    padding: 8px 12px 0;
   }
 
   .online-care__participant {
     border-radius: 14px;
   }
 
-  .online-care__participant-name {
+  .online-care__participant-icon {
     left: 8px;
-    right: 8px;
     bottom: 8px;
-    min-height: 28px;
-    padding: 0 10px;
-    font-size: 0.72rem;
+    width: 30px;
+    height: 30px;
+  }
+
+  .online-care__participant-icon svg {
+    width: 14px;
+    height: 14px;
   }
 
   .online-care__mock-footer {
-    padding: 14px;
+    padding: 12px;
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
+    gap: 12px;
   }
 
   .online-care__mock-copy {
@@ -575,7 +628,7 @@
   }
 
   .online-care__partners {
-    padding: var(--section-space-tight) 0 calc(var(--section-space) - 2px);
+    padding: calc(var(--section-space-tight) - 2px) 0 calc(var(--section-space) - 6px);
   }
 
   .online-care__partners-title {
@@ -584,7 +637,7 @@
   }
 
   .online-care__partners-grid {
-    margin-top: 32px;
+    margin-top: 24px;
     grid-template-columns: 1fr;
     gap: 18px;
   }

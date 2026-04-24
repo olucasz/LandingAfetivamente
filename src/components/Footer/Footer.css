@@ -221,7 +221,7 @@
 
 @media (max-width: 767px) {
   .footer {
-    padding: 42px 0 28px;
+    padding: 36px 0 24px;
   }
 
   .footer__top {
@@ -230,12 +230,12 @@
       "brand"
       "links"
       "legal";
-    gap: 34px;
+    gap: 28px;
   }
 
   .footer__brand {
     justify-items: center;
-    gap: 24px;
+    gap: 20px;
   }
 
   .footer__brand-header {
@@ -282,8 +282,8 @@
   }
 
   .footer__bottom {
-    margin-top: 42px;
-    padding-top: 20px;
+    margin-top: 34px;
+    padding-top: 18px;
   }
 
   .footer__copyright {

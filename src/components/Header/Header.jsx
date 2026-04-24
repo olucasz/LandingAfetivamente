@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import logo from "../../assets/header-logo.png";
 import { navigationItems } from "../../constants/navigation";
 import { WHATSAPP_URL } from "../../constants/whatsapp";
+import { scrollToHashTarget } from "../../utils/hashNavigation";
 import "./Header.css";
 
 export default function Header() {
@@ -47,26 +48,9 @@ export default function Header() {
   };
 
   const handleNavigationClick = (event, href) => {
-    if (!href.startsWith("#")) return;
-
-    const target = document.getElementById(href.slice(1));
-    if (!target) return;
-
-    event.preventDefault();
-    setIsMobileMenuOpen(false);
-
-    const header = document.querySelector(".header");
-    const headerHeight = header?.getBoundingClientRect().height ?? 0;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY;
-
-    window.scrollTo({
-      top: Math.max(targetTop - headerHeight - 16, 0),
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
+    scrollToHashTarget(event, href, {
+      onBeforeScroll: () => setIsMobileMenuOpen(false),
     });
-
-    window.history.pushState(null, "", href);
   };
 
   return (
@@ -76,7 +60,11 @@ export default function Header() {
       }`}
     >
       <div className="header__container">
-        <a href="/" className="header__logo">
+        <a
+          href="#home"
+          className="header__logo"
+          onClick={(event) => handleNavigationClick(event, "#home")}
+        >
           <img
             src={logo}
             alt="Afetivamente"

@@ -1,5 +1,6 @@
 import footerLogo from "../../assets/optimized/footer/footer-logo-180.webp";
 import { navigationItems } from "../../constants/navigation";
+import { scrollToHashTarget } from "../../utils/hashNavigation";
 import "./Footer.css";
 
 const socialLinks = [
@@ -17,6 +18,9 @@ const socialLinks = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const handleNavigationClick = (event, href) => {
+    scrollToHashTarget(event, href);
+  };
 
   return (
     <footer className="footer" aria-labelledby="footer-brand">
@@ -25,10 +29,11 @@ export default function Footer() {
           <div className="footer__brand">
             <div className="footer__brand-header">
               <a
-                href="/"
+                href="#home"
                 className="footer__logo"
                 id="footer-brand"
                 aria-label="AfetivaMente"
+                onClick={(event) => handleNavigationClick(event, "#home")}
               >
                 <img
                   src={footerLogo}
@@ -65,7 +70,12 @@ export default function Footer() {
 
             <nav className="footer__nav" aria-label="Navegação do rodapé">
               {navigationItems.map(({ href, label }) => (
-                <a key={href} href={href} className="footer__nav-link">
+                <a
+                  key={href}
+                  href={href}
+                  className="footer__nav-link"
+                  onClick={(event) => handleNavigationClick(event, href)}
+                >
                   {label}
                 </a>
               ))}

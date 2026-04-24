@@ -25,7 +25,7 @@
 }
 
 .about__title span {
-  color: var(--green-main);
+  color: var(--green-primary);
 }
 
 .about__top-grid {
@@ -92,7 +92,7 @@
 }
 
 .about__subtitle span {
-  color: var(--green-main);
+  color: var(--green-primary);
 }
 
 .about__description {
@@ -204,11 +204,11 @@
 
 @media (max-width: 767px) {
   .about {
-    padding-top: var(--section-space);
+    padding-top: calc(var(--section-space) - 2px);
   }
 
   .about__block--top {
-    padding-bottom: 60px;
+    padding-bottom: 52px;
   }
 
   .about__title {
@@ -221,9 +221,9 @@
   }
 
   .about__top-grid {
-    margin-top: 26px;
+    margin-top: 22px;
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 18px;
     justify-items: stretch;
   }
 
@@ -252,7 +252,7 @@
   }
 
   .about__highlight {
-    padding: 58px 0 70px;
+    padding: 52px 0 60px;
   }
 
   .about__block--bottom {
@@ -271,7 +271,7 @@
   }
 
   .about__description {
-    margin-top: 18px;
+    margin-top: 14px;
     margin-left: auto;
     margin-right: auto;
     max-width: 38ch;
@@ -282,7 +282,7 @@
 
   .about__gallery {
     width: 100%;
-    margin-top: 32px;
+    margin-top: 26px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }

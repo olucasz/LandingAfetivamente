@@ -28,12 +28,13 @@ const serviceCards = [
   {
     title: "Psicologia",
     description:
-      "Atendimento psicológico para crianças, adolescentes, adultos e idosos",
+      "Atendimento psicológico, de abordagem cognitivo comportamental ou psicanalítica, para todas as idades",
     icon: <PsychologyIcon />,
   },
   {
     title: "Neuropsicologia",
-    description: "Avaliação e acompanhamento cognitivo e comportamental",
+    description:
+      "Avaliação voltada para TEA, TDAH, transtornos específicos de aprendizagem, TAG, TOD, dentre outros. Reabilitação cognitiva e comportamental",
     icon: <NeuropsychologyIcon />,
   },
   {
@@ -44,8 +45,7 @@ const serviceCards = [
   },
   {
     title: "Psiquiatria",
-    description:
-      "Consultas médicas especializadas com enfoque em saúde mental",
+    description: "Consultas médicas especializadas com enfoque em saúde mental",
     icon: <PsychiatryIcon />,
   },
   {
@@ -125,7 +125,11 @@ export default function Services() {
   }
 
   return (
-    <section className="services" id="servicos" aria-labelledby="services-title">
+    <section
+      className="services"
+      id="servicos"
+      aria-labelledby="services-title"
+    >
       <div className="services__container">
         <RevealGroup as="header" className="services__header" stagger={0.1}>
           <RevealItem as="h2" className="services__title" id="services-title">
@@ -138,10 +142,17 @@ export default function Services() {
           </RevealItem>
         </RevealGroup>
 
-        <RevealGroup className="services__layout" stagger={0.12} delayChildren={0.04}>
+        <RevealGroup
+          className="services__layout"
+          stagger={0.12}
+          delayChildren={0.04}
+        >
           <RevealItem as="article" className="services__feature-card">
             <div className="services__feature-media">
-              <div className="services__window-dots" aria-label="Fotos de serviços">
+              <div
+                className="services__window-dots"
+                aria-label="Fotos de serviços"
+              >
                 {serviceSlides.map((slide, index) => (
                   <button
                     type="button"
@@ -184,12 +195,12 @@ export default function Services() {
                         <source
                           type="image/avif"
                           srcSet={`${slide.avif420} 420w, ${slide.avif840} 840w`}
-                          sizes="(max-width: 767px) calc(100vw - 64px), 380px"
+                          sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1024px) 38vw, 380px"
                         />
                         <source
                           type="image/webp"
                           srcSet={`${slide.webp420} 420w, ${slide.webp840} 840w`}
-                          sizes="(max-width: 767px) calc(100vw - 64px), 380px"
+                          sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1024px) 38vw, 380px"
                         />
                         <img
                           src={slide.webp840}
@@ -227,7 +238,11 @@ export default function Services() {
             </div>
           </RevealItem>
 
-          <RevealGroup className="services__grid" stagger={0.08} delayChildren={0.06}>
+          <RevealGroup
+            className="services__grid"
+            stagger={0.08}
+            delayChildren={0.06}
+          >
             {serviceCards.map(({ title, description, icon }) => (
               <RevealItem as="article" key={title} className="services__card">
                 <div className="services__card-heading">
