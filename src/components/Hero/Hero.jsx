@@ -76,7 +76,10 @@ export default function Hero() {
   const MotionDiv = m.div;
   const MotionTitle = m.h1;
   const MotionParagraph = m.p;
-  const shouldReduceMotion = useMotionBudget();
+  const shouldReduceMotion = useMotionBudget({
+    includeViewport: false,
+    includePointer: false,
+  });
   const heroInitial = shouldReduceMotion ? false : "hidden";
   const heroAnimate = shouldReduceMotion ? undefined : "visible";
 
