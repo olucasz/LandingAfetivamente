@@ -50,7 +50,6 @@
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-card);
   transition:
-    transform 220ms ease,
     box-shadow 220ms ease,
     border-color 220ms ease,
     background-color 220ms ease;
@@ -273,6 +272,12 @@
   background: var(--green-tint-12);
   color: var(--green-primary);
   box-shadow: inset 0 0 0 1px var(--green-tint-16);
+  transition:
+    transform 220ms var(--interaction-ease),
+    background 220ms var(--interaction-ease),
+    box-shadow 220ms var(--interaction-ease),
+    color 220ms var(--interaction-ease);
+  transform-origin: center;
 }
 
 .services__card-icon svg {
@@ -282,6 +287,7 @@
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: transform 220ms var(--interaction-ease);
 }
 
 .services__card-title {
@@ -311,10 +317,26 @@
   }
 
   .services__card:hover {
-    transform: translateY(-2px) scale(1.012);
-    border-color: var(--green-tint-18);
-    background-color: rgba(var(--green-rgb), 0.05);
+    border-color: rgba(var(--green-rgb), 0.075);
+    background-color: rgba(var(--green-rgb), 0.009);
     box-shadow: var(--shadow-card-soft);
+  }
+
+  .services__card:hover .services__card-icon {
+    transform: translateY(-1px) scale(1.045);
+    background: linear-gradient(
+      135deg,
+      rgba(var(--green-rgb), 0.22) 0%,
+      rgba(var(--green-rgb), 0.14) 100%
+    );
+    color: var(--green-dark);
+    box-shadow:
+      0 6px 14px rgba(var(--green-rgb), 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .services__card:hover .services__card-icon svg {
+    transform: scale(1.02);
   }
 }
 
