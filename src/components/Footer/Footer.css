@@ -139,6 +139,18 @@
   color: #8083a0;
 }
 
+.footer__legal-link {
+  text-decoration: none;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.34;
+  font-weight: 700;
+  color: var(--primary-dark);
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
 .footer__bottom {
   margin-top: 74px;
   padding-top: 28px;
@@ -157,6 +169,11 @@
 @media (hover: hover) and (pointer: fine) {
   .footer__nav-link:hover {
     color: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+
+  .footer__legal-link:hover {
+    color: var(--primary-light);
     transform: translateY(-1px);
   }
 
@@ -187,7 +204,8 @@
   }
 
   .footer__nav-link,
-  .footer__legal-copy {
+  .footer__legal-copy,
+  .footer__legal-link {
     font-size: 0.82rem;
   }
 

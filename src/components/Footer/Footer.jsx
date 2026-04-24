@@ -1,5 +1,9 @@
 import footerLogo from "../../assets/optimized/footer/footer-logo-180.webp";
 import { navigationItems } from "../../constants/navigation";
+import {
+  PRIVACY_POLICY_PATH,
+  resolveNavigationHref,
+} from "../../constants/routes";
 import { scrollToHashTarget } from "../../utils/hashNavigation";
 import "./Footer.css";
 
@@ -16,8 +20,15 @@ const socialLinks = [
   },
 ];
 
-export default function Footer() {
+export default function Footer({
+  homeHref = "#home",
+  navigationBasePath = "",
+}) {
   const currentYear = new Date().getFullYear();
+  const isPrivacyPolicyPage =
+    typeof window !== "undefined" &&
+    window.location.pathname === PRIVACY_POLICY_PATH;
+
   const handleNavigationClick = (event, href) => {
     scrollToHashTarget(event, href);
   };
@@ -29,11 +40,11 @@ export default function Footer() {
           <div className="footer__brand">
             <div className="footer__brand-header">
               <a
-                href="#home"
+                href={homeHref}
                 className="footer__logo"
                 id="footer-brand"
                 aria-label="AfetivaMente"
-                onClick={(event) => handleNavigationClick(event, "#home")}
+                onClick={(event) => handleNavigationClick(event, homeHref)}
               >
                 <img
                   src={footerLogo}
@@ -72,7 +83,7 @@ export default function Footer() {
               {navigationItems.map(({ href, label }) => (
                 <a
                   key={href}
-                  href={href}
+                  href={resolveNavigationHref(navigationBasePath, href)}
                   className="footer__nav-link"
                   onClick={(event) => handleNavigationClick(event, href)}
                 >
@@ -90,6 +101,14 @@ export default function Footer() {
               <br />
               CRP - 08/PJ-02254
             </p>
+
+            <a
+              href={PRIVACY_POLICY_PATH}
+              className="footer__legal-link"
+              aria-current={isPrivacyPolicyPage ? "page" : undefined}
+            >
+              Política de Privacidade
+            </a>
           </div>
         </div>
 
