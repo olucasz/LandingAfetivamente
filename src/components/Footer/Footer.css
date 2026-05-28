@@ -297,8 +297,17 @@
   }
 
   .footer__brand {
+    justify-self: center;
     justify-items: center;
+    width: min(100%, 340px);
+    max-width: none;
     gap: 20px;
+  }
+
+  .footer__links,
+  .footer__legal {
+    justify-self: center;
+    width: min(100%, 340px);
   }
 
   .footer__brand-header {
@@ -347,6 +356,12 @@
   .footer__info-link,
   .footer__brand-link {
     justify-self: center;
+  }
+
+  .footer__info-copy,
+  .footer__meta-note,
+  .footer__copyright {
+    text-wrap: balance;
   }
 
   .footer__heading {
