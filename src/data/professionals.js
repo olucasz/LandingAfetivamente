@@ -82,7 +82,7 @@ export const professionals = [
     name: "Natália Terra",
     role: "Psicóloga",
     credential: "CRP: 08/23945",
-    imagePosition: "50% 20% / 1.06",
+    imagePosition: "50% 18% / 1.12",
     image: createImageSet(
       professional3Avif420,
       professional3Avif840,
