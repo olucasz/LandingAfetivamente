@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import logo from "../../assets/header-logo.png";
 import { navigationItems } from "../../constants/navigation";
+import { resolveNavigationHref } from "../../constants/routes";
 import { WHATSAPP_URL } from "../../constants/whatsapp";
 import { scrollToHashTarget } from "../../utils/hashNavigation";
 import "./Header.css";
 
-export default function Header() {
+export default function Header({
+  homeHref = "#home",
+  navigationBasePath = "",
+  ctaHref = WHATSAPP_URL,
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isScrolledRef = useRef(false);
@@ -48,9 +53,13 @@ export default function Header() {
   };
 
   const handleNavigationClick = (event, href) => {
-    scrollToHashTarget(event, href, {
+    const didScroll = scrollToHashTarget(event, href, {
       onBeforeScroll: () => setIsMobileMenuOpen(false),
     });
+
+    if (!didScroll) {
+      setIsMobileMenuOpen(false);
+    }
   };
 
   return (
@@ -61,9 +70,9 @@ export default function Header() {
     >
       <div className="header__container">
         <a
-          href="#home"
+          href={homeHref}
           className="header__logo"
-          onClick={(event) => handleNavigationClick(event, "#home")}
+          onClick={(event) => handleNavigationClick(event, homeHref)}
         >
           <img
             src={logo}
@@ -93,7 +102,7 @@ export default function Header() {
             {navigationItems.map(({ href, label }) => (
               <a
                 key={href}
-                href={href}
+                href={resolveNavigationHref(navigationBasePath, href)}
                 className="header__link"
                 onClick={(event) => handleNavigationClick(event, href)}
               >
@@ -103,7 +112,7 @@ export default function Header() {
           </nav>
 
           <a
-            href={WHATSAPP_URL}
+            href={ctaHref}
             className="header__cta"
             target="_blank"
             rel="noopener noreferrer"
@@ -122,7 +131,7 @@ export default function Header() {
           {navigationItems.map(({ href, label }) => (
             <a
               key={`mobile-${href}`}
-              href={href}
+              href={resolveNavigationHref(navigationBasePath, href)}
               className="header__mobile-link"
               onClick={(event) => handleNavigationClick(event, href)}
             >
@@ -132,7 +141,7 @@ export default function Header() {
         </nav>
 
         <a
-          href={WHATSAPP_URL}
+          href={ctaHref}
           className="header__mobile-cta"
           target="_blank"
           rel="noopener noreferrer"

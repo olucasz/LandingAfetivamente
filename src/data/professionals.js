@@ -38,6 +38,22 @@ import professional10Avif420 from "../assets/optimized/professionals/professiona
 import professional10Avif840 from "../assets/optimized/professionals/professional-10-840.avif";
 import professional10Webp420 from "../assets/optimized/professionals/professional-10-420.webp";
 import professional10Webp840 from "../assets/optimized/professionals/professional-10-840.webp";
+import professional11Avif420 from "../assets/optimized/professionals/professional-11-420.avif";
+import professional11Avif840 from "../assets/optimized/professionals/professional-11-840.avif";
+import professional11Webp420 from "../assets/optimized/professionals/professional-11-420.webp";
+import professional11Webp840 from "../assets/optimized/professionals/professional-11-840.webp";
+import professional12Avif420 from "../assets/optimized/professionals/professional-12-420.avif";
+import professional12Avif840 from "../assets/optimized/professionals/professional-12-840.avif";
+import professional12Webp420 from "../assets/optimized/professionals/professional-12-420.webp";
+import professional12Webp840 from "../assets/optimized/professionals/professional-12-840.webp";
+import professional13Avif420 from "../assets/optimized/professionals/professional-13-420.avif";
+import professional13Avif840 from "../assets/optimized/professionals/professional-13-840.avif";
+import professional13Webp420 from "../assets/optimized/professionals/professional-13-420.webp";
+import professional13Webp840 from "../assets/optimized/professionals/professional-13-840.webp";
+import professional14Avif420 from "../assets/optimized/professionals/professional-14-420.avif";
+import professional14Avif840 from "../assets/optimized/professionals/professional-14-840.avif";
+import professional14Webp420 from "../assets/optimized/professionals/professional-14-420.webp";
+import professional14Webp840 from "../assets/optimized/professionals/professional-14-840.webp";
 
 function createImageSet(avif420, avif840, webp420, webp840) {
   return {
@@ -82,7 +98,7 @@ export const professionals = [
     name: "Natália Terra",
     role: "Psicóloga",
     credential: "CRP: 08/23945",
-    imagePosition: "50% 20% / 1.06",
+    imagePosition: "50% 18% / 1.12",
     image: createImageSet(
       professional3Avif420,
       professional3Avif840,
@@ -185,6 +201,58 @@ export const professionals = [
       professional10Avif840,
       professional10Webp420,
       professional10Webp840,
+    ),
+    active: true,
+  },
+  {
+    id: 11,
+    name: "Leonardo Silva Ribeiro",
+    role: "Psicólogo",
+    imagePosition: "52% 18% / 1.14",
+    image: createImageSet(
+      professional11Avif420,
+      professional11Avif840,
+      professional11Webp420,
+      professional11Webp840,
+    ),
+    active: true,
+  },
+  {
+    id: 12,
+    name: "Simone Marcolino",
+    role: "Psicopedagoga",
+    imagePosition: "50% 18% / 1.12",
+    image: createImageSet(
+      professional12Avif420,
+      professional12Avif840,
+      professional12Webp420,
+      professional12Webp840,
+    ),
+    active: true,
+  },
+  {
+    id: 13,
+    name: "João Marcos Ferrari",
+    role: "Tricologista",
+    imagePosition: "53% 18% / 1.15",
+    image: createImageSet(
+      professional13Avif420,
+      professional13Avif840,
+      professional13Webp420,
+      professional13Webp840,
+    ),
+    active: true,
+  },
+  {
+    id: 14,
+    name: "Rosangela de Castro Mello",
+    role: "Psicomotricista",
+    imagePosition: "51% 18% / 1.12",
+    image: createImageSet(
+      professional14Avif420,
+      professional14Avif840,
+      professional14Webp420,
+      professional14Webp840,
     ),
     active: true,
   },

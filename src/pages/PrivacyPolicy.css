@@ -1,0 +1,132 @@
+.privacy-policy {
+  padding: 40px 0 var(--section-space-tight);
+}
+
+.privacy-policy__container {
+  width: min(960px, calc(100% - var(--container-inline)));
+  margin: 0 auto;
+}
+
+.privacy-policy__article {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--border-soft);
+  border-radius: 32px;
+  box-shadow: 0 18px 40px rgba(8, 37, 50, 0.05);
+  padding: 56px 64px 64px;
+}
+
+.privacy-policy__heading {
+  color: var(--primary-dark);
+}
+
+.privacy-policy__heading--1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.35rem, 4vw, 3.45rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.privacy-policy__heading--2 {
+  margin-top: 44px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.2vw, 1.6rem);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
+.privacy-policy__heading--3 {
+  margin-top: 28px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  font-weight: 800;
+  color: var(--text-secondary);
+}
+
+.privacy-policy__paragraph {
+  margin-top: 18px;
+  font-size: 1rem;
+  line-height: 1.84;
+  font-weight: 500;
+  color: rgba(0, 57, 77, 0.86);
+}
+
+.privacy-policy__paragraph--meta {
+  margin-top: 20px;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.privacy-policy__list {
+  margin-top: 14px;
+  padding-left: 1.35rem;
+  display: grid;
+  gap: 12px;
+}
+
+.privacy-policy__list-item {
+  font-size: 1rem;
+  line-height: 1.78;
+  font-weight: 500;
+  color: rgba(0, 57, 77, 0.86);
+}
+
+.privacy-policy__article strong {
+  color: var(--primary-dark);
+  font-weight: 800;
+}
+
+@media (max-width: 1199px) {
+  .privacy-policy {
+    padding: 32px 0 72px;
+  }
+
+  .privacy-policy__container {
+    width: min(920px, calc(100% - 56px));
+  }
+
+  .privacy-policy__article {
+    padding: 48px 44px 52px;
+  }
+}
+
+@media (max-width: 767px) {
+  .privacy-policy {
+    padding: 22px 0 48px;
+  }
+
+  .privacy-policy__container {
+    width: min(100%, calc(100% - 24px));
+  }
+
+  .privacy-policy__article {
+    border-radius: 26px;
+    padding: 30px 22px 34px;
+  }
+
+  .privacy-policy__heading--1 {
+    font-size: 2rem;
+    line-height: 1.06;
+  }
+
+  .privacy-policy__heading--2 {
+    margin-top: 32px;
+    font-size: 1.28rem;
+  }
+
+  .privacy-policy__heading--3 {
+    margin-top: 22px;
+    font-size: 1rem;
+  }
+
+  .privacy-policy__paragraph,
+  .privacy-policy__list-item {
+    font-size: 0.96rem;
+    line-height: 1.74;
+  }
+
+  .privacy-policy__paragraph--meta {
+    font-size: 0.9rem;
+  }
+}
