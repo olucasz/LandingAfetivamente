@@ -118,7 +118,7 @@ export const professionals = [
       professional4Webp420,
       professional4Webp840,
     ),
-    active: true,
+    active: false,
   },
   {
     id: 5,
@@ -188,7 +188,7 @@ export const professionals = [
       professional9Webp420,
       professional9Webp840,
     ),
-    active: true,
+    active: false,
   },
   {
     id: 10,
@@ -208,6 +208,7 @@ export const professionals = [
     id: 11,
     name: "Leonardo Silva Ribeiro",
     role: "Psicólogo",
+    credential: "CRP: 08/37459",
     imagePosition: "52% 18% / 1.14",
     image: createImageSet(
       professional11Avif420,
